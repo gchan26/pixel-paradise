@@ -1,16 +1,22 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-import './App.css'
+// React
+// eslint-disable-next-line no-unused-vars
+import React from "react";
+
+// Router
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// Pages
+import Home from "../src/pages/Home";
 
 function App() {
-  // const [count, setCount] = useState(0)
 
   return (
-    <div className='h-screen bg-red-800'>
-      <h1 className='text-blue-600'>Teste</h1>
-    </div>
-  )
+    <Router>
+      <Routes>
+        <Route path="/home" element={<Home />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
