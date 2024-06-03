@@ -51,6 +51,6 @@ export default {
 
   plugins: [
     // eslint-disable-next-line no-undef
-    // require('daisyui'),
+    require('daisyui'),
   ],
 }
