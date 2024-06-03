@@ -1,5 +1,5 @@
 // Images
-import Logo from "../assets/logo.png"
+import Logo from "../assets/logo.png";
 
 const Navbar = () => {
   return (
@@ -27,10 +27,7 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Parent</a>
+              <a>Games</a>
               <ul className="p-2">
                 <li>
                   <a>Submenu 1</a>
@@ -41,22 +38,41 @@ const Navbar = () => {
               </ul>
             </li>
             <li>
-              <a>Item 3</a>
+              <a>Consoles</a>
+              <ul className="p-2">
+                <li>
+                  <a>Submenu 1</a>
+                </li>
+                <li>
+                  <a>Submenu 2</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a>Others</a>
+              <ul className="p-2">
+                <li>
+                  <a>Submenu 1</a>
+                </li>
+                <li>
+                  <a>Submenu 2</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a>About Us</a>
             </li>
           </ul>
         </div>
         <a className="btn btn-ghost flex content-center">
-           <img src={Logo} className="w-40"/>
+          <img src={Logo} className="w-40" />
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Item 1</a>
-          </li>
-          <li>
             <details>
-              <summary>Parent</summary>
+              <summary>Games</summary>
               <ul className="p-2">
                 <li>
                   <a>Submenu 1</a>
@@ -68,12 +84,39 @@ const Navbar = () => {
             </details>
           </li>
           <li>
-            <a>Item 3</a>
+            <details>
+              <summary>Consoles</summary>
+              <ul className="p-2">
+                <li>
+                  <a>Submenu 1</a>
+                </li>
+                <li>
+                  <a>Submenu 2</a>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary>Others</summary>
+              <ul className="p-2">
+                <li>
+                  <a>Submenu 1</a>
+                </li>
+                <li>
+                  <a>Submenu 2</a>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <a>About Us</a>
           </li>
         </ul>
       </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
+      <div className="navbar-end gap-4">
+        <a className="btn bg-dark-blue-300 hover:bg-dark-blue-400">Sign Up</a>
+        <a className="btn bg-light-blue-500 hover:bg-light-blue-600">Sign In</a>
       </div>
     </div>
   );
