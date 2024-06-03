@@ -24,6 +24,10 @@ export default {
       0: "0 0 auto",
     },
     extend: {
+      fontFamily:{
+        retro: ['"Press Start 2P"', 'sans-serif'],
+      },
+
       screens: {
         sm: "600px",
         md: "960px",
