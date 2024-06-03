@@ -5,26 +5,27 @@ import React from "react";
 const Home = () => {
   return (
     <section>
-        <div
+      <div
         className="hero min-h-screen"
         style={{
-            backgroundImage:
-            "url(../../src/assets/background.svg)",
+          backgroundImage: "url(../../src/assets/background.svg)",
         }}
-        >
+      >
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
-            <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+          <div className="max-w-md">
+            <h1 className="mb-5 text-5xl font-bold">Press Start!</h1>
             <p className="mb-5">
-                Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-                excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-                a id nisi.
+              Welcome to Pixel Paradise, the ultimate destination for retro
+              gaming! Explore a world of classic consoles and timeless titles that will reignite your passion for the golden age of
+              gaming.
             </p>
-            <button className="btn btn-primary">Get Started</button>
-            </div>
+            <button className="btn bg-light-blue-600 hover:bg-light-blue-700">
+              Check Popular Products
+            </button>
+          </div>
         </div>
-        </div>
+      </div>
     </section>
   );
 };
