@@ -122,7 +122,7 @@ const Home = () => {
       </section>
       <section id="main-section" className="min-h-screen bg-dark-blue-700 p-10">
         <div className="flex justify-center w-full mb-8">
-          <h1 className="text-6xl font-retro text-dark-blue-50">
+          <h1 className="text-6xl font-retro text-dark-blue-50 text-center">
             Popular Products
           </h1>
         </div>
