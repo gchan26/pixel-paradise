@@ -24,14 +24,16 @@ const Home = () => {
                 that will reignite your passion for the golden age of
                 video-games.
               </p>
-              <button className="btn bg-light-blue-600 hover:bg-light-blue-700 text-dark-blue-50">
-                Check Popular Products
-              </button>
+              <a href="#main-section">
+                <button className="btn bg-light-blue-600 hover:bg-light-blue-700 text-dark-blue-50">
+                    Check Popular Products
+                </button>
+              </a>
             </div>
           </div>
         </div>
       </section>
-      <section className="min-h-screen bg-dark-blue-700 p-10">
+      <section id="main-section" className="min-h-screen bg-dark-blue-700 p-10">
         <h1>Popular Products</h1>
       </section>
     </>
