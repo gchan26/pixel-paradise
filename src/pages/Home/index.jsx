@@ -33,7 +33,6 @@ const Home = () => {
       </section>
       <section className="min-h-screen bg-dark-blue-700 p-10">
         <h1>Popular Products</h1>
-        
       </section>
     </>
   );
