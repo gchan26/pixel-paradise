@@ -5,7 +5,6 @@ import smallLogo from "../assets/smallLogo.svg";
 // Icons
 import { ArrowLeftEndOnRectangleIcon } from '@heroicons/react/24/solid'
 
-
 const Navbar = () => {
   return (
     <div className="navbar bg-dark-blue-500">
