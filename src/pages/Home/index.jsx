@@ -188,14 +188,17 @@ const Home = () => {
             </button>
           </div>
         </div>
-        <div className="w-full p-10 mt-4 flex flex-col items-center">
-          <h1 className="text-2xl text-center mb-4">
-            Haven't found what you're looking for?
-          </h1>
-          <button className="btn bg-light-blue-600 hover:bg-light-blue-700 text-dark-blue-50 flex items-center justify-center w-full md:w-auto">
-            <MagnifyingGlassIcon className="size-5 mr-2" />
-            See all products
-          </button>
+        <div className="flex flex-end align-bottom h-full">
+            <div className="w-full p-10 my-4 flex flex-col items-center align-bottom h-full">
+            <h1 className="text-2xl text-center mb-4">
+                Haven't found what you're looking for?
+            </h1>
+            <button className="btn bg-light-blue-600 hover:bg-light-blue-700 text-dark-blue-50 flex items-center justify-center w-full md:w-auto">
+                <MagnifyingGlassIcon className="size-5" />
+                See all products
+            </button>
+            </div>
+
         </div>
       </section>
     </>
