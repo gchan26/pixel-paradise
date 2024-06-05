@@ -11,7 +11,7 @@ const products = [
     id: 1,
     name: "PSP-3000 Black",
     price: "$140",
-    imageUrl: "path/to/image1.jpg",
+    imageUrl: "../../src/assets/products/psp3000.png",
     category: "Handheld",
   },
   {
@@ -136,8 +136,8 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 overflow-hidden">
             {products.slice(currentIndex, currentIndex + 3).map((product) => (
               <div key={product.id} className="card w-80 md:w-96 bg-white shadow-xl">
-                <figure>
-                  <img src={product.imageUrl} alt={product.name} />
+                <figure className="p-1">
+                  <img className="border-0" src={product.imageUrl} alt={product.name} />
                 </figure>
                 <div className="card-body">
                   <h2 className="card-title">{product.name}</h2>

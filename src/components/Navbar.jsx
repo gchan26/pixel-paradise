@@ -1,6 +1,6 @@
 // Images
-import Logo from "../assets/logo.png";
-import smallLogo from "../assets/smallLogo.svg";
+import Logo from "../assets/logos/logo.png";
+import smallLogo from "../assets/logos/smallLogo.svg";
 
 // Icons
 import { ArrowLeftEndOnRectangleIcon } from "@heroicons/react/24/solid";

@@ -1,5 +1,5 @@
 // Images
-import LogoWhite from "../assets/logo-white.svg";
+import LogoWhite from "../assets/logos/logo-white.svg";
 
 const Footer = () => {
     return (
