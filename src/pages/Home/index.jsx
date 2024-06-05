@@ -1,10 +1,17 @@
-// Home.jsx
+/* eslint-disable react/no-unescaped-entities */
+// React
 import { useState } from "react";
+
+// Icons
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
   ArrowDownCircleIcon,
+  MagnifyingGlassIcon,
 } from "@heroicons/react/24/solid";
+
+// Animations
+import "animate.css";
 
 const products = [
   {
@@ -101,21 +108,23 @@ const Home = () => {
           <div className="hero-overlay bg-opacity-60"></div>
           <div className="hero-content text-center text-neutral-content">
             <div className="max-w-md">
-              <h1 className="mb-5 text-5xl font-bold font-retro text-white">
+              <h1 className="mb-5 text-5xl font-bold font-retro text-white animate__animated animate__zoomIn">
                 Press Start!
               </h1>
-              <p className="mb-5 text-dark-blue-50">
-                Welcome to Pixel Paradise, the ultimate destination for retro
-                gaming! Explore a world of classic consoles and timeless titles
-                that will reignite your passion for the golden age of
-                video-games.
-              </p>
-              <a href="#main-section">
-                <button className="btn bg-light-blue-600 hover:bg-light-blue-700 text-dark-blue-50">
-                  <ArrowDownCircleIcon className="size-5" />
-                  Check Popular Products
-                </button>
-              </a>
+              <div className="animate__animated animate__fadeIn">
+                <p className="mb-5 text-dark-blue-50">
+                  Welcome to Pixel Paradise, the ultimate destination for retro
+                  gaming! Explore a world of classic consoles and timeless
+                  titles that will reignite your passion for the golden age of
+                  video-games.
+                </p>
+                <a href="#main-section">
+                  <button className="btn bg-light-blue-600 hover:bg-light-blue-700 text-dark-blue-50 ">
+                    <ArrowDownCircleIcon className="size-5" />
+                    Check Popular Products
+                  </button>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -135,12 +144,21 @@ const Home = () => {
           </button>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 overflow-hidden">
             {products.slice(currentIndex, currentIndex + 3).map((product) => (
-              <div key={product.id} className="card w-80 md:w-96 bg-white shadow-xl">
+              <div
+                key={product.id}
+                className="card w-80 md:w-96 bg-white shadow-xl"
+              >
                 <figure className="p-1">
-                  <img className="border-0" src={product.imageUrl} alt={product.name} />
+                  <img
+                    className="border-0"
+                    src={product.imageUrl}
+                    alt={product.name}
+                  />
                 </figure>
                 <div className="card-body">
-                  <h2 className="card-title text-dark-blue-400">{product.name}</h2>
+                  <h2 className="card-title text-dark-blue-400">
+                    {product.name}
+                  </h2>
                   <p>{product.category}</p>
                   <div className="card-actions justify-end">
                     <span className="text-xl font-bold">{product.price}</span>
@@ -169,6 +187,15 @@ const Home = () => {
               <ArrowRightIcon className="h-6 w-6" />
             </button>
           </div>
+        </div>
+        <div className="w-full p-10 mt-4 flex flex-col items-center">
+          <h1 className="text-2xl text-center mb-4">
+            Haven't found what you're looking for?
+          </h1>
+          <button className="btn bg-light-blue-600 hover:bg-light-blue-700 text-dark-blue-50 flex items-center justify-center w-full md:w-auto">
+            <MagnifyingGlassIcon className="size-5 mr-2" />
+            See all products
+          </button>
         </div>
       </section>
     </>
