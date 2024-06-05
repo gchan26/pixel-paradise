@@ -18,56 +18,56 @@ const products = [
     id: 2,
     name: "Atari 2600",
     price: "$140",
-    imageUrl: "path/to/image2.jpg",
+    imageUrl: "../../src/assets/products/atari2600.png",
     category: "Home Console",
   },
   {
     id: 3,
     name: "Gameboy Advance SP Silver",
     price: "$140",
-    imageUrl: "path/to/image3.jpg",
+    imageUrl: "../../src/assets/products/gameboyadvancespsilver.jpeg",
     category: "Handheld",
   },
   {
     id: 4,
     name: "Playstation 2 Slim",
     price: "$140",
-    imageUrl: "path/to/image4.jpg",
+    imageUrl: "../../src/assets/products/ps2slim.jpeg",
     category: "Home Console",
   },
   {
     id: 5,
-    name: "Sega Genesis 2",
+    name: "Sega Genesis",
     price: "$140",
-    imageUrl: "path/to/image5.jpg",
+    imageUrl: "../../src/assets/products/segagenesis.png",
     category: "Home Console",
   },
   {
     id: 6,
     name: "Dreamcast",
     price: "$140",
-    imageUrl: "path/to/image6.jpg",
+    imageUrl: "../../src/assets/products/dreamcast.png",
     category: "Home Console",
   },
   {
     id: 7,
-    name: "NES Classic Edition",
+    name: "NES",
     price: "$60",
-    imageUrl: "path/to/image7.jpg",
+    imageUrl: "../../src/assets/products/nes.png",
     category: "Home Console",
   },
   {
     id: 8,
-    name: "SNES Classic Edition",
+    name: "Super Nintendo",
     price: "$80",
-    imageUrl: "path/to/image8.jpg",
+    imageUrl: "../../src/assets/products/snes.png",
     category: "Home Console",
   },
   {
     id: 9,
     name: "Nintendo 64",
     price: "$120",
-    imageUrl: "path/to/image9.jpg",
+    imageUrl: "../../src/assets/products/n64.png",
     category: "Home Console",
   },
 ];
@@ -140,7 +140,7 @@ const Home = () => {
                   <img className="border-0" src={product.imageUrl} alt={product.name} />
                 </figure>
                 <div className="card-body">
-                  <h2 className="card-title">{product.name}</h2>
+                  <h2 className="card-title text-dark-blue-400">{product.name}</h2>
                   <p>{product.category}</p>
                   <div className="card-actions justify-end">
                     <span className="text-xl font-bold">{product.price}</span>
