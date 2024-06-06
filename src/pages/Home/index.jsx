@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 // React
 import { useState, useEffect } from "react";
@@ -84,15 +85,15 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate image loading
     const timer = setTimeout(() => {
       setLoading(false);
     }, 2000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [currentIndex]);
 
   const handlePrevClick = () => {
+    setLoading(true);
     setCurrentIndex((prevIndex) => {
       const newIndex = prevIndex - 3;
       return newIndex < 0 ? Math.max(0, products.length - 3) : newIndex;
@@ -100,6 +101,7 @@ const Home = () => {
   };
 
   const handleNextClick = () => {
+    setLoading(true);
     setCurrentIndex((prevIndex) => {
       const newIndex = prevIndex + 3;
       return newIndex >= products.length ? 0 : newIndex;
@@ -153,7 +155,7 @@ const Home = () => {
             <ArrowLeftIcon className="h-6 w-6" />
           </button>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 overflow-hidden">
-            {products.slice(currentIndex, currentIndex + 3).map((product) => (
+            {products.slice(currentIndex, currentIndex + 3).map((product, index) => (
               <div
                 key={product.id}
                 className="card w-80 md:w-96 bg-white shadow-xl"
