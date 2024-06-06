@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 // React
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Icons
 import {
@@ -81,6 +81,16 @@ const products = [
 
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate image loading
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handlePrevClick = () => {
     setCurrentIndex((prevIndex) => {
@@ -149,20 +159,36 @@ const Home = () => {
                 className="card w-80 md:w-96 bg-white shadow-xl"
               >
                 <figure className="p-1">
-                  <img
-                    className="border-0"
-                    src={product.imageUrl}
-                    alt={product.name}
-                  />
+                  {loading ? (
+                    <div className="skeleton w-full h-96 bg-gray-200 animate-pulse"></div>
+                  ) : (
+                    <img
+                      className="border-0"
+                      src={product.imageUrl}
+                      alt={product.name}
+                    />
+                  )}
                 </figure>
                 <div className="card-body">
-                  <h2 className="card-title text-dark-blue-400">
-                    {product.name}
-                  </h2>
-                  <p>{product.category}</p>
-                  <div className="card-actions justify-end">
-                    <span className="text-xl font-bold">{product.price}</span>
-                  </div>
+                  {loading ? (
+                    <>
+                      <div className="skeleton w-full h-5 bg-gray-200 animate-pulse mb-2"></div>
+                      <div className="skeleton w-1/4 h-4 bg-gray-200 animate-pulse"></div>
+                      <div className="skeleton w-1/6 h-4 bg-gray-200 animate-pulse flex self-end"></div>
+                    </>
+                  ) : (
+                    <>
+                      <h2 className="card-title text-dark-blue-400">
+                        {product.name}
+                      </h2>
+                      <p>{product.category}</p>
+                      <div className="card-actions justify-end">
+                        <span className="text-xl font-bold">
+                          {product.price}
+                        </span>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             ))}
@@ -189,16 +215,15 @@ const Home = () => {
           </div>
         </div>
         <div className="flex flex-end align-bottom h-full">
-            <div className="w-full p-10 my-4 flex flex-col items-center align-bottom h-full">
+          <div className="w-full p-10 my-4 flex flex-col items-center align-bottom h-full">
             <h1 className="text-2xl text-center mb-4">
-                Haven't found what you're looking for?
+              Haven't found what you're looking for?
             </h1>
             <button className="btn bg-light-blue-600 hover:bg-light-blue-700 text-dark-blue-50 flex items-center justify-center w-full md:w-auto">
-                <MagnifyingGlassIcon className="size-5" />
-                See all products
+              <MagnifyingGlassIcon className="size-5" />
+              See all products
             </button>
-            </div>
-
+          </div>
         </div>
       </section>
     </>
