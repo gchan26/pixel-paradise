@@ -1,5 +1,9 @@
 // Images
-import Logo from "../assets/logo.png";
+import Logo from "../assets/logos/logo.png";
+import smallLogo from "../assets/logos/smallLogo.svg";
+
+// Icons
+import { ArrowLeftEndOnRectangleIcon } from "@heroicons/react/24/solid";
 
 const Navbar = () => {
   return (
@@ -24,8 +28,11 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-bold"
           >
+            <li>
+              <a>All Products</a>
+            </li>
             <li>
               <a>Games</a>
               <ul className="p-2">
@@ -65,11 +72,15 @@ const Navbar = () => {
           </ul>
         </div>
         <a className="btn btn-ghost flex content-center">
-          <img src={Logo} className="w-40" />
+          <img src={Logo} className="w-40 hidden md:block" />
+          <img src={smallLogo} className="w-10 md:hidden" />
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
+          <li>
+            <a>All Products</a>
+          </li>
           <li>
             <details>
               <summary>Games</summary>
@@ -115,8 +126,28 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end gap-4">
-        <a className="btn bg-dark-blue-300 hover:bg-dark-blue-400">Sign Up</a>
-        <a className="btn bg-light-blue-500 hover:bg-light-blue-600">Sign In</a>
+        <label className="input input-bordered flex items-center gap-2">
+          <input type="text" className="grow" placeholder="Search Products" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            className="w-4 h-4 opacity-70"
+          >
+            <path
+              fillRule="evenodd"
+              d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </label>
+        {/* {/* <a className="btn bg-dark-blue-300 hover:bg-dark-blue-400">Sign Up</a> */}
+        <a className="hidden sm:flex content-center btn bg-light-blue-500 hover:bg-light-blue-600">
+          Sign In
+        </a>
+        <div>
+          <ArrowLeftEndOnRectangleIcon className="block sm:hidden size-10 p-2 text-white bg-light-blue-500 rounded-lg" />
+        </div>
       </div>
     </div>
   );
