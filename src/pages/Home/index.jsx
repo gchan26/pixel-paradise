@@ -1,18 +1,14 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
-// React
 import { useState, useEffect } from "react";
-
-// Icons
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
   ArrowDownCircleIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/solid";
-
-// Animations
 import "animate.css";
+import "../../components/AnimatedBackground.css";
 
 const products = [
   {
@@ -141,13 +137,32 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section id="main-section" className="min-h-screen bg-dark-blue-700 p-10">
-        <div className="flex justify-center w-full mb-8">
+      <section
+        id="main-section"
+        className="relative min-h-screen bg-dark-blue-700 p-10"
+      >
+        <div className="background">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div className="relative z-10 flex justify-center w-full mb-8">
           <h1 className="text-6xl font-retro text-dark-blue-50 text-center">
             Popular Products
           </h1>
         </div>
-        <div className="relative flex flex-col md:flex-row justify-center items-center">
+        <div className="relative z-10 flex flex-col md:flex-row justify-center items-center">
           <button
             className="hidden md:block absolute left-0 ml-2 bg-light-blue-600 hover:bg-light-blue-700 text-dark-blue-50 rounded-full p-2"
             onClick={handlePrevClick}
@@ -155,7 +170,7 @@ const Home = () => {
             <ArrowLeftIcon className="h-6 w-6" />
           </button>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 overflow-hidden">
-            {products.slice(currentIndex, currentIndex + 3).map((product, index) => (
+            {products.slice(currentIndex, currentIndex + 3).map((product) => (
               <div
                 key={product.id}
                 className="card w-80 md:w-96 bg-white shadow-xl"
@@ -216,7 +231,7 @@ const Home = () => {
             </button>
           </div>
         </div>
-        <div className="flex flex-end align-bottom h-full">
+        <div className="relative z-10 flex flex-end align-bottom h-full">
           <div className="w-full p-10 my-4 flex flex-col items-center align-bottom h-full">
             <h1 className="text-2xl text-center mb-4">
               Haven't found what you're looking for?
