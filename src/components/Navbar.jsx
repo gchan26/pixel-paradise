@@ -11,7 +11,6 @@ const Navbar = () => {
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <a href="/">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -26,7 +25,6 @@ const Navbar = () => {
                   d="M4 6h16M4 12h8m-8 6h16"
                 />
               </svg>
-            </a>
           </div>
           <ul
             tabIndex={0}
@@ -73,7 +71,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost flex content-center">
+        <a href="/" className="btn btn-ghost flex content-center"> 
           <img src={Logo} className="w-40 hidden md:block" />
           <img src={smallLogo} className="w-10 md:hidden" />
         </a>
@@ -150,9 +148,9 @@ const Navbar = () => {
         >
           Sign In
         </a>
-        <div>
+        <a href="/login">
           <ArrowLeftEndOnRectangleIcon className="block sm:hidden size-10 p-2 text-white bg-light-blue-500 rounded-lg" />
-        </div>
+        </a>
       </div>
     </div>
   );
