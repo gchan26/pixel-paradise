@@ -11,20 +11,22 @@ const Navbar = () => {
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
+            <a href="/">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </a>
           </div>
           <ul
             tabIndex={0}
@@ -142,7 +144,10 @@ const Navbar = () => {
           </svg>
         </label>
         {/* {/* <a className="btn bg-dark-blue-300 hover:bg-dark-blue-400">Sign Up</a> */}
-        <a href="/login" className="hidden sm:flex content-center btn bg-light-blue-500 hover:bg-light-blue-600">
+        <a
+          href="/login"
+          className="hidden sm:flex content-center btn bg-light-blue-500 hover:bg-light-blue-600"
+        >
           Sign In
         </a>
         <div>

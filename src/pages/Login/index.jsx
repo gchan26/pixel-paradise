@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 // React
 // eslint-disable-next-line no-unused-vars
 import React from "react";
@@ -10,13 +11,13 @@ const Login = () => {
   return (
     <section className="h-screen">
       <div className="m-auto flex justify-center items-center h-full rounded-lg">
-        <div className="flex flex-row border-white border-4 rounded-lg">
-          <div className="bg-gray-50 p-8 md:p-12 flex flex-col justify-center rounded-l gap-10">
-            <h1 className="font-bold text-gray-800 text-3xl flex flex-row items-center gap-2">
+        <div className="flex flex-row border-[#475360] border-4 rounded-lg">
+          <div className="bg-[#121a23] p-8 md:p-12 flex flex-col justify-center rounded-l items-center gap-6">
+            <h1 className="font-bold text-gray-50 text-3xl flex flex-row items-center gap-2">
               <img
                 src={smallLogo}
                 alt="logo"
-                className="rounded-full bg-white p-2 w-16"
+                className="rounded-full bg-white p-2 w-12"
               />
               Welcome back!
             </h1>
@@ -46,12 +47,33 @@ const Login = () => {
               </svg>
               <input type="password" className="grow" value="password" />
             </label>
+            <a href="/forgot">
+              <span className="text-sm hover:text-blue-500 hover:underline block">
+                Forgot your password?
+              </span>
+            </a>
+            <div className="form-control">
+              <label className="label cursor-pointer gap-2">
+                <input type="checkbox" defaultChecked className="checkbox" />
+                <span className="label-text">Remember me</span>
+              </label>
+            </div>
             <button
               // onClick={handleLogin}
-              className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3  bg-light-blue-500 hover:bg-light-blue-600 text-white flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
+              className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-light-blue-500 hover:bg-light-blue-600 text-white flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
             >
               <span className="ml-2">Log in</span>
             </button>
+            <div className="divider"></div>
+
+            <span className="text-sm  block">
+              Don't have an account?{" "}
+              <a href="/signup">
+                <span className="hover:text-blue-500 hover:underline">
+                  Create Account
+                </span>
+              </a>
+            </span>
           </div>
           <div className="hidden md:flex items-center justify-center">
             <img src={CRT} alt="CRT" className="w-96 h-full rounded-r-md" />
