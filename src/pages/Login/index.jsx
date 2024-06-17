@@ -65,7 +65,6 @@ const Login = () => {
               <span className="ml-2">Log in</span>
             </button>
             <div className="divider"></div>
-
             <span className="text-sm  block">
               Don't have an account?{" "}
               <a href="/signup">
