@@ -142,7 +142,7 @@ const Navbar = () => {
           </svg>
         </label>
         {/* {/* <a className="btn bg-dark-blue-300 hover:bg-dark-blue-400">Sign Up</a> */}
-        <a className="hidden sm:flex content-center btn bg-light-blue-500 hover:bg-light-blue-600">
+        <a href="/login" className="hidden sm:flex content-center btn bg-light-blue-500 hover:bg-light-blue-600">
           Sign In
         </a>
         <div>
