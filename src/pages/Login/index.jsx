@@ -48,7 +48,7 @@ const Login = () => {
               <input type="password" className="grow" placeholder="Password" />
             </label>
             <a href="/forgot">
-              <span className="text-sm hover:text-blue-500 hover:underline block">
+              <span className="text-sm hover:text-blue-500 hover:underline block font-semibold">
                 Forgot your password?
               </span>
             </a>
@@ -65,10 +65,10 @@ const Login = () => {
               <span className="ml-2">Log in</span>
             </button>
             <div className="divider"></div>
-            <span className="text-sm  block">
+            <span className="text-sm block">
               Don't have an account?{" "}
               <a href="/signup">
-                <span className="hover:text-blue-500 hover:underline">
+                <span className="hover:text-blue-500 hover:underline font-semibold">
                   Create Account
                 </span>
               </a>
