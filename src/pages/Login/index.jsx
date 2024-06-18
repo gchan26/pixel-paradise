@@ -47,7 +47,7 @@ const Login = () => {
               </svg>
               <input type="password" className="grow" placeholder="Password" />
             </label>
-            <a href="/forgot">
+            <a href="/recover">
               <span className="text-sm hover:text-blue-500 hover:underline block font-semibold">
                 Forgot your password?
               </span>

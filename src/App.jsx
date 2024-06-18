@@ -13,6 +13,7 @@ import Footer from "../src/components/Footer";
 import Home from "../src/pages/Home";
 import Login from "../src/pages/Login";
 import SignUp from "../src/pages/SignUp";
+import Recover from "../src/pages/Recover";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/recover" element={<Recover />} />
       </Routes>
       <Footer />
     </Router>
