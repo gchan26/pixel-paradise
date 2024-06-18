@@ -14,14 +14,14 @@ const Recover = () => {
     }; 
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-    <div className="card w-96 bg-white shadow-xl">
+    <div className="flex items-center justify-center min-h-screen bg-[#121A23]">
+    <div className="card w-96 bg-[#1D232A] shadow-xl">
       <div className="card-body">
-        <h2 className="card-title">Two-Factor Authentication</h2>
+        <h2 className="card-title">Check your Email</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Enter your 2FA code</span>
+              <span className="label-text">A 6-digit recovery code was sent to your email address, enter it below:</span>
             </label>
             <input
               type="text"
@@ -32,10 +32,18 @@ const Recover = () => {
             />
           </div>
           <div className="form-control mt-4">
-            <button className="btn btn-primary" type="submit">
+            <button className="btn bg-light-blue-500 hover:bg-light-blue-600" type="submit">
               Submit
             </button>
           </div>
+          <span className="text-sm block mt-2">
+              Don't see a code?{" "}
+              <a href="#">
+                <span className="hover:text-blue-500 hover:underline font-semibold">
+                  Resend to email
+                </span>
+              </a>
+            </span>
         </form>
       </div>
     </div>
