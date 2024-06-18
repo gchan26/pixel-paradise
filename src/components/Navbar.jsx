@@ -11,20 +11,20 @@ const Navbar = () => {
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
           </div>
           <ul
             tabIndex={0}
@@ -71,7 +71,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost flex content-center">
+        <a href="/" className="btn btn-ghost flex content-center"> 
           <img src={Logo} className="w-40 hidden md:block" />
           <img src={smallLogo} className="w-10 md:hidden" />
         </a>
@@ -141,13 +141,15 @@ const Navbar = () => {
             />
           </svg>
         </label>
-        {/* {/* <a className="btn bg-dark-blue-300 hover:bg-dark-blue-400">Sign Up</a> */}
-        <a className="hidden sm:flex content-center btn bg-light-blue-500 hover:bg-light-blue-600">
+        <a
+          href="/login"
+          className="hidden sm:flex content-center btn bg-light-blue-500 hover:bg-light-blue-600"
+        >
           Sign In
         </a>
-        <div>
+        <a href="/login">
           <ArrowLeftEndOnRectangleIcon className="block sm:hidden size-10 p-2 text-white bg-light-blue-500 rounded-lg" />
-        </div>
+        </a>
       </div>
     </div>
   );
