@@ -45,7 +45,7 @@ const Login = () => {
                   clipRule="evenodd"
                 />
               </svg>
-              <input type="password" className="grow" value="password" />
+              <input type="password" className="grow" placeholder="Password" />
             </label>
             <a href="/forgot">
               <span className="text-sm hover:text-blue-500 hover:underline block">
