@@ -236,10 +236,12 @@ const Home = () => {
             <h1 className="text-2xl text-center mb-4">
               Haven't found what you're looking for?
             </h1>
-            <button className="btn bg-light-blue-600 hover:bg-light-blue-700 text-dark-blue-50 flex items-center justify-center w-full md:w-auto">
-              <MagnifyingGlassIcon className="size-5" />
-              See all products
-            </button>
+            <a href="/allproducts" >
+              <button className="btn bg-light-blue-600 hover:bg-light-blue-700 text-dark-blue-50 flex items-center justify-center w-full md:w-auto">
+                <MagnifyingGlassIcon className="size-5" />
+                See all products
+              </button>
+            </a>
           </div>
         </div>
       </section>
