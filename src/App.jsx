@@ -14,6 +14,7 @@ import Home from "../src/pages/Home";
 import Login from "../src/pages/Login";
 import SignUp from "../src/pages/SignUp";
 import Recover from "../src/pages/Recover";
+import AllProducts from "../src/pages/AllProducts";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/recover" element={<Recover />} />
+        <Route path="/allproducts" element={<AllProducts />} />
       </Routes>
       <Footer />
     </Router>
