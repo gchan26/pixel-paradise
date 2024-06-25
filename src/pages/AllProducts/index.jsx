@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 import "animate.css";
 import "../../components/AnimatedBackground.css";
-
-const products = [
-  // Your product data here
-];
+import products from "../../data/products";
 
 const AllProducts = () => {
   const [loading, setLoading] = useState(true);
