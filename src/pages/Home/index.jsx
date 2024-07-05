@@ -24,24 +24,27 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, [currentIndex]);
 
+  const popularProducts = products.filter((product) => product.popular);
+  const productsPerPage = 3;
+
   const handlePrevClick = () => {
     setLoading(true);
     setCurrentIndex((prevIndex) => {
-      const newIndex = prevIndex - 3;
-      return newIndex < 0 ? Math.max(0, products.length - 3) : newIndex;
+      const newIndex = prevIndex - productsPerPage;
+      return newIndex < 0
+        ? popularProducts.length -
+            (popularProducts.length % productsPerPage || productsPerPage)
+        : newIndex;
     });
   };
 
   const handleNextClick = () => {
     setLoading(true);
     setCurrentIndex((prevIndex) => {
-      const newIndex = prevIndex + 3;
-      return newIndex >= products.length ? 0 : newIndex;
+      const newIndex = prevIndex + productsPerPage;
+      return newIndex >= popularProducts.length ? 0 : newIndex;
     });
   };
-
-  const popularProducts = products.filter(product => product.popular);
-  // const currentIndex = 0; 
 
   return (
     <>
@@ -109,45 +112,47 @@ const Home = () => {
             <ArrowLeftIcon className="h-6 w-6" />
           </button>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 overflow-hidden">
-            {popularProducts.slice(currentIndex, currentIndex + 3).map((product) => (
-              <div
-                key={product.id}
-                className="card w-80 md:w-96 bg-white shadow-xl"
-              >
-                <figure className="p-1">
-                  {loading ? (
-                    <div className="skeleton w-full h-96 bg-gray-200 animate-pulse"></div>
-                  ) : (
-                    <img
-                      className="border-0"
-                      src={product.imageUrl}
-                      alt={product.name}
-                    />
-                  )}
-                </figure>
-                <div className="card-body">
-                  {loading ? (
-                    <>
-                      <div className="skeleton w-full h-5 bg-gray-200 animate-pulse mb-2"></div>
-                      <div className="skeleton w-1/4 h-4 bg-gray-200 animate-pulse"></div>
-                      <div className="skeleton w-1/6 h-4 bg-gray-200 animate-pulse flex self-end"></div>
-                    </>
-                  ) : (
-                    <>
-                      <h2 className="card-title text-dark-blue-400">
-                        {product.name}
-                      </h2>
-                      <p>{product.category}</p>
-                      <div className="card-actions justify-end">
-                        <span className="text-xl font-bold">
-                          {product.price}
-                        </span>
-                      </div>
-                    </>
-                  )}
+            {popularProducts
+              .slice(currentIndex, currentIndex + 3)
+              .map((product) => (
+                <div
+                  key={product.id}
+                  className="card w-80 md:w-96 bg-white shadow-xl"
+                >
+                  <figure className="p-1">
+                    {loading ? (
+                      <div className="skeleton w-full h-96 bg-gray-200 animate-pulse"></div>
+                    ) : (
+                      <img
+                        className="border-0"
+                        src={product.imageUrl}
+                        alt={product.name}
+                      />
+                    )}
+                  </figure>
+                  <div className="card-body">
+                    {loading ? (
+                      <>
+                        <div className="skeleton w-full h-5 bg-gray-200 animate-pulse mb-2"></div>
+                        <div className="skeleton w-1/4 h-4 bg-gray-200 animate-pulse"></div>
+                        <div className="skeleton w-1/6 h-4 bg-gray-200 animate-pulse flex self-end"></div>
+                      </>
+                    ) : (
+                      <>
+                        <h2 className="card-title text-dark-blue-400">
+                          {product.name}
+                        </h2>
+                        <p>{product.category}</p>
+                        <div className="card-actions justify-end">
+                          <span className="text-xl font-bold">
+                            {product.price}
+                          </span>
+                        </div>
+                      </>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
           <button
             className="hidden md:block absolute right-0 mr-2 bg-light-blue-600 hover:bg-light-blue-700 text-dark-blue-50 rounded-full p-2"
@@ -175,7 +180,7 @@ const Home = () => {
             <h1 className="text-2xl text-center mb-4">
               Haven't found what you're looking for?
             </h1>
-            <a href="/allproducts" >
+            <a href="/allproducts">
               <button className="btn bg-light-blue-600 hover:bg-light-blue-700 text-dark-blue-50 flex items-center justify-center w-full md:w-auto">
                 <MagnifyingGlassIcon className="size-5" />
                 See all products
