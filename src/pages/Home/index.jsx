@@ -10,71 +10,7 @@ import {
 import "animate.css";
 import "../../components/AnimatedBackground.css";
 
-const products = [
-  {
-    id: 1,
-    name: "PSP-3000 Black",
-    price: "$140",
-    imageUrl: "../../src/assets/products/psp3000.png",
-    category: "Handheld",
-  },
-  {
-    id: 2,
-    name: "Atari 2600",
-    price: "$140",
-    imageUrl: "../../src/assets/products/atari2600.png",
-    category: "Home Console",
-  },
-  {
-    id: 3,
-    name: "Gameboy Advance SP Silver",
-    price: "$140",
-    imageUrl: "../../src/assets/products/gameboyadvancespsilver.jpeg",
-    category: "Handheld",
-  },
-  {
-    id: 4,
-    name: "Playstation 2 Slim",
-    price: "$140",
-    imageUrl: "../../src/assets/products/ps2slim.jpeg",
-    category: "Home Console",
-  },
-  {
-    id: 5,
-    name: "Sega Genesis",
-    price: "$140",
-    imageUrl: "../../src/assets/products/segagenesis.png",
-    category: "Home Console",
-  },
-  {
-    id: 6,
-    name: "Dreamcast",
-    price: "$140",
-    imageUrl: "../../src/assets/products/dreamcast.png",
-    category: "Home Console",
-  },
-  {
-    id: 7,
-    name: "NES",
-    price: "$60",
-    imageUrl: "../../src/assets/products/nes.png",
-    category: "Home Console",
-  },
-  {
-    id: 8,
-    name: "Super Nintendo",
-    price: "$80",
-    imageUrl: "../../src/assets/products/snes.png",
-    category: "Home Console",
-  },
-  {
-    id: 9,
-    name: "Nintendo 64",
-    price: "$120",
-    imageUrl: "../../src/assets/products/n64.png",
-    category: "Home Console",
-  },
-];
+import products from "../../data/products";
 
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -103,6 +39,9 @@ const Home = () => {
       return newIndex >= products.length ? 0 : newIndex;
     });
   };
+
+  const popularProducts = products.filter(product => product.popular);
+  // const currentIndex = 0; 
 
   return (
     <>
@@ -170,7 +109,7 @@ const Home = () => {
             <ArrowLeftIcon className="h-6 w-6" />
           </button>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 overflow-hidden">
-            {products.slice(currentIndex, currentIndex + 3).map((product) => (
+            {popularProducts.slice(currentIndex, currentIndex + 3).map((product) => (
               <div
                 key={product.id}
                 className="card w-80 md:w-96 bg-white shadow-xl"
