@@ -40,11 +40,11 @@ const AllProducts = () => {
             All Products
           </h1>
         </div>
-        <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 justify-center mx-auto">
           {products.map((product) => (
             <div
               key={product.id}
-              className="card w-80 md:w-96 bg-white shadow-xl"
+              className="card w-full md:w-48 lg:w-64 xl:w-72 bg-white shadow-xl mx-auto"
             >
               <figure className="p-1">
                 {loading ? (
