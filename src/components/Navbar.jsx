@@ -59,7 +59,7 @@ const Navbar = () => {
             <li>
               <a>Consoles</a>
               <ul className="p-2 bg-base-100 z-50">
-              <li>
+                <li>
                   <a>All Consoles</a>
                 </li>
                 <li>
@@ -134,7 +134,7 @@ const Navbar = () => {
             <details>
               <summary>Consoles</summary>
               <ul className="p-2 absolute z-50 bg-base-100">
-              <li>
+                <li>
                   <a>All Consoles</a>
                 </li>
                 <li>
