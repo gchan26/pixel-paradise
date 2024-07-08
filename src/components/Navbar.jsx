@@ -37,21 +37,45 @@ const Navbar = () => {
               <a>Games</a>
               <ul className="p-2 bg-base-100 z-50">
                 <li>
-                  <a>Submenu 1</a>
+                  <a>All Games</a>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <a>Nintendo</a>
+                </li>
+                <li>
+                  <a>Atari</a>
+                </li>
+                <li>
+                  <a>Sega</a>
+                </li>
+                <li>
+                  <a>Sony</a>
+                </li>
+                <li>
+                  <a>Microsoft</a>
                 </li>
               </ul>
             </li>
             <li>
               <a>Consoles</a>
               <ul className="p-2 bg-base-100 z-50">
-                <li>
-                  <a>Submenu 1</a>
+              <li>
+                  <a>All Consoles</a>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <a>Nintendo</a>
+                </li>
+                <li>
+                  <a>Atari</a>
+                </li>
+                <li>
+                  <a>Sega</a>
+                </li>
+                <li>
+                  <a>Sony</a>
+                </li>
+                <li>
+                  <a>Microsoft</a>
                 </li>
               </ul>
             </li>
@@ -59,10 +83,10 @@ const Navbar = () => {
               <a>Others</a>
               <ul className="p-2 bg-base-100 z-50">
                 <li>
-                  <a>Submenu 1</a>
+                  <a>Accessories</a>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <a>Posters</a>
                 </li>
               </ul>
             </li>
@@ -86,10 +110,22 @@ const Navbar = () => {
               <summary>Games</summary>
               <ul className="p-2 absolute z-50 bg-base-100">
                 <li>
-                  <a>Submenu 1</a>
+                  <a>All Games</a>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <a>Nintendo</a>
+                </li>
+                <li>
+                  <a>Atari</a>
+                </li>
+                <li>
+                  <a>Sega</a>
+                </li>
+                <li>
+                  <a>Sony</a>
+                </li>
+                <li>
+                  <a>Microsoft</a>
                 </li>
               </ul>
             </details>
@@ -98,11 +134,23 @@ const Navbar = () => {
             <details>
               <summary>Consoles</summary>
               <ul className="p-2 absolute z-50 bg-base-100">
-                <li>
-                  <a>Submenu 1</a>
+              <li>
+                  <a>All Consoles</a>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <a>Nintendo</a>
+                </li>
+                <li>
+                  <a>Atari</a>
+                </li>
+                <li>
+                  <a>Sega</a>
+                </li>
+                <li>
+                  <a>Sony</a>
+                </li>
+                <li>
+                  <a>Microsoft</a>
                 </li>
               </ul>
             </details>
@@ -112,10 +160,10 @@ const Navbar = () => {
               <summary>Others</summary>
               <ul className="p-2 absolute z-50 bg-base-100">
                 <li>
-                  <a>Submenu 1</a>
+                  <a>Accessories</a>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <a>Posters</a>
                 </li>
               </ul>
             </details>
