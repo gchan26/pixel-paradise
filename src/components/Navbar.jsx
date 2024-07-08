@@ -7,62 +7,86 @@ import { ArrowLeftEndOnRectangleIcon } from "@heroicons/react/24/solid";
 
 const Navbar = () => {
   return (
-    <div className="navbar bg-dark-blue-500">
+    <div className="navbar bg-dark-blue-500 z-20">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-bold"
+            className="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-base-100 rounded-box w-52 font-bold"
           >
             <li>
               <a href="/allproducts">All Products</a>
             </li>
             <li>
               <a>Games</a>
-              <ul className="p-2">
+              <ul className="p-2 bg-base-100 z-50">
                 <li>
-                  <a>Submenu 1</a>
+                  <a>All Games</a>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <a>Nintendo</a>
+                </li>
+                <li>
+                  <a>Atari</a>
+                </li>
+                <li>
+                  <a>Sega</a>
+                </li>
+                <li>
+                  <a>Sony</a>
+                </li>
+                <li>
+                  <a>Microsoft</a>
                 </li>
               </ul>
             </li>
             <li>
               <a>Consoles</a>
-              <ul className="p-2">
+              <ul className="p-2 bg-base-100 z-50">
                 <li>
-                  <a>Submenu 1</a>
+                  <a>All Consoles</a>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <a>Nintendo</a>
+                </li>
+                <li>
+                  <a>Atari</a>
+                </li>
+                <li>
+                  <a>Sega</a>
+                </li>
+                <li>
+                  <a>Sony</a>
+                </li>
+                <li>
+                  <a>Microsoft</a>
                 </li>
               </ul>
             </li>
             <li>
               <a>Others</a>
-              <ul className="p-2">
+              <ul className="p-2 bg-base-100 z-50">
                 <li>
-                  <a>Submenu 1</a>
+                  <a>Accessories</a>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <a>Posters</a>
                 </li>
               </ul>
             </li>
@@ -71,25 +95,37 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a href="/" className="btn btn-ghost flex content-center"> 
+        <a href="/" className="btn btn-ghost flex content-center">
           <img src={Logo} className="w-40 hidden md:block" />
           <img src={smallLogo} className="w-10 md:hidden" />
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal px-1 z-20">
           <li>
-            <a href="/allproducts" >All Products</a>
+            <a href="/allproducts">All Products</a>
           </li>
           <li>
             <details>
               <summary>Games</summary>
-              <ul className="p-2">
+              <ul className="p-2 absolute z-50 bg-base-100">
                 <li>
-                  <a>Submenu 1</a>
+                  <a>All Games</a>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <a>Nintendo</a>
+                </li>
+                <li>
+                  <a>Atari</a>
+                </li>
+                <li>
+                  <a>Sega</a>
+                </li>
+                <li>
+                  <a>Sony</a>
+                </li>
+                <li>
+                  <a>Microsoft</a>
                 </li>
               </ul>
             </details>
@@ -97,12 +133,24 @@ const Navbar = () => {
           <li>
             <details>
               <summary>Consoles</summary>
-              <ul className="p-2">
+              <ul className="p-2 absolute z-50 bg-base-100">
                 <li>
-                  <a>Submenu 1</a>
+                  <a>All Consoles</a>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <a>Nintendo</a>
+                </li>
+                <li>
+                  <a>Atari</a>
+                </li>
+                <li>
+                  <a>Sega</a>
+                </li>
+                <li>
+                  <a>Sony</a>
+                </li>
+                <li>
+                  <a>Microsoft</a>
                 </li>
               </ul>
             </details>
@@ -110,12 +158,12 @@ const Navbar = () => {
           <li>
             <details>
               <summary>Others</summary>
-              <ul className="p-2">
+              <ul className="p-2 absolute z-50 bg-base-100">
                 <li>
-                  <a>Submenu 1</a>
+                  <a>Accessories</a>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <a>Posters</a>
                 </li>
               </ul>
             </details>
