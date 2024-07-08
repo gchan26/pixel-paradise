@@ -21,7 +21,7 @@ const SignUp = () => {
               />
               Welcome!
             </h1>
-			<div className="divider"></div> 
+            <div className="divider"></div>
             <label className="input input-bordered flex items-center gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +60,7 @@ const SignUp = () => {
               </svg>
               <input type="password" className="grow" placeholder="Password" />
             </label>
-			<label className="input input-bordered flex items-center gap-2">
+            <label className="input input-bordered flex items-center gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
@@ -73,7 +73,11 @@ const SignUp = () => {
                   clipRule="evenodd"
                 />
               </svg>
-              <input type="password" className="grow" placeholder="Confirm Password" />
+              <input
+                type="password"
+                className="grow"
+                placeholder="Confirm Password"
+              />
             </label>
             <button
               // onClick={handleLogin}
