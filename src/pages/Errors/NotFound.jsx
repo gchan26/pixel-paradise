@@ -7,9 +7,7 @@ import React from "react";
 import ChestIMG from "../../assets/404chest.png";
 
 // Icons
-import {
-    HomeIcon,
-  } from "@heroicons/react/24/solid";
+import { HomeIcon } from "@heroicons/react/24/solid";
 
 const NotFound = () => {
   return (
@@ -23,10 +21,10 @@ const NotFound = () => {
           The page you were looking for doesn't exist - or is in another castle.
         </h1>
         <a href="/">
-            <button className="btn bg-light-blue-600 hover:bg-light-blue-700 text-dark-blue-50">
+          <button className="btn bg-light-blue-600 hover:bg-light-blue-700 text-dark-blue-50">
             <HomeIcon className="size-5" />
-                Return to Home
-            </button>
+            Return to Home
+          </button>
         </a>
       </div>
     </div>
