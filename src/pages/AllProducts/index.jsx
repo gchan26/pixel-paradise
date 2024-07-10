@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "animate.css";
 import "../../components/AnimatedBackground.css";
 import products from "../../data/products";
+import ProductCard from "../../components/ProductCard";
 
 const AllProducts = () => {
   const [loading, setLoading] = useState(true);
@@ -33,7 +34,6 @@ const AllProducts = () => {
           <span></span>
           <span></span>
           <span></span>
-          <span></span>
         </div>
         <div className="relative z-10 flex justify-center w-full mb-8">
           <h1 className="text-6xl font-retro text-dark-blue-50 text-center">
@@ -42,41 +42,7 @@ const AllProducts = () => {
         </div>
         <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 justify-center mx-auto xl:mx-40">
           {products.map((product) => (
-            <div
-              key={product.id}
-              className="card w-full bg-white shadow-xl mx-auto"
-            >
-              <figure className="p-1">
-                {loading ? (
-                  <div className="skeleton w-full h-96 bg-gray-200 animate-pulse"></div>
-                ) : (
-                  <img
-                    className="border-0"
-                    src={product.imageUrl}
-                    alt={product.name}
-                  />
-                )}
-              </figure>
-              <div className="card-body">
-                {loading ? (
-                  <>
-                    <div className="skeleton w-full h-5 bg-gray-200 animate-pulse mb-2"></div>
-                    <div className="skeleton w-1/4 h-4 bg-gray-200 animate-pulse"></div>
-                    <div className="skeleton w-1/6 h-4 bg-gray-200 animate-pulse flex self-end"></div>
-                  </>
-                ) : (
-                  <>
-                    <h2 className="card-title text-dark-blue-400">
-                      {product.name}
-                    </h2>
-                    <p>{product.category}</p>
-                    <div className="card-actions justify-end">
-                      <span className="text-xl font-bold">{product.price}</span>
-                    </div>
-                  </>
-                )}
-              </div>
-            </div>
+            <ProductCard key={product.id} product={product} loading={loading} />
           ))}
         </div>
       </section>
