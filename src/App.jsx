@@ -15,6 +15,7 @@ import NotFound from "../src/pages/Errors/NotFound.jsx";
 import Login from "../src/pages/Login";
 import SignUp from "../src/pages/SignUp";
 import Recover from "../src/pages/Recover";
+import Products from "../src/pages/Products";
 import AllProducts from "../src/pages/AllProducts";
 import AboutUs from "../src/pages/AboutUs";
 
@@ -28,6 +29,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/recover" element={<Recover />} />
+        <Route path="/products/:filterType/:filterValue" element={<Products />} />
         <Route path="/allproducts" element={<AllProducts />} />
         <Route path="/about" element={<AboutUs />} />
       </Routes>
