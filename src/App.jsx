@@ -1,8 +1,4 @@
-// React
-// eslint-disable-next-line no-unused-vars
-import React from "react";
-
-// Router
+// React Router
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Components
@@ -15,7 +11,7 @@ import NotFound from "../src/pages/Errors/NotFound.jsx";
 import Login from "../src/pages/Login";
 import SignUp from "../src/pages/SignUp";
 import Recover from "../src/pages/Recover";
-import AllProducts from "../src/pages/AllProducts";
+import Products from "../src/pages/Products";
 import AboutUs from "../src/pages/AboutUs";
 
 function App() {
@@ -28,7 +24,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/recover" element={<Recover />} />
-        <Route path="/allproducts" element={<AllProducts />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:category" element={<Products />} />
+        <Route path="/products/:company/:category" element={<Products />} />
         <Route path="/about" element={<AboutUs />} />
       </Routes>
       <Footer />

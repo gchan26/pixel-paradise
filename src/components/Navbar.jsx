@@ -1,8 +1,11 @@
+// React Router
+import { NavLink } from "react-router-dom";
+
 // Images
 import Logo from "../assets/logos/logo.png";
 import smallLogo from "../assets/logos/smallLogo.svg";
 
-// Icons
+// Logos
 import { ArrowLeftEndOnRectangleIcon } from "@heroicons/react/24/solid";
 
 const Navbar = () => {
@@ -31,28 +34,28 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-base-100 rounded-box w-52 font-bold"
           >
             <li>
-              <a href="/allproducts">All Products</a>
+              <NavLink to="/products">All Products</NavLink>
             </li>
             <li>
               <a>Games</a>
               <ul className="p-2 bg-base-100 z-50">
                 <li>
-                  <a>All Games</a>
+                  <NavLink to="/products/game">All Games</NavLink>
                 </li>
                 <li>
-                  <a>Nintendo</a>
+                  <NavLink to="/products/nintendo/game">Nintendo</NavLink>
                 </li>
                 <li>
-                  <a>Atari</a>
+                  <NavLink to="/products/atari/game">Atari</NavLink>
                 </li>
                 <li>
-                  <a>Sega</a>
+                  <NavLink to="/products/sega/game">Sega</NavLink>
                 </li>
                 <li>
-                  <a>Sony</a>
+                  <NavLink to="/products/sony/game">Sony</NavLink>
                 </li>
                 <li>
-                  <a>Microsoft</a>
+                  <NavLink to="/products/microsoft/game">Microsoft</NavLink>
                 </li>
               </ul>
             </li>
@@ -60,22 +63,22 @@ const Navbar = () => {
               <a>Consoles</a>
               <ul className="p-2 bg-base-100 z-50">
                 <li>
-                  <a>All Consoles</a>
+                  <NavLink to="/products/console">All Consoles</NavLink>
                 </li>
                 <li>
-                  <a>Nintendo</a>
+                  <NavLink to="/products/nintendo/console">Nintendo</NavLink>
                 </li>
                 <li>
-                  <a>Atari</a>
+                  <NavLink to="/products/atari/console">Atari</NavLink>
                 </li>
                 <li>
-                  <a>Sega</a>
+                  <NavLink to="/products/sega/console">Sega</NavLink>
                 </li>
                 <li>
-                  <a>Sony</a>
+                  <NavLink to="/products/sony/console">Sony</NavLink>
                 </li>
                 <li>
-                  <a>Microsoft</a>
+                  <NavLink to="/products/microsoft/console">Microsoft</NavLink>
                 </li>
               </ul>
             </li>
@@ -83,49 +86,49 @@ const Navbar = () => {
               <a>Others</a>
               <ul className="p-2 bg-base-100 z-50">
                 <li>
-                  <a>Accessories</a>
+                  <NavLink to="/products/accessory">Accessories</NavLink>
                 </li>
                 <li>
-                  <a>Posters</a>
+                  <NavLink to="/products/poster">Posters</NavLink>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="/about">About Us</a>
+              <NavLink to="/about">About Us</NavLink>
             </li>
           </ul>
         </div>
-        <a href="/" className="btn btn-ghost flex content-center">
+        <NavLink to="/" className="btn btn-ghost flex content-center">
           <img src={Logo} className="w-40 hidden md:block" />
           <img src={smallLogo} className="w-10 md:hidden" />
-        </a>
+        </NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 z-20">
           <li>
-            <a href="/allproducts">All Products</a>
+            <NavLink to="/products">All Products</NavLink>
           </li>
           <li>
             <details>
               <summary>Games</summary>
               <ul className="p-2 absolute z-50 bg-base-100">
                 <li>
-                  <a>All Games</a>
+                  <NavLink to="/products/game">All Games</NavLink>
                 </li>
                 <li>
-                  <a>Nintendo</a>
+                  <NavLink to="/products/nintendo/game">Nintendo</NavLink>
                 </li>
                 <li>
-                  <a>Atari</a>
+                  <NavLink to="/products/atari/game">Atari</NavLink>
                 </li>
                 <li>
-                  <a>Sega</a>
+                  <NavLink to="/products/sega/game">Sega</NavLink>
                 </li>
                 <li>
-                  <a>Sony</a>
+                  <NavLink to="/products/sony/game">Sony</NavLink>
                 </li>
                 <li>
-                  <a>Microsoft</a>
+                  <NavLink to="/products/microsoft/game">Microsoft</NavLink>
                 </li>
               </ul>
             </details>
@@ -135,22 +138,22 @@ const Navbar = () => {
               <summary>Consoles</summary>
               <ul className="p-2 absolute z-50 bg-base-100">
                 <li>
-                  <a>All Consoles</a>
+                  <NavLink to="/products/console">All Consoles</NavLink>
                 </li>
                 <li>
-                  <a>Nintendo</a>
+                  <NavLink to="/products/nintendo/console">Nintendo</NavLink>
                 </li>
                 <li>
-                  <a>Atari</a>
+                  <NavLink to="/products/atari/console">Atari</NavLink>
                 </li>
                 <li>
-                  <a>Sega</a>
+                  <NavLink to="/products/sega/console">Sega</NavLink>
                 </li>
                 <li>
-                  <a>Sony</a>
+                  <NavLink to="/products/sony/console">Sony</NavLink>
                 </li>
                 <li>
-                  <a>Microsoft</a>
+                  <NavLink to="/products/microsoft/console">Microsoft</NavLink>
                 </li>
               </ul>
             </details>
@@ -160,16 +163,16 @@ const Navbar = () => {
               <summary>Others</summary>
               <ul className="p-2 absolute z-50 bg-base-100">
                 <li>
-                  <a>Accessories</a>
+                  <NavLink to="/products/accessory">Accessories</NavLink>
                 </li>
                 <li>
-                  <a>Posters</a>
+                  <NavLink to="/products/poster">Posters</NavLink>
                 </li>
               </ul>
             </details>
           </li>
           <li>
-            <a href="/about">About Us</a>
+            <NavLink to="/about">About Us</NavLink>
           </li>
         </ul>
       </div>
@@ -189,15 +192,15 @@ const Navbar = () => {
             />
           </svg>
         </label>
-        <a
-          href="/login"
+        <NavLink
+          to="/login"
           className="hidden sm:flex content-center btn bg-light-blue-500 hover:bg-light-blue-600"
         >
           Sign In
-        </a>
-        <a href="/login">
+        </NavLink>
+        <NavLink to="/login">
           <ArrowLeftEndOnRectangleIcon className="block sm:hidden size-10 p-2 text-white bg-light-blue-500 rounded-lg" />
-        </a>
+        </NavLink>
       </div>
     </div>
   );
