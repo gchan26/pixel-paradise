@@ -1,6 +1,11 @@
-import { NavLink } from 'react-router-dom';
+// React Router
+import { NavLink } from "react-router-dom";
+
+// Images
 import Logo from "../assets/logos/logo.png";
 import smallLogo from "../assets/logos/smallLogo.svg";
+
+// Logos
 import { ArrowLeftEndOnRectangleIcon } from "@heroicons/react/24/solid";
 
 const Navbar = () => {
