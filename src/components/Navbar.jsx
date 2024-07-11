@@ -1,8 +1,6 @@
-// Images
+import { NavLink } from 'react-router-dom';
 import Logo from "../assets/logos/logo.png";
 import smallLogo from "../assets/logos/smallLogo.svg";
-
-// Icons
 import { ArrowLeftEndOnRectangleIcon } from "@heroicons/react/24/solid";
 
 const Navbar = () => {
@@ -31,28 +29,28 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-base-100 rounded-box w-52 font-bold"
           >
             <li>
-              <a href="/allproducts">All Products</a>
+              <NavLink to="/allproducts">All Products</NavLink>
             </li>
             <li>
               <a>Games</a>
               <ul className="p-2 bg-base-100 z-50">
                 <li>
-                  <a>All Games</a>
+                  <NavLink to="/products/type/game">All Games</NavLink>
                 </li>
                 <li>
-                  <a>Nintendo</a>
+                  <NavLink to="/products/company/nintendo">Nintendo</NavLink>
                 </li>
                 <li>
-                  <a>Atari</a>
+                  <NavLink to="/products/company/atari">Atari</NavLink>
                 </li>
                 <li>
-                  <a>Sega</a>
+                  <NavLink to="/products/company/sega">Sega</NavLink>
                 </li>
                 <li>
-                  <a>Sony</a>
+                  <NavLink to="/products/company/sony">Sony</NavLink>
                 </li>
                 <li>
-                  <a>Microsoft</a>
+                  <NavLink to="/products/company/microsoft">Microsoft</NavLink>
                 </li>
               </ul>
             </li>
@@ -60,22 +58,22 @@ const Navbar = () => {
               <a>Consoles</a>
               <ul className="p-2 bg-base-100 z-50">
                 <li>
-                  <a>All Consoles</a>
+                  <NavLink to="/products/type/console">All Consoles</NavLink>
                 </li>
                 <li>
-                  <a>Nintendo</a>
+                  <NavLink to="/products/company/nintendo">Nintendo</NavLink>
                 </li>
                 <li>
-                  <a>Atari</a>
+                  <NavLink to="/products/company/atari">Atari</NavLink>
                 </li>
                 <li>
-                  <a>Sega</a>
+                  <NavLink to="/products/company/sega">Sega</NavLink>
                 </li>
                 <li>
-                  <a>Sony</a>
+                  <NavLink to="/products/company/sony">Sony</NavLink>
                 </li>
                 <li>
-                  <a>Microsoft</a>
+                  <NavLink to="/products/company/microsoft">Microsoft</NavLink>
                 </li>
               </ul>
             </li>
@@ -83,15 +81,15 @@ const Navbar = () => {
               <a>Others</a>
               <ul className="p-2 bg-base-100 z-50">
                 <li>
-                  <a>Accessories</a>
+                  <NavLink to="/products/type/accessory">Accessories</NavLink>
                 </li>
                 <li>
-                  <a>Posters</a>
+                  <NavLink to="/products/type/poster">Posters</NavLink>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="/about">About Us</a>
+              <NavLink to="/about">About Us</NavLink>
             </li>
           </ul>
         </div>
@@ -103,29 +101,29 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 z-20">
           <li>
-            <a href="/allproducts">All Products</a>
+            <NavLink to="/allproducts">All Products</NavLink>
           </li>
           <li>
             <details>
               <summary>Games</summary>
               <ul className="p-2 absolute z-50 bg-base-100">
                 <li>
-                  <a>All Games</a>
+                  <NavLink to="/products/type/game">All Games</NavLink>
                 </li>
                 <li>
-                  <a>Nintendo</a>
+                  <NavLink to="/products/company/nintendo">Nintendo</NavLink>
                 </li>
                 <li>
-                  <a>Atari</a>
+                  <NavLink to="/products/company/atari">Atari</NavLink>
                 </li>
                 <li>
-                  <a>Sega</a>
+                  <NavLink to="/products/company/sega">Sega</NavLink>
                 </li>
                 <li>
-                  <a>Sony</a>
+                  <NavLink to="/products/company/sony">Sony</NavLink>
                 </li>
                 <li>
-                  <a>Microsoft</a>
+                  <NavLink to="/products/company/microsoft">Microsoft</NavLink>
                 </li>
               </ul>
             </details>
@@ -135,22 +133,22 @@ const Navbar = () => {
               <summary>Consoles</summary>
               <ul className="p-2 absolute z-50 bg-base-100">
                 <li>
-                  <a>All Consoles</a>
+                  <NavLink to="/products/type/console">All Consoles</NavLink>
                 </li>
                 <li>
-                  <a>Nintendo</a>
+                  <NavLink to="/products/company/nintendo">Nintendo</NavLink>
                 </li>
                 <li>
-                  <a>Atari</a>
+                  <NavLink to="/products/company/atari">Atari</NavLink>
                 </li>
                 <li>
-                  <a>Sega</a>
+                  <NavLink to="/products/company/sega">Sega</NavLink>
                 </li>
                 <li>
-                  <a>Sony</a>
+                  <NavLink to="/products/company/sony">Sony</NavLink>
                 </li>
                 <li>
-                  <a>Microsoft</a>
+                  <NavLink to="/products/company/microsoft">Microsoft</NavLink>
                 </li>
               </ul>
             </details>
@@ -160,16 +158,16 @@ const Navbar = () => {
               <summary>Others</summary>
               <ul className="p-2 absolute z-50 bg-base-100">
                 <li>
-                  <a>Accessories</a>
+                  <NavLink to="/products/type/accessory">Accessories</NavLink>
                 </li>
                 <li>
-                  <a>Posters</a>
+                  <NavLink to="/products/type/poster">Posters</NavLink>
                 </li>
               </ul>
             </details>
           </li>
           <li>
-            <a href="/about">About Us</a>
+            <NavLink to="/about">About Us</NavLink>
           </li>
         </ul>
       </div>
