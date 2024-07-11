@@ -189,26 +189,26 @@ const Home = () => {
           </div>
         </div>
       </section>
-      {/* <section className="min-h-96 flex justify-center items-center">
-      <div className="stats stats-vertical lg:stats-horizontal shadow">
-        <div className="stat">
-          <div className="stat-title">Downloads</div>
-          <div className="stat-value">31K</div>
-          <div className="stat-desc">Jan 1st - Feb 1st</div>
+      {/* <section className="min-h-96 flex justify-center items-center bg-dark-blue-700">
+        <div className="stats stats-vertical lg:stats-horizontal shadow">
+          <div className="stat">
+            <div className="stat-title">New Users</div>
+            <div className="stat-value">756</div>
+            <div className="stat-desc">↗︎ (19%)</div>
+          </div>
+
+          <div className="stat">
+            <div className="stat-title">Products Sold</div>
+            <div className="stat-value">2,209</div>
+            <div className="stat-desc">↗︎ 240 (12%)</div>
+          </div>
+
+          <div className="stat">
+            <div className="stat-title">5 Star Reviews</div>
+            <div className="stat-value">1,200</div>
+            <div className="stat-desc">↗︎ 114 (10%)</div>
+          </div>
         </div>
-        
-        <div className="stat">
-          <div className="stat-title">New Users</div>
-          <div className="stat-value">4,200</div>
-          <div className="stat-desc">↗︎ 400 (22%)</div>
-        </div>
-        
-        <div className="stat">
-          <div className="stat-title">New Registers</div>
-          <div className="stat-value">1,200</div>
-          <div className="stat-desc">↘︎ 90 (14%)</div>
-        </div>
-      </div>
       </section> */}
     </>
   );
