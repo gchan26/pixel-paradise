@@ -3,6 +3,9 @@
 // Images
 import LogoBlueBG from "../../assets/logos/logo-blue-bg.png";
 
+// Animations
+import "animate.css";
+
 const AboutUs = () => {
   return (
     <div className="h-screen">
@@ -10,9 +13,9 @@ const AboutUs = () => {
         <div className="hero-content flex-col lg:flex-row-reverse">
           <img
             src={LogoBlueBG}
-            className="sm:max-w-sm max-w-72 rounded-lg shadow-2xl"
+            className="sm:max-w-sm max-w-72 rounded-lg shadow-2xl animate__animated animate__zoomIn"
           />
-          <div>
+          <div className="animate__animated animate__slideInLeft">
             <h1 className="text-6xl font-bold sm:px-0 px-4 ">About Us</h1>
             <p className="sm:py-6 sm:px-0 p-4">
               Our passion for preserving the golden age of video games drives us
