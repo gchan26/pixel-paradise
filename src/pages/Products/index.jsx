@@ -1,6 +1,11 @@
+// React
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+
+// Data
 import products from "../../data/products";
+
+// Components
 import ProductCard from "../../components/ProductCard";
 import { getPageTitle } from "../../components/Utils";
 
@@ -16,16 +21,21 @@ const Products = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const pageTitle = getPageTitle(company, category);  // Generate the page title
+  const pageTitle = getPageTitle(company, category);
 
   const filteredProducts = products.filter((product) => {
     if (!category && !company) {
-      return true; // No filter is applied, return all products
+      return true;
     }
 
-    const matchesCategory = category ? product.type.toLowerCase() === category.toLowerCase() || product.category.toLowerCase() === category.toLowerCase() : true;
-    
-    const matchesCompany = company ? product.company.toLowerCase() === company.toLowerCase() : true;
+    const matchesCategory = category
+      ? product.type.toLowerCase() === category.toLowerCase() ||
+        product.category.toLowerCase() === category.toLowerCase()
+      : true;
+
+    const matchesCompany = company
+      ? product.company.toLowerCase() === company.toLowerCase()
+      : true;
 
     return matchesCategory && matchesCompany;
   });
