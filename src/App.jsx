@@ -25,10 +25,8 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/recover" element={<Recover />} />
         <Route path="/products" element={<Products />} />
-        <Route
-          path="/products/:filterType/:filterValue"
-          element={<Products />}
-        />
+        <Route path="/products/:category" element={<Products />} />
+        <Route path="/products/:company/:category" element={<Products />} />
         <Route path="/about" element={<AboutUs />} />
       </Routes>
       <Footer />
