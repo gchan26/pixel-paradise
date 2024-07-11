@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import products from "../../data/products";
 import ProductCard from "../../components/ProductCard";
+import { getPageTitle } from "../../components/Utils";
 
 const Products = () => {
-  const { filterType, filterValue } = useParams();
+  const { category, company } = useParams();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -15,20 +16,18 @@ const Products = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const pageTitle = getPageTitle(company, category);  // Generate the page title
+
   const filteredProducts = products.filter((product) => {
-    if (filterType === "type") {
-      return product.type.toLowerCase() === filterValue.toLowerCase();
+    if (!category && !company) {
+      return true; // No filter is applied, return all products
     }
 
-    if (filterType === "company") {
-      return product.company.toLowerCase() === filterValue.toLowerCase();
-    }
+    const matchesCategory = category ? product.type.toLowerCase() === category.toLowerCase() || product.category.toLowerCase() === category.toLowerCase() : true;
+    
+    const matchesCompany = company ? product.company.toLowerCase() === company.toLowerCase() : true;
 
-    if (filterType === "category") {
-      return product.category.toLowerCase() === filterValue.toLowerCase();
-    }
-
-    return true;
+    return matchesCategory && matchesCompany;
   });
 
   return (
@@ -53,18 +52,13 @@ const Products = () => {
         </div>
         <div className="relative z-10 flex justify-center w-full mb-8">
           <h1 className="text-6xl font-retro text-dark-blue-50 text-center">
-            All Products
+            {pageTitle}
           </h1>
         </div>
         <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 justify-center mx-auto xl:mx-40">
-        {filteredProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                loading={loading}
-              />
-            ))}
-
+          {filteredProducts.map((product) => (
+            <ProductCard key={product.id} product={product} loading={loading} />
+          ))}
         </div>
       </section>
     </>
