@@ -23,22 +23,19 @@ const Products = () => {
 
   const pageTitle = getPageTitle(company, category);
 
-  const filteredProducts = products.filter((product) => {
+  const filteredProducts = products.filter(product => {
     if (!category && !company) {
-      return true;
+      return true; 
     }
 
-    const matchesCategory = category
-      ? product.type.toLowerCase() === category.toLowerCase() ||
-        product.category.toLowerCase() === category.toLowerCase()
-      : true;
-
-    const matchesCompany = company
-      ? product.company.toLowerCase() === company.toLowerCase()
-      : true;
+    const matchesCategory = category ? product.type.toLowerCase() === category.toLowerCase() || product.category.toLowerCase() === category.toLowerCase() : true;
+    
+    const matchesCompany = company ? product.company.toLowerCase() === company.toLowerCase() : true;
 
     return matchesCategory && matchesCompany;
   });
+
+  const sortedProducts = filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <>
@@ -66,7 +63,7 @@ const Products = () => {
           </h1>
         </div>
         <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 justify-center mx-auto xl:mx-40">
-          {filteredProducts.map((product) => (
+          {sortedProducts.map(product => (
             <ProductCard key={product.id} product={product} loading={loading} />
           ))}
         </div>
