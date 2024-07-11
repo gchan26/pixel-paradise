@@ -12,6 +12,7 @@ import Login from "../src/pages/Login";
 import SignUp from "../src/pages/SignUp";
 import Recover from "../src/pages/Recover";
 import Products from "../src/pages/Products";
+import ProductDetails from "../src/pages/ProductDetails";
 import AboutUs from "../src/pages/AboutUs";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/products/:category" element={<Products />} />
         <Route path="/products/:company/:category" element={<Products />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/about" element={<AboutUs />} />
       </Routes>
       <Footer />
