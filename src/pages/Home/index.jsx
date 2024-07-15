@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 import { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -116,7 +116,11 @@ const Home = () => {
             {popularProducts
               .slice(currentIndex, currentIndex + 3)
               .map((product) => (
-                <Link to={`/product/${product.id}`} key={product.id} className="card w-80 md:w-96 bg-white shadow-xl">
+                <Link
+                  to={`/product/${product.id}`}
+                  key={product.id}
+                  className="card w-80 md:w-96 bg-white shadow-xl"
+                >
                   <figure className="p-1">
                     {loading ? (
                       <div className="skeleton w-full h-96 bg-gray-200 animate-pulse"></div>
