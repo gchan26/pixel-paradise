@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -115,10 +116,7 @@ const Home = () => {
             {popularProducts
               .slice(currentIndex, currentIndex + 3)
               .map((product) => (
-                <div
-                  key={product.id}
-                  className="card w-80 md:w-96 bg-white shadow-xl"
-                >
+                <Link to={`/product/${product.id}`} key={product.id} className="card w-80 md:w-96 bg-white shadow-xl">
                   <figure className="p-1">
                     {loading ? (
                       <div className="skeleton w-full h-96 bg-gray-200 animate-pulse"></div>
@@ -151,7 +149,7 @@ const Home = () => {
                       </>
                     )}
                   </div>
-                </div>
+                </Link>
               ))}
           </div>
           <button
@@ -189,27 +187,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-      {/* <section className="min-h-96 flex justify-center items-center bg-dark-blue-700">
-        <div className="stats stats-vertical lg:stats-horizontal shadow">
-          <div className="stat">
-            <div className="stat-title">New Users</div>
-            <div className="stat-value">756</div>
-            <div className="stat-desc">↗︎ (19%)</div>
-          </div>
-
-          <div className="stat">
-            <div className="stat-title">Products Sold</div>
-            <div className="stat-value">2,209</div>
-            <div className="stat-desc">↗︎ 240 (12%)</div>
-          </div>
-
-          <div className="stat">
-            <div className="stat-title">5 Star Reviews</div>
-            <div className="stat-value">1,200</div>
-            <div className="stat-desc">↗︎ 114 (10%)</div>
-          </div>
-        </div>
-      </section> */}
     </>
   );
 };
