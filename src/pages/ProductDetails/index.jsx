@@ -31,9 +31,11 @@ const ProductDetails = () => {
           <h2 className="text-3xl sm:text-4xl font-semibold text-white">
             {product.name}
           </h2>
-          <p className="text-gray-600">{product.category}, {product.company}</p>
+          <p className="text-gray-600">
+            {product.category}, {product.company}
+          </p>
           <p className="text-3xl font-bold my-4">{product.price}</p>
-          <button className="btn bg-light-blue-600 hover:bg-light-blue-700 min-w-52 w-full">
+          <button className="btn bg-light-blue-600 hover:bg-light-blue-700 min-w-52 w-full hover:text-white">
             Add to Cart
           </button>
         </div>
