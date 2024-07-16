@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 import CRT from "../../assets/crt.jpeg";
 import smallLogo from "../../assets/logos/smallLogo.svg";
 
-const Login = () => {
+// eslint-disable-next-line react/prop-types
+const Login = ({ setLoginSuccess }) => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const { login } = useAuth();
@@ -17,16 +18,16 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       setError("");
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
+      setLoginSuccess(true); // Set the login success state
+      setTimeout(() => setLoginSuccess(false), 3000); // Hide toast after 3 seconds
       navigate("/");
     } catch (error) {
-      setError(error.message);
+      setError("Failed to log in");
     }
-
     setLoading(false);
   };
 
@@ -69,7 +70,7 @@ const Login = () => {
                     fillRule="evenodd"
                     d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
                     clipRule="evenodd"
-                />
+                  />
                 </svg>
                 <input type="password" ref={passwordRef} className="grow" placeholder="Password" required />
               </label>

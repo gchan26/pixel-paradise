@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -13,7 +12,8 @@ import "../../components/AnimatedBackground.css";
 
 import products from "../../data/products";
 
-const Home = () => {
+// eslint-disable-next-line react/prop-types, no-unused-vars
+const Home = ({ loginSuccess, setLoginSuccess }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(true);
 
@@ -85,7 +85,6 @@ const Home = () => {
         className="relative min-h-screen bg-dark-blue-700 p-10"
       >
         <div className="background">
-          <span></span>
           <span></span>
           <span></span>
           <span></span>
@@ -191,6 +190,16 @@ const Home = () => {
           </div>
         </div>
       </section>
+      
+      {loginSuccess && (
+        <div className="toast toast-top toast-end">
+          <div className="alert alert-success">
+            <div>
+              <span>Login Successful!</span>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
