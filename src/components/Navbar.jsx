@@ -1,14 +1,37 @@
-// React Router
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { ArrowLeftEndOnRectangleIcon } from "@heroicons/react/24/solid";
+import { useAuth } from "../contexts/AuthContext";
 
 // Images
 import Logo from "../assets/logos/logo.png";
 import smallLogo from "../assets/logos/smallLogo.svg";
 
-// Logos
-import { ArrowLeftEndOnRectangleIcon } from "@heroicons/react/24/solid";
-
 const Navbar = () => {
+  const { currentUser, logout } = useAuth();
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      console.error("Failed to log out", error);
+    }
+
+    // Hide the modal after logging out
+    setShowLogoutModal(false);
+  };
+
+  const handleLogoutClick = () => {
+    // Show the logout confirmation modal
+    setShowLogoutModal(true);
+  };
+
+  const handleCancelLogout = () => {
+    // Hide the logout confirmation modal without logging out
+    setShowLogoutModal(false);
+  };
+
   return (
     <div className="navbar bg-dark-blue-500 z-20">
       <div className="navbar-start">
@@ -192,16 +215,72 @@ const Navbar = () => {
             />
           </svg>
         </label>
-        <NavLink
-          to="/login"
-          className="hidden sm:flex content-center btn bg-light-blue-500 hover:bg-light-blue-600"
-        >
-          Sign In
-        </NavLink>
-        <NavLink to="/login">
-          <ArrowLeftEndOnRectangleIcon className="block sm:hidden size-10 p-2 text-white bg-light-blue-500 rounded-lg" />
-        </NavLink>
+        {!currentUser ? (
+          <>
+            <NavLink
+              to="/login"
+              className="hidden sm:flex content-center btn bg-light-blue-500 hover:bg-light-blue-600 text-white"
+            >
+              Sign In
+            </NavLink>
+            <NavLink to="/login">
+              <ArrowLeftEndOnRectangleIcon className="block sm:hidden size-10 p-2 text-white bg-light-blue-500 rounded-lg" />
+            </NavLink>
+          </>
+        ) : (
+          <>
+            <button
+              onClick={handleLogoutClick}
+              className="hidden sm:flex content-center btn bg-light-blue-500 hover:bg-light-blue-600 text-white"
+            >
+              Log Out
+            </button>
+            <button
+              onClick={handleLogoutClick}
+              className="block sm:hidden size-10 p-2 text-white bg-light-blue-500 rounded-lg"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="size-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15"
+                />
+              </svg>
+            </button>
+          </>
+        )}
       </div>
+
+      {showLogoutModal && (
+        <div className="modal modal-open">
+          <div className="modal-box">
+            <h3 className="font-bold text-2xl text-center">
+              Are you sure you want to log out?
+            </h3>
+            <div className="modal-action flex flex-row justify-center gap-2">
+              <button
+                onClick={handleCancelLogout}
+                className="btn btn-outline text-lg"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleLogout}
+                className="btn btn-primary text-lg"
+              >
+                Log Out
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
