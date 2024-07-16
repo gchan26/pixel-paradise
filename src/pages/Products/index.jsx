@@ -1,16 +1,18 @@
 // React
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 
 // Data
 import products from "../../data/products";
 
 // Components
 import ProductCard from "../../components/ProductCard";
-import { getPageTitle } from "../../components/Utils";
 
 const Products = () => {
   const { category, company } = useParams();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const searchQuery = searchParams.get("search") || "";
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -21,11 +23,21 @@ const Products = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const pageTitle = getPageTitle(company, category);
+  const pageTitle = searchQuery
+    ? `Results for "${searchQuery}"`
+    : category
+    // eslint-disable-next-line no-undef
+    ? getPageTitle(company, category)
+    : "All Products";
 
   const filteredProducts = products.filter((product) => {
+    const productName = product.name.toLowerCase();
+    const matchesSearch = searchQuery
+      ? productName.includes(searchQuery.toLowerCase())
+      : true;
+
     if (!category && !company) {
-      return true;
+      return matchesSearch;
     }
 
     const matchesCategory = category
@@ -37,7 +49,7 @@ const Products = () => {
       ? product.company.toLowerCase() === company.toLowerCase()
       : true;
 
-    return matchesCategory && matchesCompany;
+    return matchesCategory && matchesCompany && matchesSearch;
   });
 
   const sortedProducts = filteredProducts.sort((a, b) =>
