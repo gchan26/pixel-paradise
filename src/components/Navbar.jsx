@@ -1,14 +1,22 @@
-// React Router
 import { NavLink } from "react-router-dom";
+import { ArrowLeftEndOnRectangleIcon } from "@heroicons/react/24/solid";
+import { useAuth } from "../contexts/AuthContext";
 
 // Images
 import Logo from "../assets/logos/logo.png";
 import smallLogo from "../assets/logos/smallLogo.svg";
 
-// Logos
-import { ArrowLeftEndOnRectangleIcon } from "@heroicons/react/24/solid";
-
 const Navbar = () => {
+  const { currentUser, logout } = useAuth();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      console.error("Failed to log out", error);
+    }
+  };
+
   return (
     <div className="navbar bg-dark-blue-500 z-20">
       <div className="navbar-start">
@@ -192,15 +200,36 @@ const Navbar = () => {
             />
           </svg>
         </label>
-        <NavLink
-          to="/login"
-          className="hidden sm:flex content-center btn bg-light-blue-500 hover:bg-light-blue-600"
-        >
-          Sign In
-        </NavLink>
-        <NavLink to="/login">
-          <ArrowLeftEndOnRectangleIcon className="block sm:hidden size-10 p-2 text-white bg-light-blue-500 rounded-lg" />
-        </NavLink>
+        {!currentUser ? (
+          <>
+            <NavLink
+              to="/login"
+              className="hidden sm:flex content-center btn bg-light-blue-500 hover:bg-light-blue-600 text-white"
+            >
+              Sign In
+            </NavLink>
+            <NavLink to="/login">
+              <ArrowLeftEndOnRectangleIcon className="block sm:hidden size-10 p-2 text-white bg-light-blue-500 rounded-lg" />
+            </NavLink>
+          </>
+        ) : (
+          <>
+            <button
+              onClick={handleLogout}
+              className="hidden sm:flex content-center btn bg-light-blue-500 hover:bg-light-blue-600 text-white"
+            >
+              Log Out
+            </button>
+            <button
+              onClick={handleLogout}
+              className="block sm:hidden size-10 p-2 text-white bg-light-blue-500 rounded-lg"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
+              </svg>
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
