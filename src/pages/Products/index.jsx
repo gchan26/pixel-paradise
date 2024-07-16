@@ -1,6 +1,6 @@
 // React
 import { useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 // Data
 import products from "../../data/products";
@@ -9,9 +9,10 @@ import products from "../../data/products";
 import ProductCard from "../../components/ProductCard";
 
 const Products = () => {
-  const { category, company } = useParams();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
+
+  const category = searchParams.get("category") || "";
   const searchQuery = searchParams.get("search") || "";
   const [loading, setLoading] = useState(true);
 
@@ -23,33 +24,37 @@ const Products = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const pageTitle = searchQuery
-    ? `Results for "${searchQuery}"`
-    : category
-    // eslint-disable-next-line no-undef
-    ? getPageTitle(company, category)
-    : "All Products";
+  const getPageTitle = (category, searchQuery) => {
+    if (searchQuery) {
+      return `Results for "${searchQuery}"`;
+    }
+    if (category) {
+      return capitalize(category);
+    }
+    return "All Products";
+  };
+
+  const capitalize = (word) => word.charAt(0).toUpperCase() + word.slice(1);
+
+  const pageTitle = getPageTitle(category, searchQuery);
 
   const filteredProducts = products.filter((product) => {
     const productName = product.name.toLowerCase();
-    const matchesSearch = searchQuery
-      ? productName.includes(searchQuery.toLowerCase())
-      : true;
-
-    if (!category && !company) {
-      return matchesSearch;
-    }
+    const productCompany = product.company.toLowerCase();
+    const matchesSearch =
+      searchQuery &&
+      (productName.includes(searchQuery.toLowerCase()) ||
+        productCompany.includes(searchQuery.toLowerCase()));
 
     const matchesCategory = category
-      ? product.type.toLowerCase() === category.toLowerCase() ||
-        product.category.toLowerCase() === category.toLowerCase()
+      ? product.category.toLowerCase() === category.toLowerCase()
       : true;
 
-    const matchesCompany = company
-      ? product.company.toLowerCase() === company.toLowerCase()
+    const matchesType = category
+      ? product.type.toLowerCase() === category.toLowerCase()
       : true;
 
-    return matchesCategory && matchesCompany && matchesSearch;
+    return matchesSearch && (matchesCategory || matchesType);
   });
 
   const sortedProducts = filteredProducts.sort((a, b) =>
