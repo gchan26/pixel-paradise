@@ -1,5 +1,5 @@
-// Env
-// import 'dotenv/config';
+// React
+import { useState } from "react";
 
 // React Router
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -21,14 +21,16 @@ import AboutUs from "../src/pages/AboutUs";
 import { AuthProvider } from "./contexts/AuthContext";
 
 function App() {
+  const [loginSuccess, setLoginSuccess] = useState(false);
+
   return (
     <AuthProvider>
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home loginSuccess={loginSuccess} setLoginSuccess={setLoginSuccess} />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login setLoginSuccess={setLoginSuccess} />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/recover" element={<Recover />} />
           <Route path="/products" element={<Products />} />
