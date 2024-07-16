@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ArrowLeftEndOnRectangleIcon } from "@heroicons/react/24/solid";
 import { useAuth } from "../contexts/AuthContext";
@@ -8,6 +9,7 @@ import smallLogo from "../assets/logos/smallLogo.svg";
 
 const Navbar = () => {
   const { currentUser, logout } = useAuth();
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   const handleLogout = async () => {
     try {
@@ -15,6 +17,19 @@ const Navbar = () => {
     } catch (error) {
       console.error("Failed to log out", error);
     }
+
+    // Hide the modal after logging out
+    setShowLogoutModal(false);
+  };
+
+  const handleLogoutClick = () => {
+    // Show the logout confirmation modal
+    setShowLogoutModal(true);
+  };
+
+  const handleCancelLogout = () => {
+    // Hide the logout confirmation modal without logging out
+    setShowLogoutModal(false);
   };
 
   return (
@@ -215,13 +230,13 @@ const Navbar = () => {
         ) : (
           <>
             <button
-              onClick={handleLogout}
+              onClick={handleLogoutClick}
               className="hidden sm:flex content-center btn bg-light-blue-500 hover:bg-light-blue-600 text-white"
             >
               Log Out
             </button>
             <button
-              onClick={handleLogout}
+              onClick={handleLogoutClick}
               className="block sm:hidden size-10 p-2 text-white bg-light-blue-500 rounded-lg"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
@@ -231,6 +246,28 @@ const Navbar = () => {
           </>
         )}
       </div>
+
+      {showLogoutModal && (
+        <div className="modal modal-open">
+          <div className="modal-box">
+            <h3 className="font-bold text-2xl text-center">Are you sure you want to log out?</h3>
+            <div className="modal-action flex flex-row justify-center gap-2">
+              <button 
+                onClick={handleCancelLogout} 
+                className="btn btn-outline text-lg"
+              >
+                Cancel
+              </button>
+              <button 
+                onClick={handleLogout} 
+                className="btn btn-primary text-lg"
+              >
+                Log Out
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
