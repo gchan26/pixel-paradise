@@ -190,7 +190,7 @@ const Home = ({ loginSuccess, setLoginSuccess }) => {
           </div>
         </div>
       </section>
-      
+
       {loginSuccess && (
         <div className="toast toast-top toast-end">
           <div className="alert alert-success">

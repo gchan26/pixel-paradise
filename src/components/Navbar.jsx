@@ -239,8 +239,19 @@ const Navbar = () => {
               onClick={handleLogoutClick}
               className="block sm:hidden size-10 p-2 text-white bg-light-blue-500 rounded-lg"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="size-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15"
+                />
               </svg>
             </button>
           </>
@@ -250,16 +261,18 @@ const Navbar = () => {
       {showLogoutModal && (
         <div className="modal modal-open">
           <div className="modal-box">
-            <h3 className="font-bold text-2xl text-center">Are you sure you want to log out?</h3>
+            <h3 className="font-bold text-2xl text-center">
+              Are you sure you want to log out?
+            </h3>
             <div className="modal-action flex flex-row justify-center gap-2">
-              <button 
-                onClick={handleCancelLogout} 
+              <button
+                onClick={handleCancelLogout}
                 className="btn btn-outline text-lg"
               >
                 Cancel
               </button>
-              <button 
-                onClick={handleLogout} 
+              <button
+                onClick={handleLogout}
                 className="btn btn-primary text-lg"
               >
                 Log Out

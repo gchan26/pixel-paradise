@@ -28,9 +28,20 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home loginSuccess={loginSuccess} setLoginSuccess={setLoginSuccess} />} />
+          <Route
+            path="/"
+            element={
+              <Home
+                loginSuccess={loginSuccess}
+                setLoginSuccess={setLoginSuccess}
+              />
+            }
+          />
           <Route path="*" element={<NotFound />} />
-          <Route path="/login" element={<Login setLoginSuccess={setLoginSuccess} />} />
+          <Route
+            path="/login"
+            element={<Login setLoginSuccess={setLoginSuccess} />}
+          />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/recover" element={<Recover />} />
           <Route path="/products" element={<Products />} />
