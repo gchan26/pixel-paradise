@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ArrowLeftEndOnRectangleIcon } from "@heroicons/react/24/solid";
 import { useAuth } from "../contexts/AuthContext";
 
@@ -9,7 +9,8 @@ import smallLogo from "../assets/logos/smallLogo.svg";
 
 const Navbar = () => {
   const { currentUser, logout } = useAuth();
-  const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
@@ -17,19 +18,11 @@ const Navbar = () => {
     } catch (error) {
       console.error("Failed to log out", error);
     }
-
-    // Hide the modal after logging out
-    setShowLogoutModal(false);
   };
 
-  const handleLogoutClick = () => {
-    // Show the logout confirmation modal
-    setShowLogoutModal(true);
-  };
-
-  const handleCancelLogout = () => {
-    // Hide the logout confirmation modal without logging out
-    setShowLogoutModal(false);
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    navigate(`/products?search=${searchTerm}`);
   };
 
   return (
@@ -63,22 +56,22 @@ const Navbar = () => {
               <a>Games</a>
               <ul className="p-2 bg-base-100 z-50">
                 <li>
-                  <NavLink to="/products/game">All Games</NavLink>
+                  <NavLink to="/products/type/game">All Games</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/nintendo/game">Nintendo</NavLink>
+                  <NavLink to="/products/company/nintendo">Nintendo</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/atari/game">Atari</NavLink>
+                  <NavLink to="/products/company/atari">Atari</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/sega/game">Sega</NavLink>
+                  <NavLink to="/products/company/sega">Sega</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/sony/game">Sony</NavLink>
+                  <NavLink to="/products/company/sony">Sony</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/microsoft/game">Microsoft</NavLink>
+                  <NavLink to="/products/company/microsoft">Microsoft</NavLink>
                 </li>
               </ul>
             </li>
@@ -86,22 +79,22 @@ const Navbar = () => {
               <a>Consoles</a>
               <ul className="p-2 bg-base-100 z-50">
                 <li>
-                  <NavLink to="/products/console">All Consoles</NavLink>
+                  <NavLink to="/products/type/console">All Consoles</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/nintendo/console">Nintendo</NavLink>
+                  <NavLink to="/products/company/nintendo">Nintendo</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/atari/console">Atari</NavLink>
+                  <NavLink to="/products/company/atari">Atari</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/sega/console">Sega</NavLink>
+                  <NavLink to="/products/company/sega">Sega</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/sony/console">Sony</NavLink>
+                  <NavLink to="/products/company/sony">Sony</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/microsoft/console">Microsoft</NavLink>
+                  <NavLink to="/products/company/microsoft">Microsoft</NavLink>
                 </li>
               </ul>
             </li>
@@ -109,10 +102,10 @@ const Navbar = () => {
               <a>Others</a>
               <ul className="p-2 bg-base-100 z-50">
                 <li>
-                  <NavLink to="/products/accessory">Accessories</NavLink>
+                  <NavLink to="/products/type/accessory">Accessories</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/poster">Posters</NavLink>
+                  <NavLink to="/products/type/poster">Posters</NavLink>
                 </li>
               </ul>
             </li>
@@ -136,22 +129,22 @@ const Navbar = () => {
               <summary>Games</summary>
               <ul className="p-2 absolute z-50 bg-base-100">
                 <li>
-                  <NavLink to="/products/game">All Games</NavLink>
+                  <NavLink to="/products/type/game">All Games</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/nintendo/game">Nintendo</NavLink>
+                  <NavLink to="/products/company/nintendo">Nintendo</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/atari/game">Atari</NavLink>
+                  <NavLink to="/products/company/atari">Atari</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/sega/game">Sega</NavLink>
+                  <NavLink to="/products/company/sega">Sega</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/sony/game">Sony</NavLink>
+                  <NavLink to="/products/company/sony">Sony</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/microsoft/game">Microsoft</NavLink>
+                  <NavLink to="/products/company/microsoft">Microsoft</NavLink>
                 </li>
               </ul>
             </details>
@@ -161,22 +154,22 @@ const Navbar = () => {
               <summary>Consoles</summary>
               <ul className="p-2 absolute z-50 bg-base-100">
                 <li>
-                  <NavLink to="/products/console">All Consoles</NavLink>
+                  <NavLink to="/products/type/console">All Consoles</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/nintendo/console">Nintendo</NavLink>
+                  <NavLink to="/products/company/nintendo">Nintendo</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/atari/console">Atari</NavLink>
+                  <NavLink to="/products/company/atari">Atari</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/sega/console">Sega</NavLink>
+                  <NavLink to="/products/company/sega">Sega</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/sony/console">Sony</NavLink>
+                  <NavLink to="/products/company/sony">Sony</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/microsoft/console">Microsoft</NavLink>
+                  <NavLink to="/products/company/microsoft">Microsoft</NavLink>
                 </li>
               </ul>
             </details>
@@ -186,10 +179,10 @@ const Navbar = () => {
               <summary>Others</summary>
               <ul className="p-2 absolute z-50 bg-base-100">
                 <li>
-                  <NavLink to="/products/accessory">Accessories</NavLink>
+                  <NavLink to="/products/type/accessory">Accessories</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/poster">Posters</NavLink>
+                  <NavLink to="/products/type/poster">Posters</NavLink>
                 </li>
               </ul>
             </details>
@@ -200,21 +193,29 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end gap-4">
-        <label className="input input-bordered flex items-center gap-2">
-          <input type="text" className="grow" placeholder="Search Products" />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            className="w-4 h-4 opacity-70"
-          >
-            <path
-              fillRule="evenodd"
-              d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-              clipRule="evenodd"
+        <form onSubmit={handleSearchSubmit} className="input-group">
+          <label className="input input-bordered flex items-center gap-2">
+            <input
+              type="text"
+              className="grow"
+              placeholder="Search Products"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
-          </svg>
-        </label>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              className="w-4 h-4 opacity-70"
+            >
+              <path
+                fillRule="evenodd"
+                d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </label>
+        </form>
         {!currentUser ? (
           <>
             <NavLink
@@ -230,13 +231,13 @@ const Navbar = () => {
         ) : (
           <>
             <button
-              onClick={handleLogoutClick}
+              onClick={handleLogout}
               className="hidden sm:flex content-center btn bg-light-blue-500 hover:bg-light-blue-600 text-white"
             >
               Log Out
             </button>
             <button
-              onClick={handleLogoutClick}
+              onClick={handleLogout}
               className="block sm:hidden size-10 p-2 text-white bg-light-blue-500 rounded-lg"
             >
               <svg
@@ -257,30 +258,6 @@ const Navbar = () => {
           </>
         )}
       </div>
-
-      {showLogoutModal && (
-        <div className="modal modal-open">
-          <div className="modal-box">
-            <h3 className="font-bold text-2xl text-center">
-              Are you sure you want to log out?
-            </h3>
-            <div className="modal-action flex flex-row justify-center gap-2">
-              <button
-                onClick={handleCancelLogout}
-                className="btn btn-outline text-lg"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleLogout}
-                className="btn btn-primary text-lg"
-              >
-                Log Out
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
