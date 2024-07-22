@@ -1,10 +1,10 @@
-/* eslint-disable react/prop-types */
 import { createContext, useContext, useState, useEffect } from "react";
-import { auth } from "../services/firebase";
+import { auth, provider } from "../services/firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  signInWithPopup,
 } from "firebase/auth";
 
 const AuthContext = createContext();
@@ -12,6 +12,7 @@ const AuthContext = createContext();
 // eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => useContext(AuthContext);
 
+// eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -60,6 +61,14 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const loginWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, provider);
+    } catch (error) {
+      throw new Error("Failed to log in with Google. Please try again.");
+    }
+  };
+
   const logout = () => {
     return signOut(auth);
   };
@@ -77,6 +86,7 @@ export const AuthProvider = ({ children }) => {
     currentUser,
     signup,
     login,
+    loginWithGoogle,
     logout,
   };
 
