@@ -10,11 +10,13 @@ import smallLogo from "../assets/logos/smallLogo.svg";
 const Navbar = () => {
   const { currentUser, logout } = useAuth();
   const [searchTerm, setSearchTerm] = useState("");
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
       await logout();
+      navigate("/login");
     } catch (error) {
       console.error("Failed to log out", error);
     }
@@ -23,6 +25,11 @@ const Navbar = () => {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     navigate(`/products?search=${searchTerm}`);
+  };
+
+  // eslint-disable-next-line no-unused-vars
+  const toggleDropdown = () => {
+    setIsDropdownVisible(!isDropdownVisible);
   };
 
   return (
@@ -115,8 +122,8 @@ const Navbar = () => {
           </ul>
         </div>
         <NavLink to="/" className="btn btn-ghost flex content-center">
-          <img src={Logo} className="w-40 hidden md:block" />
-          <img src={smallLogo} className="w-10 md:hidden" />
+          <img src={Logo} className="w-40 hidden md:block" alt="Logo" />
+          <img src={smallLogo} className="w-10 md:hidden" alt="Small Logo" />
         </NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -230,31 +237,38 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <button
-              onClick={handleLogout}
-              className="hidden sm:flex content-center btn bg-light-blue-500 hover:bg-light-blue-600 text-white"
+             <div className="dropdown dropdown-end">
+            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                {currentUser.photoURL ? (
+                  <img src={currentUser.photoURL} alt="Profile" />
+                ) : (
+                  <div className="flex items-center justify-center w-10 h-10 bg-gray-300 rounded-full">
+                    {currentUser.email
+                      ? currentUser.email.charAt(0).toUpperCase()
+                      : currentUser.displayName.charAt(0).toUpperCase()}
+                  </div>
+                )}
+              </div>
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
-              Log Out
-            </button>
-            <button
-              onClick={handleLogout}
-              className="block sm:hidden size-10 p-2 text-white bg-light-blue-500 rounded-lg"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15"
-                />
-              </svg>
-            </button>
+              <li>
+                <NavLink to="/profile" className="justify-between">
+                  Profile
+                  <span className="badge">New</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/my-cart">My Cart</NavLink>
+              </li>
+              <li>
+                <button onClick={handleLogout}>Logout</button>
+              </li>
+            </ul>
+          </div>
           </>
         )}
       </div>
