@@ -1,7 +1,10 @@
+// React
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { ArrowLeftEndOnRectangleIcon } from "@heroicons/react/24/solid";
 import { useAuth } from "../contexts/AuthContext";
+
+// Icons
+import { ArrowLeftEndOnRectangleIcon } from "@heroicons/react/24/solid";
 
 // Images
 import Logo from "../assets/logos/logo.png";
@@ -13,11 +16,15 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    try {
-      await logout();
-      navigate("/login");
-    } catch (error) {
-      console.error("Failed to log out", error);
+    const confirmLogout = window.confirm("Are you sure you want to log out?");
+    
+    if (confirmLogout) {
+      try {
+        await logout();
+        navigate("/login");
+      } catch (error) {
+        console.error("Failed to log out", error);
+      }
     }
   };
 
@@ -25,7 +32,6 @@ const Navbar = () => {
     e.preventDefault();
     navigate(`/products?search=${searchTerm}`);
   };
-
 
   return (
     <div className="navbar bg-dark-blue-500 z-20">
@@ -232,7 +238,8 @@ const Navbar = () => {
           </>
         ) : (
           <>
-             <div className="dropdown dropdown-end">
+          
+            <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
                 {currentUser.photoURL ? (
@@ -250,15 +257,6 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
-              <li>
-                <NavLink to="/profile" className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/my-cart">My Cart</NavLink>
-              </li>
               <li>
                 <button onClick={handleLogout}>Logout</button>
               </li>
