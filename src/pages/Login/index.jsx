@@ -6,12 +6,13 @@ import { useNavigate } from "react-router-dom";
 // Images
 import CRT from "../../assets/crt.jpeg";
 import smallLogo from "../../assets/logos/smallLogo.svg";
+import Google from "../../assets/logos/Google.png";
 
 // eslint-disable-next-line react/prop-types
 const Login = ({ setLoginSuccess }) => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { login } = useAuth();
+  const { login, loginWithGoogle } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -27,6 +28,21 @@ const Login = ({ setLoginSuccess }) => {
       navigate("/");
     } catch (error) {
       setError("Failed to log in");
+    }
+    setLoading(false);
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      setError("");
+      setLoading(true);
+      await loginWithGoogle();
+      setLoginSuccess(true);
+      setTimeout(() => setLoginSuccess(false), 3000);
+      navigate("/");
+    } catch (error) {
+      setError("Failed to log in with Google");
+      console.log(error);
     }
     setLoading(false);
   };
@@ -108,16 +124,26 @@ const Login = ({ setLoginSuccess }) => {
               >
                 <span className="ml-2">Log in</span>
               </button>
+              <span className="text-sm block">
+                Don't have an account?{" "}
+                <a href="/signup">
+                  <span className="hover:text-blue-500 hover:underline font-semibold">
+                    Create Account
+                  </span>
+                </a>
+              </span>
             </form>
             <div className="divider"></div>
-            <span className="text-sm block">
-              Don't have an account?{" "}
-              <a href="/signup">
-                <span className="hover:text-blue-500 hover:underline font-semibold">
-                  Create Account
-                </span>
-              </a>
-            </span>
+            <button
+              onClick={handleGoogleSignIn}
+              disabled={loading}
+              className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-200 hover:bg-indigo-300 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
+            >
+              <div className="bg-white p-2 rounded-full">
+                <img src={Google} alt="Google" className="w-5 h-full" />
+              </div>
+              <span className="ml-2">Log in with Google</span>
+            </button>
           </div>
           <div className="hidden md:flex items-center justify-center">
             <img src={CRT} alt="CRT" className="w-96 h-full rounded-r-md" />
