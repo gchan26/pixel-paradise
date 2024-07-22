@@ -56,22 +56,22 @@ const Navbar = () => {
               <a>Games</a>
               <ul className="p-2 bg-base-100 z-50">
                 <li>
-                  <NavLink to="/products/type/game">All Games</NavLink>
+                  <NavLink to="/products/game">All Games</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/company/nintendo">Nintendo</NavLink>
+                  <NavLink to="/products/nintendo/game">Nintendo</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/company/atari">Atari</NavLink>
+                  <NavLink to="/products/atari/game">Atari</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/company/sega">Sega</NavLink>
+                  <NavLink to="/products/sega/game">Sega</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/company/sony">Sony</NavLink>
+                  <NavLink to="/products/sony/game">Sony</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/company/microsoft">Microsoft</NavLink>
+                  <NavLink to="/products/microsoft/game">Microsoft</NavLink>
                 </li>
               </ul>
             </li>
@@ -79,22 +79,22 @@ const Navbar = () => {
               <a>Consoles</a>
               <ul className="p-2 bg-base-100 z-50">
                 <li>
-                  <NavLink to="/products/type/console">All Consoles</NavLink>
+                  <NavLink to="/products/console">All Consoles</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/company/nintendo">Nintendo</NavLink>
+                  <NavLink to="/products/nintendo/console">Nintendo</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/company/atari">Atari</NavLink>
+                  <NavLink to="/products/atari/console">Atari</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/company/sega">Sega</NavLink>
+                  <NavLink to="/products/sega/console">Sega</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/company/sony">Sony</NavLink>
+                  <NavLink to="/products/sony/console">Sony</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/company/microsoft">Microsoft</NavLink>
+                  <NavLink to="/products/microsoft/console">Microsoft</NavLink>
                 </li>
               </ul>
             </li>
@@ -102,10 +102,10 @@ const Navbar = () => {
               <a>Others</a>
               <ul className="p-2 bg-base-100 z-50">
                 <li>
-                  <NavLink to="/products/type/accessory">Accessories</NavLink>
+                  <NavLink to="/products/accessory">Accessories</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/type/poster">Posters</NavLink>
+                  <NavLink to="/products/poster">Posters</NavLink>
                 </li>
               </ul>
             </li>
@@ -129,22 +129,22 @@ const Navbar = () => {
               <summary>Games</summary>
               <ul className="p-2 absolute z-50 bg-base-100">
                 <li>
-                  <NavLink to="/products/type/game">All Games</NavLink>
+                  <NavLink to="/products/game">All Games</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/company/nintendo">Nintendo</NavLink>
+                  <NavLink to="/products/nintendo/game">Nintendo</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/company/atari">Atari</NavLink>
+                  <NavLink to="/products/atari/game">Atari</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/company/sega">Sega</NavLink>
+                  <NavLink to="/products/sega/game">Sega</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/company/sony">Sony</NavLink>
+                  <NavLink to="/products/sony/game">Sony</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/company/microsoft">Microsoft</NavLink>
+                  <NavLink to="/products/microsoft/game">Microsoft</NavLink>
                 </li>
               </ul>
             </details>
@@ -154,22 +154,22 @@ const Navbar = () => {
               <summary>Consoles</summary>
               <ul className="p-2 absolute z-50 bg-base-100">
                 <li>
-                  <NavLink to="/products/type/console">All Consoles</NavLink>
+                  <NavLink to="/products/console">All Consoles</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/company/nintendo">Nintendo</NavLink>
+                  <NavLink to="/products/nintendo/console">Nintendo</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/company/atari">Atari</NavLink>
+                  <NavLink to="/products/atari/console">Atari</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/company/sega">Sega</NavLink>
+                  <NavLink to="/products/sega/console">Sega</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/company/sony">Sony</NavLink>
+                  <NavLink to="/products/sony/console">Sony</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/company/microsoft">Microsoft</NavLink>
+                  <NavLink to="/products/microsoft/console">Microsoft</NavLink>
                 </li>
               </ul>
             </details>
@@ -179,10 +179,10 @@ const Navbar = () => {
               <summary>Others</summary>
               <ul className="p-2 absolute z-50 bg-base-100">
                 <li>
-                  <NavLink to="/products/type/accessory">Accessories</NavLink>
+                  <NavLink to="/products/accessory">Accessories</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/type/poster">Posters</NavLink>
+                  <NavLink to="/products/poster">Posters</NavLink>
                 </li>
               </ul>
             </details>
