@@ -1,10 +1,10 @@
-/* eslint-disable react/prop-types */
 import { createContext, useContext, useState, useEffect } from "react";
-import { auth } from "../services/firebase";
+import { auth, provider } from "../services/firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  signInWithPopup
 } from "firebase/auth";
 
 const AuthContext = createContext();
@@ -12,6 +12,7 @@ const AuthContext = createContext();
 // eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => useContext(AuthContext);
 
+// eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -22,9 +23,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       switch (error.code) {
         case "auth/email-already-in-use":
-          throw new Error(
-            "The email address is already in use by another account."
-          );
+          throw new Error("The email address is already in use by another account.");
         case "auth/invalid-email":
           throw new Error("The email address is not valid.");
         case "auth/operation-not-allowed":
@@ -32,9 +31,7 @@ export const AuthProvider = ({ children }) => {
         case "auth/weak-password":
           throw new Error("The password is too weak.");
         default:
-          throw new Error(
-            "Failed to create an account. Please try again later."
-          );
+          throw new Error("Failed to create an account. Please try again later.");
       }
     }
   };
@@ -45,18 +42,22 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       switch (error.code) {
         case "auth/user-disabled":
-          throw new Error(
-            "The user account has been disabled by an administrator."
-          );
+          throw new Error("The user account has been disabled by an administrator.");
         case "auth/user-not-found":
           throw new Error("No user corresponding to the given email.");
         case "auth/wrong-password":
           throw new Error("The password is invalid.");
         default:
-          throw new Error(
-            "Failed to log in. Please check your email and password."
-          );
+          throw new Error("Failed to log in. Please check your email and password.");
       }
+    }
+  };
+
+  const loginWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, provider);
+    } catch (error) {
+      throw new Error("Failed to log in with Google. Please try again.");
     }
   };
 
@@ -77,6 +78,7 @@ export const AuthProvider = ({ children }) => {
     currentUser,
     signup,
     login,
+    loginWithGoogle,
     logout,
   };
 
