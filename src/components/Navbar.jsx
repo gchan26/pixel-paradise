@@ -10,7 +10,6 @@ import smallLogo from "../assets/logos/smallLogo.svg";
 const Navbar = () => {
   const { currentUser, logout } = useAuth();
   const [searchTerm, setSearchTerm] = useState("");
-  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -27,10 +26,6 @@ const Navbar = () => {
     navigate(`/products?search=${searchTerm}`);
   };
 
-  // eslint-disable-next-line no-unused-vars
-  const toggleDropdown = () => {
-    setIsDropdownVisible(!isDropdownVisible);
-  };
 
   return (
     <div className="navbar bg-dark-blue-500 z-20">
