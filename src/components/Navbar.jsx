@@ -59,6 +59,9 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-base-100 rounded-box w-52 font-bold"
           >
             <li>
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li>
               <NavLink to="/products">All Products</NavLink>
             </li>
             <li>
@@ -125,7 +128,7 @@ const Navbar = () => {
         </div>
         <NavLink to="/" className="btn btn-ghost flex content-center">
           <img src={Logo} className="w-40 hidden md:block" alt="Logo" />
-          <img src={smallLogo} className="w-10 md:hidden" alt="Small Logo" />
+          <img src={smallLogo} className="w-10 hidden xs:block md:hidden" alt="Small Logo" />
         </NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -202,12 +205,12 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end gap-4">
-        <form onSubmit={handleSearchSubmit} className="input-group">
+        <form onSubmit={handleSearchSubmit} className="input-group min-w-48 max-w-60">
           <label className="input input-bordered flex items-center gap-2">
             <input
               type="text"
               className="grow"
-              placeholder="Search Products"
+              placeholder="Search"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
