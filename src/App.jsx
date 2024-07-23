@@ -17,6 +17,7 @@ import Recover from "../src/pages/Recover";
 import Products from "../src/pages/Products";
 import ProductDetails from "../src/pages/ProductDetails";
 import AboutUs from "../src/pages/AboutUs";
+import Cart from "../src/pages/Cart";
 
 import { AuthProvider } from "./contexts/AuthContext";
 import { CartProvider } from "./contexts/CartContext";
@@ -51,6 +52,7 @@ function App() {
             <Route path="/products/:company/:category" element={<Products />} />
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/about" element={<AboutUs />} />
+            <Route path="/my-cart" element={<Cart />} />
           </Routes>
           <Footer />
         </Router>
