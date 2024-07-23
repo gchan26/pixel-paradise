@@ -26,7 +26,7 @@ const ProductCard = ({ product, loading }) => (
           </h2>
           <p>{product.category}</p>
           <div className="card-actions justify-end">
-            <span className="text-xl font-bold">{product.price}</span>
+            <span className="text-xl font-bold">${product.price}</span>
           </div>
         </>
       )}
