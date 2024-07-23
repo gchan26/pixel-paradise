@@ -19,39 +19,42 @@ import ProductDetails from "../src/pages/ProductDetails";
 import AboutUs from "../src/pages/AboutUs";
 
 import { AuthProvider } from "./contexts/AuthContext";
+import { CartProvider } from "./contexts/CartContext";
 
 function App() {
   const [loginSuccess, setLoginSuccess] = useState(false);
 
   return (
     <AuthProvider>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Home
-                loginSuccess={loginSuccess}
-                setLoginSuccess={setLoginSuccess}
-              />
-            }
-          />
-          <Route path="*" element={<NotFound />} />
-          <Route
-            path="/login"
-            element={<Login setLoginSuccess={setLoginSuccess} />}
-          />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/recover" element={<Recover />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/products/:category" element={<Products />} />
-          <Route path="/products/:company/:category" element={<Products />} />
-          <Route path="/product/:id" element={<ProductDetails />} />
-          <Route path="/about" element={<AboutUs />} />
-        </Routes>
-        <Footer />
-      </Router>
+      <CartProvider>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Home
+                  loginSuccess={loginSuccess}
+                  setLoginSuccess={setLoginSuccess}
+                />
+              }
+            />
+            <Route path="*" element={<NotFound />} />
+            <Route
+              path="/login"
+              element={<Login setLoginSuccess={setLoginSuccess} />}
+            />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/recover" element={<Recover />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/products/:category" element={<Products />} />
+            <Route path="/products/:company/:category" element={<Products />} />
+            <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="/about" element={<AboutUs />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </CartProvider>
     </AuthProvider>
   );
 }
