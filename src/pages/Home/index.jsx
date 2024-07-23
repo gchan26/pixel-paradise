@@ -146,7 +146,7 @@ const Home = ({ loginSuccess, setLoginSuccess }) => {
                         <p>{product.category}</p>
                         <div className="card-actions justify-end">
                           <span className="text-xl font-bold">
-                            {product.price}
+                            ${product.price}
                           </span>
                         </div>
                       </>

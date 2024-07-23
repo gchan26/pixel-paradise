@@ -8,9 +8,13 @@ export const useCart = () => useContext(CartContext);
 // eslint-disable-next-line react/prop-types
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+  const [toastMessage, setToastMessage] = useState("");
 
   const addItemToCart = (item) => {
     setCartItems((prevItems) => [...prevItems, item]);
+    setToastMessage(`${item.name} added to the cart!`);
+
+    setTimeout(() => setToastMessage(""), 3000);
   };
 
   const removeItemFromCart = (itemId) => {
@@ -24,7 +28,7 @@ export const CartProvider = ({ children }) => {
   const cartTotal = cartItems.reduce((total, item) => total + item.price, 0);
 
   return (
-    <CartContext.Provider value={{ cartItems, addItemToCart, removeItemFromCart, clearCart, cartTotal }}>
+    <CartContext.Provider value={{ cartItems, addItemToCart, removeItemFromCart, clearCart, cartTotal, toastMessage }}>
       {children}
     </CartContext.Provider>
   );

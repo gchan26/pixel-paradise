@@ -9,10 +9,20 @@ import { Link } from "react-router-dom";
 import Block from "../../assets/Block.gif";
 
 const Cart = () => {
-  const { cartItems, removeItemFromCart, cartTotal } = useCart();
+  const { cartItems, removeItemFromCart, cartTotal, toastMessage } = useCart();
 
   return (
-    <div className="min-h-[90vh] p-4 bg-dark-blue-700 text-white">
+    <div className="min-h-[90vh] p-8 bg-dark-blue-700 text-white">
+      {toastMessage && (
+        <div className="toast toast-top toast-end">
+          <div className="alert alert-success">
+            <div>
+              <span>{toastMessage}</span>
+            </div>
+          </div>
+        </div>
+      )}
+
       {cartItems.length === 0 ? (
         <div className="flex justify-center flex-col">
           <div className="flex justify-center items-center flex-col">
@@ -82,11 +92,11 @@ const Cart = () => {
               </tbody>
             </table>
           </div>
-          <div className="mt-4 flex flex-col justify-end">
-            <h2 className="text-2xl font-semibold text-end">
+          <div className="mt-4 flex flex-col justify-center">
+            <h2 className="text-2xl font-semibold text-center">
               Total: ${cartTotal.toFixed(2)}
             </h2>
-            <div className="flex justify-end">
+            <div className="flex justify-center">
               <button className="btn bg-green-500 hover:bg-green-600 text-white mt-2 max-w-40">
                 Checkout
               </button>
