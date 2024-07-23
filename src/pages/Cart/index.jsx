@@ -12,21 +12,23 @@ const Cart = () => {
   const { cartItems, removeItemFromCart, cartTotal } = useCart();
 
   return (
-    <div className="h-[90vh] p-4 bg-dark-blue-700 text-white flex justify-center">
+    <div className="min-h-[90vh] p-4 bg-dark-blue-700 text-white">
       {cartItems.length === 0 ? (
-        <div className="flex justify-center items-center flex-col">
-          <h1 className="font-retro text-3xl text-center">
-            Your cart is empty!{" "}
-          </h1>
-          <img src={Block} className="" />
-          <h3 className="font-semibold p-4">
-            Continue shopping to add items to your cart!
-          </h3>
-          <Link to="/products">
-            <button className="btn bg-light-blue-600 hover:bg-light-blue-700 text-white hover:text-light-blue-50 ">
-              Let's a Go!
-            </button>
-          </Link>
+        <div className="flex justify-center flex-col">
+            <div className="flex justify-center items-center flex-col">
+            <h1 className="font-retro text-3xl text-center">
+                Your cart is empty!{" "}
+            </h1>
+            <img src={Block} className="" />
+            <h3 className="font-semibold p-4">
+                Continue shopping to add items to your cart!
+            </h3>
+            <Link to="/products">
+                <button className="btn bg-light-blue-600 hover:bg-light-blue-700 text-white hover:text-light-blue-50 ">
+                Let's a Go!
+                </button>
+            </Link>
+            </div>
         </div>
       ) : (
         <>
