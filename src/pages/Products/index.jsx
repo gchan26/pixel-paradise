@@ -37,12 +37,12 @@ const Products = () => {
     const productType = product.type.toLowerCase();
 
     const matchesSearch = searchQuery
-      ? productName.includes(searchQuery.toLowerCase()) || 
+      ? productName.includes(searchQuery.toLowerCase()) ||
         productCompany.includes(searchQuery.toLowerCase())
       : true;
 
     const matchesCategory = category
-      ? productCategory === category.toLowerCase() || 
+      ? productCategory === category.toLowerCase() ||
         productType === category.toLowerCase()
       : true;
 

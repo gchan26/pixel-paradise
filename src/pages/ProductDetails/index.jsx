@@ -41,7 +41,9 @@ const ProductDetails = () => {
           />
         </div>
         <div className="p-4">
-          <h2 className="text-3xl sm:text-4xl font-semibold text-white">{product.name}</h2>
+          <h2 className="text-3xl sm:text-4xl font-semibold text-white">
+            {product.name}
+          </h2>
           <p className="text-gray-600">
             {product.category}, {product.company}
           </p>

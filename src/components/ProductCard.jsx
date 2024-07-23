@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product, loading }) => (
   <div className="card w-full bg-white shadow-xl mx-auto">

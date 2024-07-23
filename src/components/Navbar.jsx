@@ -1,33 +1,33 @@
 // React
-import { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
 // Context
-import { useAuth } from '../contexts/AuthContext';
-import { useCart } from '../contexts/CartContext';
+import { useAuth } from "../contexts/AuthContext";
+import { useCart } from "../contexts/CartContext";
 
 // Icons
-import { ArrowLeftEndOnRectangleIcon } from '@heroicons/react/24/solid';
+import { ArrowLeftEndOnRectangleIcon } from "@heroicons/react/24/solid";
 
 // Images
-import Logo from '../assets/logos/logo.png';
-import smallLogo from '../assets/logos/smallLogo.svg';
+import Logo from "../assets/logos/logo.png";
+import smallLogo from "../assets/logos/smallLogo.svg";
 
 const Navbar = () => {
   const { currentUser, logout } = useAuth();
   const { cartItems, cartTotal } = useCart();
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    const confirmLogout = window.confirm('Are you sure you want to log out?');
+    const confirmLogout = window.confirm("Are you sure you want to log out?");
 
     if (confirmLogout) {
       try {
         await logout();
-        navigate('/login');
+        navigate("/login");
       } catch (error) {
-        console.error('Failed to log out', error);
+        console.error("Failed to log out", error);
       }
     }
   };
@@ -86,9 +86,7 @@ const Navbar = () => {
                   <NavLink to="/products/sony/game">Sony</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/microsoft/game">
-                    Microsoft
-                  </NavLink>
+                  <NavLink to="/products/microsoft/game">Microsoft</NavLink>
                 </li>
               </ul>
             </li>
@@ -111,9 +109,7 @@ const Navbar = () => {
                   <NavLink to="/products/sony/console">Sony</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/microsoft/console">
-                    Microsoft
-                  </NavLink>
+                  <NavLink to="/products/microsoft/console">Microsoft</NavLink>
                 </li>
               </ul>
             </li>
@@ -134,11 +130,7 @@ const Navbar = () => {
           </ul>
         </div>
         <NavLink to="/" className="btn btn-ghost flex content-center">
-          <img
-            src={Logo}
-            className="w-40 hidden md:block"
-            alt="Logo"
-          />
+          <img src={Logo} className="w-40 hidden md:block" alt="Logo" />
           <img
             src={smallLogo}
             className="w-10 hidden xs:block md:hidden"
@@ -171,9 +163,7 @@ const Navbar = () => {
                   <NavLink to="/products/sony/game">Sony</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/microsoft/game">
-                    Microsoft
-                  </NavLink>
+                  <NavLink to="/products/microsoft/game">Microsoft</NavLink>
                 </li>
               </ul>
             </details>
@@ -198,9 +188,7 @@ const Navbar = () => {
                   <NavLink to="/products/sony/console">Sony</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/microsoft/console">
-                    Microsoft
-                  </NavLink>
+                  <NavLink to="/products/microsoft/console">Microsoft</NavLink>
                 </li>
               </ul>
             </details>
@@ -273,7 +261,9 @@ const Navbar = () => {
                       d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 004 0z"
                     />
                   </svg>
-                  <span className="badge badge-sm indicator-item">{cartItems.length}</span>
+                  <span className="badge badge-sm indicator-item">
+                    {cartItems.length}
+                  </span>
                 </div>
               </div>
               <div
@@ -281,8 +271,12 @@ const Navbar = () => {
                 className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow"
               >
                 <div className="card-body">
-                  <span className="text-lg font-bold">{cartItems.length} Items</span>
-                  <span className="text-info">Subtotal: ${cartTotal.toFixed(2)}</span>
+                  <span className="text-lg font-bold">
+                    {cartItems.length} Items
+                  </span>
+                  <span className="text-info">
+                    Subtotal: ${cartTotal.toFixed(2)}
+                  </span>
                   <div className="card-actions">
                     <button
                       className="btn btn-primary btn-block"
@@ -305,8 +299,17 @@ const Navbar = () => {
                   {currentUser.photoURL ? (
                     <img src={currentUser.photoURL} alt="Profile" />
                   ) : (
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#054B9E" className="w-10">
-                      <path fillRule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clipRule="evenodd" />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="#054B9E"
+                      className="w-10"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                   )}
                 </div>
@@ -323,7 +326,9 @@ const Navbar = () => {
                   )}
                 </h3>
                 <li>
-                  <button className="text-red-600" onClick={handleLogout}>Logout</button>
+                  <button className="text-red-600" onClick={handleLogout}>
+                    Logout
+                  </button>
                 </li>
               </ul>
             </div>
@@ -331,7 +336,12 @@ const Navbar = () => {
         )}
         {!currentUser && (
           <>
-            <NavLink to="/login" className="hidden sm:flex content-center btn bg-light-blue-500 hover:bg-light-blue-600 text-white">Sign In</NavLink>
+            <NavLink
+              to="/login"
+              className="hidden sm:flex content-center btn bg-light-blue-500 hover:bg-light-blue-600 text-white"
+            >
+              Sign In
+            </NavLink>
             <NavLink to="/login">
               <ArrowLeftEndOnRectangleIcon className="block sm:hidden size-10 p-2 text-white bg-light-blue-500 rounded-lg" />
             </NavLink>
