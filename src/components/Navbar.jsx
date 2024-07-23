@@ -279,7 +279,7 @@ const Navbar = () => {
                   </span>
                   <div className="card-actions">
                     <button
-                      className="btn btn-primary btn-block"
+                      className="btn bg-white hover:bg-gray-100 text-light-blue-500 hover:text-light-blue-400 border-2 border-light-blue-300 btn-block"
                       onClick={() => navigate("/my-cart")}
                     >
                       View cart
