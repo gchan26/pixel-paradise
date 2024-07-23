@@ -11,24 +11,63 @@ export const CartProvider = ({ children }) => {
   const [toastMessage, setToastMessage] = useState("");
 
   const addItemToCart = (item) => {
-    setCartItems((prevItems) => [...prevItems, item]);
-    setToastMessage(`${item.name} added to the cart!`);
+    setCartItems((prevItems) => {
+      const itemIndex = prevItems.findIndex(cartItem => cartItem.id === item.id);
+      if (itemIndex > -1) {
+        const updatedItems = [...prevItems];
+        updatedItems[itemIndex] = {
+          ...updatedItems[itemIndex],
+          quantity: updatedItems[itemIndex].quantity + 1
+        };
+        return updatedItems;
+      } else {
+        return [...prevItems, { ...item, quantity: 1 }];
+      }
+    });
 
+    setToastMessage(`${item.name} added to the cart!`);
     setTimeout(() => setToastMessage(""), 3000);
   };
 
+  const increaseItemQuantity = (itemId) => {
+    setCartItems((prevItems) => prevItems.map(item => 
+      item.id === itemId
+        ? { ...item, quantity: item.quantity + 1 }
+        : item
+    ).filter(item => item.quantity > 0));
+  }
+
+  const decreaseItemQuantity = (itemId) => {
+    setCartItems((prevItems) => prevItems.map(item => 
+      item.id === itemId
+        ? { ...item, quantity: item.quantity - 1 }
+        : item
+    ).filter(item => item.quantity > 0));
+  }
+
   const removeItemFromCart = (itemId) => {
-    setCartItems((prevItems) => prevItems.filter(item => item.id !== itemId));
+    setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
   };
 
   const clearCart = () => {
     setCartItems([]);
   };
 
-  const cartTotal = cartItems.reduce((total, item) => total + item.price, 0);
+  const cartTotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
-    <CartContext.Provider value={{ cartItems, addItemToCart, removeItemFromCart, clearCart, cartTotal, toastMessage }}>
+    <CartContext.Provider
+      value={{
+        cartItems,
+        addItemToCart,
+        increaseItemQuantity,
+        decreaseItemQuantity,
+        removeItemFromCart,
+        clearCart,
+        cartTotal,
+        toastMessage,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
