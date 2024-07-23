@@ -19,7 +19,7 @@ const Cart = () => {
             <h1 className="font-retro text-3xl text-center">
               Your cart is empty!{" "}
             </h1>
-            <img src={Block} className="" />
+            <img src={Block} alt="empty cart" />
             <h3 className="font-semibold p-4">
               Continue shopping to add items to your cart!
             </h3>
@@ -32,8 +32,10 @@ const Cart = () => {
         </div>
       ) : (
         <>
-          <div className="flex flex-row items-center gap-2 mb-4">
-            <h1 className="text-3xl font-semibold">My Cart</h1>
+          <div className="flex flex-row items-center justify-center gap-2 mb-4">
+            <h1 className="text-3xl font-semibold text-center font-retro">
+              My Cart
+            </h1>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-7 w-7"
@@ -49,23 +51,21 @@ const Cart = () => {
               />
             </svg>
           </div>
-          <div className="overflow-x-auto w-full">
-            <table className="table-auto w-full">
-              {/* <thead>
-                <tr className="rounded-lg">
-                  <th className="px-4 py-2">Product</th>
-                  <th className="px-4 py-2">Price</th>
-                  <th className="px-4 py-2">Actions</th>
-                </tr>
-              </thead> */}
+          <div className="overflow-x-auto w-full flex justify-center">
+            <table className="table-auto max-w-7xl">
               <tbody>
                 {cartItems.map((item) => (
                   <tr key={item.id}>
                     <td className="border px-4 py-2 text-center">
-                      {item.name}
+                      <Link
+                        to={`/product/${item.id}`}
+                        className="text-light-blue-300 font-semibold no-underline"
+                      >
+                        {item.name}
+                      </Link>
                     </td>
                     <td className="border px-4 py-2 text-center font-bold">
-                      ${item.price.toFixed(2)}
+                      ${Number(item.price).toFixed(2)}
                     </td>
                     <td className="border px-4 py-2">
                       <div className="flex justify-center">
