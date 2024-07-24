@@ -49,7 +49,7 @@ To run the Pixel Paradise project on your local machine, follow these steps:
 1. **Clone the repository:**
 
     ```sh
-    git clone https://github.com/your-username/pixel-paradise.git
+    git clone https://github.com/gchan26/pixel-paradise.git
     ```
 
 2. **Navigate to the project directory:**
