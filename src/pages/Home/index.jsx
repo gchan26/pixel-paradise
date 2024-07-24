@@ -11,6 +11,8 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/solid";
 
+// Images
+import BackgroundIMG from "../../assets/background.svg";
 
 // Animations
 import "animate.css";
@@ -75,7 +77,7 @@ const Home = ({ loginSuccess, setLoginSuccess }) => {
         <div
           className="hero min-h-screen"
           style={{
-            backgroundImage: "url(../../src/assets/background.svg)",
+            backgroundImage: `url(${BackgroundIMG})`,
           }}
         >
           <div className="hero-overlay bg-opacity-60"></div>
