@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // Components
 import Navbar from "../src/components/Navbar";
 import Footer from "../src/components/Footer";
+import Toast from "../src/components/Toast.jsx"
 
 // Pages
 import Home from "../src/pages/Home";
@@ -54,6 +55,7 @@ function App() {
             <Route path="/about" element={<AboutUs />} />
             <Route path="/my-cart" element={<Cart />} />
           </Routes>
+          <Toast />
           <Footer />
         </Router>
       </CartProvider>
