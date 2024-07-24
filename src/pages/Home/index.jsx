@@ -26,9 +26,9 @@ import products from "../../data/products";
 const Home = ({ loginSuccess, setLoginSuccess }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(true);
-  const { addItemToCart } = useCart();
-  const { currentUser } = useAuth();
-  const navigate = useNavigate();
+  const { addItemToCart } = useCart(); // Use Cart Context
+  const { currentUser } = useAuth(); // Use Auth Context
+  const navigate = useNavigate(); // Use Navigate Hook
 
   useEffect(() => {
     const timer = setTimeout(() => {

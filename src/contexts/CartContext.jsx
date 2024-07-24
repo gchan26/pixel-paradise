@@ -29,14 +29,6 @@ export const CartProvider = ({ children }) => {
     setTimeout(() => setToastMessage(""), 3000);
   };
 
-  const increaseItemQuantity = (itemId) => {
-    setCartItems((prevItems) => prevItems.map(item => 
-      item.id === itemId
-        ? { ...item, quantity: item.quantity + 1 }
-        : item
-    ).filter(item => item.quantity > 0));
-  }
-
   const decreaseItemQuantity = (itemId) => {
     setCartItems((prevItems) => prevItems.map(item => 
       item.id === itemId
@@ -60,10 +52,9 @@ export const CartProvider = ({ children }) => {
       value={{
         cartItems,
         addItemToCart,
-        increaseItemQuantity,
         decreaseItemQuantity,
         removeItemFromCart,
-        clearCart,
+        clearCart, 
         cartTotal,
         toastMessage,
       }}
