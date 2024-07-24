@@ -21,7 +21,7 @@ const Cart = () => {
   return (
     <div className="min-h-[90vh] p-8 bg-dark-blue-700 text-white">
       {toastMessage && (
-        <div className="toast toast-top toast-end">
+        <div className="toast toast-bottom toast-end">
           <div className="alert alert-success">
             <div>
               <span>{toastMessage}</span>
@@ -36,8 +36,8 @@ const Cart = () => {
             <h1 className="font-retro text-3xl text-center">
               Your cart is empty!{" "}
             </h1>
-            <img src={Block} alt="empty cart" />
-            <h3 className="font-semibold p-4">
+            <img src={Block} alt="empty cart" className="w-80"/>
+            <h3 className="font-semibold p-4 text-center">
               Continue shopping to add items to your cart!
             </h3>
             <Link to="/products">
@@ -130,7 +130,7 @@ const Cart = () => {
 
                         <button
                           onClick={() => removeItemFromCart(item.id)}
-                          className="btn p-2 rounded-full bg-red-500 hover:bg-red-600 text-white mx-1"
+                          className="btn p-2 rounded-full  text-red-500 mx-1"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
