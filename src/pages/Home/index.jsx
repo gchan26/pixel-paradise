@@ -26,9 +26,9 @@ import products from "../../data/products";
 const Home = ({ loginSuccess, setLoginSuccess }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(true);
-  const { addItemToCart } = useCart(); // Use Cart Context
-  const { currentUser } = useAuth(); // Use Auth Context
-  const navigate = useNavigate(); // Use Navigate Hook
+  const { addItemToCart } = useCart();
+  const { currentUser } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -137,13 +137,20 @@ const Home = ({ loginSuccess, setLoginSuccess }) => {
             {popularProducts
               .slice(currentIndex, currentIndex + 3)
               .map((product) => (
-                <div key={product.id} className="card w-80 md:w-96 bg-white shadow-xl">
+                <div
+                  key={product.id}
+                  className="card w-80 md:w-96 bg-white shadow-xl"
+                >
                   <figure className="p-1">
                     {loading ? (
                       <div className="skeleton w-full h-96 bg-gray-200 animate-pulse"></div>
                     ) : (
                       <Link to={`/product/${product.id}`}>
-                        <img className="border-0" src={product.imageUrl} alt={product.name} />
+                        <img
+                          className="border-0"
+                          src={product.imageUrl}
+                          alt={product.name}
+                        />
                       </Link>
                     )}
                   </figure>
@@ -157,12 +164,19 @@ const Home = ({ loginSuccess, setLoginSuccess }) => {
                     ) : (
                       <>
                         <h2 className="card-title text-dark-blue-400">
-                          <Link to={`/product/${product.id}`}>{product.name}</Link>
+                          <Link to={`/product/${product.id}`}>
+                            {product.name}
+                          </Link>
                         </h2>
                         <p>{product.category}</p>
                         <div className="card-actions justify-between items-center">
-                          <span className="text-xl font-bold">${Number(product.price).toFixed(2)}</span>
-                          <button onClick={() => handleAddToCart(product)} className="btn btn-primary">
+                          <span className="text-xl font-bold">
+                            ${Number(product.price).toFixed(2)}
+                          </span>
+                          <button
+                            onClick={() => handleAddToCart(product)}
+                            className="btn btn-primary"
+                          >
                             Add to Cart
                           </button>
                         </div>

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from "react";
 
 const CartContext = createContext();
 
@@ -12,12 +12,14 @@ export const CartProvider = ({ children }) => {
 
   const addItemToCart = (item) => {
     setCartItems((prevItems) => {
-      const itemIndex = prevItems.findIndex(cartItem => cartItem.id === item.id);
+      const itemIndex = prevItems.findIndex(
+        (cartItem) => cartItem.id === item.id
+      );
       if (itemIndex > -1) {
         const updatedItems = [...prevItems];
         updatedItems[itemIndex] = {
           ...updatedItems[itemIndex],
-          quantity: updatedItems[itemIndex].quantity + 1
+          quantity: updatedItems[itemIndex].quantity + 1,
         };
         return updatedItems;
       } else {
@@ -30,12 +32,14 @@ export const CartProvider = ({ children }) => {
   };
 
   const decreaseItemQuantity = (itemId) => {
-    setCartItems((prevItems) => prevItems.map(item => 
-      item.id === itemId
-        ? { ...item, quantity: item.quantity - 1 }
-        : item
-    ).filter(item => item.quantity > 0));
-  }
+    setCartItems((prevItems) =>
+      prevItems
+        .map((item) =>
+          item.id === itemId ? { ...item, quantity: item.quantity - 1 } : item
+        )
+        .filter((item) => item.quantity > 0)
+    );
+  };
 
   const removeItemFromCart = (itemId) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
@@ -45,7 +49,10 @@ export const CartProvider = ({ children }) => {
     setCartItems([]);
   };
 
-  const cartTotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  const cartTotal = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
 
   return (
     <CartContext.Provider
@@ -54,7 +61,7 @@ export const CartProvider = ({ children }) => {
         addItemToCart,
         decreaseItemQuantity,
         removeItemFromCart,
-        clearCart, 
+        clearCart,
         cartTotal,
         toastMessage,
       }}
