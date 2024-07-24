@@ -11,6 +11,7 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/solid";
 
+
 // Animations
 import "animate.css";
 import "../../components/AnimatedBackground.css";
