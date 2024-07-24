@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useCart } from "../../contexts/CartContext";
+import { useAuth } from "../../contexts/AuthContext";
 import products from "../../data/products";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const { addItemToCart } = useCart();
+  const { currentUser } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const foundProduct = products.find(
@@ -16,6 +21,14 @@ const ProductDetails = () => {
   if (!product) {
     return <div>Loading...</div>;
   }
+
+  const handleAddToCart = () => {
+    if (currentUser) {
+      addItemToCart(product);
+    } else {
+      navigate("/login");
+    }
+  };
 
   return (
     <div className="mx-auto p-4 bg-gradient-to-r from-dark-blue-800 to-dark-blue-600 min-h-screen flex items-center">
@@ -34,8 +47,11 @@ const ProductDetails = () => {
           <p className="text-gray-600">
             {product.category}, {product.company}
           </p>
-          <p className="text-3xl font-bold my-4">{product.price}</p>
-          <button className="btn bg-light-blue-600 hover:bg-light-blue-700 min-w-52 w-full hover:text-white">
+          <p className="text-3xl font-bold my-4">${Number(product.price).toFixed(2)}</p>
+          <button
+            className="btn bg-light-blue-600 hover:bg-light-blue-700 min-w-52 w-full hover:text-white"
+            onClick={handleAddToCart}
+          >
             Add to Cart
           </button>
         </div>

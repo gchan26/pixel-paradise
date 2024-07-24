@@ -2,7 +2,7 @@ const products = [
     {
       id: 1,
       name: "PSP-3000 Black",
-      price: "$140",
+      price: 140,
       imageUrl: "../../src/assets/products/psp3000.png",
       category: "Handheld",
       company: "Sony",
@@ -12,7 +12,7 @@ const products = [
     {
       id: 2,
       name: "Atari 2600",
-      price: "$140",
+      price: 140,
       imageUrl: "../../src/assets/products/atari2600.png",
       category: "Home Console",
       company: "Atari",
@@ -22,7 +22,7 @@ const products = [
     {
       id: 3,
       name: "Gameboy Advance SP Silver",
-      price: "$140",
+      price: 140,
       imageUrl: "../../src/assets/products/gameboyadvancespsilver.jpeg",
       category: "Handheld",
       company: "Nintendo",
@@ -32,7 +32,7 @@ const products = [
     {
       id: 4,
       name: "Playstation 2 Slim",
-      price: "$140",
+      price: 140,
       imageUrl: "../../src/assets/products/ps2slim.jpeg",
       category: "Home Console",
       company: "Sony",
@@ -42,7 +42,7 @@ const products = [
     {
       id: 5,
       name: "Sega Genesis",
-      price: "$140",
+      price: 140,
       imageUrl: "../../src/assets/products/segagenesis.png",
       category: "Home Console",
       company: "Sega",
@@ -52,7 +52,7 @@ const products = [
     {
       id: 6,
       name: "Dreamcast",
-      price: "$140",
+      price: 140,
       imageUrl: "../../src/assets/products/dreamcast.png",
       category: "Home Console",
       company: "Sega",
@@ -62,7 +62,7 @@ const products = [
     {
       id: 7,
       name: "NES",
-      price: "$60",
+      price: 60,
       imageUrl: "../../src/assets/products/nes.png",
       category: "Home Console",
       company: "Nintendo",
@@ -72,7 +72,7 @@ const products = [
     {
       id: 8,
       name: "Super Nintendo",
-      price: "$80",
+      price: 80,
       imageUrl: "../../src/assets/products/snes.png",
       category: "Home Console",
       company: "Nintendo",
@@ -82,7 +82,7 @@ const products = [
     {
       id: 9,
       name: "Nintendo 64",
-      price: "$120",
+      price: 120,
       imageUrl: "../../src/assets/products/n64.png",
       category: "Home Console",
       company: "Nintendo",
@@ -92,7 +92,7 @@ const products = [
     {
       id: 10,
       name: "Super Mario World",
-      price: "$20",
+      price: 20,
       imageUrl: "../../src/assets/products/supermarioworld.png",
       category: "Game",
       company: "Nintendo",
@@ -103,7 +103,7 @@ const products = [
     {
       id: 11,
       name: "GameShark",
-      price: "$30",
+      price: 30,
       imageUrl: "../../src/assets/products/gameshark.png",
       category: "Accessory",
       company: "Interact",
@@ -113,7 +113,7 @@ const products = [
     {
       id: 12,
       name: "Playstation 1",
-      price: "$100",
+      price: 100,
       imageUrl: "../../src/assets/products/playstation1.png",
       category: "Home Console",
       company: "Sony",
@@ -123,7 +123,7 @@ const products = [
     {
       id: 13,
       name: "Sega Saturn",
-      price: "$120",
+      price: 120,
       imageUrl: "../../src/assets/products/segasaturn.png",
       category: "Home Console",
       company: "Sega",
@@ -133,7 +133,7 @@ const products = [
     {
       id: 14,
       name: "GameCube",
-      price: "$90",
+      price: 90,
       imageUrl: "../../src/assets/products/gamecube.png",
       category: "Home Console",
       company: "Nintendo",
@@ -143,7 +143,7 @@ const products = [
     {
       id: 15,
       name: "The Legend of Zelda: Ocarina of Time",
-      price: "$25",
+      price: 25,
       imageUrl: "../../src/assets/products/ocarinaoftime.png",
       category: "Game",
       company: "Nintendo",
@@ -154,7 +154,7 @@ const products = [
     {
       id: 16,
       name: "Metroid Prime",
-      price: "$30",
+      price: 30,
       imageUrl: "../../src/assets/products/metroidprime.png",
       category: "Game",
       company: "Nintendo",
@@ -165,7 +165,7 @@ const products = [
     {
       id: 17,
       name: "SNES Controller",
-      price: "$20",
+      price: 20,
       imageUrl: "../../src/assets/products/snescontroller.png",
       category: "Accessory",
       company: "Nintendo",
@@ -175,7 +175,7 @@ const products = [
     {
       id: 18,
       name: "N64 Expansion Pak",
-      price: "$35",
+      price: 35,
       imageUrl: "../../src/assets/products/n64expansionpak.png",
       category: "Accessory",
       company: "Nintendo",
@@ -185,7 +185,7 @@ const products = [
     {
       id: 19,
       name: "Sonic the Hedgehog",
-      price: "$15",
+      price: 15,
       imageUrl: "../../src/assets/products/sonic.png",
       category: "Game",
       company: "Sega",
@@ -196,7 +196,7 @@ const products = [
     {
       id: 20,
       name: "Donkey Kong Country",
-      price: "$25",
+      price: 25,
       imageUrl: "../../src/assets/products/donkeykongcountry.png",
       category: "Game",
       company: "Nintendo",

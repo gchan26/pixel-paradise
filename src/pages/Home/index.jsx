@@ -1,21 +1,34 @@
 /* eslint-disable react/no-unescaped-entities */
+// React
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+// Icons
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
   ArrowDownCircleIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/solid";
+
+// Animations
 import "animate.css";
 import "../../components/AnimatedBackground.css";
 
+// Context
+import { useCart } from "../../contexts/CartContext";
+import { useAuth } from "../../contexts/AuthContext";
+
+// Data
 import products from "../../data/products";
 
 // eslint-disable-next-line react/prop-types, no-unused-vars
 const Home = ({ loginSuccess, setLoginSuccess }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(true);
+  const { addItemToCart } = useCart();
+  const { currentUser } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -45,6 +58,14 @@ const Home = ({ loginSuccess, setLoginSuccess }) => {
       const newIndex = prevIndex + productsPerPage;
       return newIndex >= popularProducts.length ? 0 : newIndex;
     });
+  };
+
+  const handleAddToCart = (product) => {
+    if (currentUser) {
+      addItemToCart(product);
+    } else {
+      navigate("/login");
+    }
   };
 
   return (
@@ -98,6 +119,7 @@ const Home = ({ loginSuccess, setLoginSuccess }) => {
           <span></span>
           <span></span>
           <span></span>
+          <span></span>
         </div>
         <div className="relative z-10 flex justify-center w-full mb-8">
           <h1 className="text-6xl font-retro text-dark-blue-50 text-center">
@@ -115,8 +137,7 @@ const Home = ({ loginSuccess, setLoginSuccess }) => {
             {popularProducts
               .slice(currentIndex, currentIndex + 3)
               .map((product) => (
-                <Link
-                  to={`/product/${product.id}`}
+                <div
                   key={product.id}
                   className="card w-80 md:w-96 bg-white shadow-xl"
                 >
@@ -124,11 +145,13 @@ const Home = ({ loginSuccess, setLoginSuccess }) => {
                     {loading ? (
                       <div className="skeleton w-full h-96 bg-gray-200 animate-pulse"></div>
                     ) : (
-                      <img
-                        className="border-0"
-                        src={product.imageUrl}
-                        alt={product.name}
-                      />
+                      <Link to={`/product/${product.id}`}>
+                        <img
+                          className="border-0"
+                          src={product.imageUrl}
+                          alt={product.name}
+                        />
+                      </Link>
                     )}
                   </figure>
                   <div className="card-body">
@@ -141,18 +164,26 @@ const Home = ({ loginSuccess, setLoginSuccess }) => {
                     ) : (
                       <>
                         <h2 className="card-title text-dark-blue-400">
-                          {product.name}
+                          <Link to={`/product/${product.id}`}>
+                            {product.name}
+                          </Link>
                         </h2>
                         <p>{product.category}</p>
-                        <div className="card-actions justify-end">
+                        <div className="card-actions justify-between items-center">
                           <span className="text-xl font-bold">
-                            {product.price}
+                            ${Number(product.price).toFixed(2)}
                           </span>
+                          <button
+                            onClick={() => handleAddToCart(product)}
+                            className="btn btn-primary"
+                          >
+                            Add to Cart
+                          </button>
                         </div>
                       </>
                     )}
                   </div>
-                </Link>
+                </div>
               ))}
           </div>
           <button
@@ -192,7 +223,7 @@ const Home = ({ loginSuccess, setLoginSuccess }) => {
       </section>
 
       {loginSuccess && (
-        <div className="toast toast-top toast-end">
+        <div className="toast toast-bottom toast-end">
           <div className="alert alert-success">
             <div>
               <span>Login Successful!</span>

@@ -1,7 +1,10 @@
 // React
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+
+// Context
 import { useAuth } from "../contexts/AuthContext";
+import { useCart } from "../contexts/CartContext";
 
 // Icons
 import { ArrowLeftEndOnRectangleIcon } from "@heroicons/react/24/solid";
@@ -12,8 +15,8 @@ import smallLogo from "../assets/logos/smallLogo.svg";
 
 const Navbar = () => {
   const { currentUser, logout } = useAuth();
+  const { cartItems, cartTotal } = useCart();
   const [searchTerm, setSearchTerm] = useState("");
-  const [cartItems] = useState(8);
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -35,7 +38,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-dark-blue-500 z-20">
+    <div className="navbar bg-dark-blue-500 z-50 relative shadow-md">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -259,20 +262,24 @@ const Navbar = () => {
                     />
                   </svg>
                   <span className="badge badge-sm indicator-item">
-                    {cartItems}
+                    {cartItems.length}
                   </span>
                 </div>
               </div>
               <div
                 tabIndex={0}
-                className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow"
+                className="card card-compact dropdown-content bg-base-100 z-50 mt-3 w-52 shadow"
               >
                 <div className="card-body">
-                  <span className="text-lg font-bold">{cartItems} Items</span>
-                  <span className="text-info">Subtotal: $999</span>
+                  <span className="text-lg font-bold">
+                    {cartItems.length} Items
+                  </span>
+                  <span className="text-info">
+                    Subtotal: ${cartTotal.toFixed(2)}
+                  </span>
                   <div className="card-actions">
                     <button
-                      className="btn btn-primary btn-block"
+                      className="btn bg-white hover:bg-gray-100 text-light-blue-500 hover:text-light-blue-400 border-2 border-light-blue-300 btn-block"
                       onClick={() => navigate("/my-cart")}
                     >
                       View cart
@@ -309,7 +316,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
               >
                 <h3 className="text-center flex justify-center items-center h-full font-semibold p-4">
                   {currentUser.displayName ? (
