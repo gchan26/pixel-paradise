@@ -1,8 +1,8 @@
 # Pixel Paradise
 
-<div style="text-align: center; padding: 20px;">
-  <img src="https://res.cloudinary.com/dd7bkl8rd/image/upload/v1721848746/logo-blue-bg_kebfk1.png" alt="Pixel Paradise website logo" width="200" style="border-radius: 20px"/>
-</div>
+<p align="center">
+  <img src="https://res.cloudinary.com/dd7bkl8rd/image/upload/v1721851035/bluelogo_ll4iyg.png" alt="Pixel Paradise website logo" width="200" />
+</p>
 
 Welcome to **Pixel Paradise**! This web application allows users to explore a wide range of retro gaming products, from classic consoles to vintage games and accessories. Users can effortlessly search for products, view detailed descriptions, and add items to their cart for purchase. 
 
@@ -19,7 +19,7 @@ Welcome to **Pixel Paradise**! This web application allows users to explore a wi
 ### Technologies Used:
 <p align="center">
     <img src="https://res.cloudinary.com/dd7bkl8rd/image/upload/v1721850080/image_17_jzpr5y.png">&nbsp;
-    <img src="https://res.cloudinary.com/dd7bkl8rd/image/upload/v1721850080/image_18_iomzsc.png">&nbsp;
+    <img src="https://res.cloudinary.com/dd7bkl8rd/image/upload/v1721851035/vite_lgxztp.png">&nbsp;
     <img src="https://res.cloudinary.com/dd7bkl8rd/image/upload/v1721850080/image_19_virg1f.png">&nbsp;
     <img src="https://res.cloudinary.com/dd7bkl8rd/image/upload/v1721850080/image_20_fyitqp.png">&nbsp;
     <img src="https://res.cloudinary.com/dd7bkl8rd/image/upload/v1721850080/Group_22_whc7wj.png">&nbsp;
@@ -82,7 +82,7 @@ To run the Pixel Paradise project on your local machine, follow these steps:
 - If you encounter issues with dependencies or other configurations, check the `package.json` and ensure all required packages are installed.
 
 Now you're all set to explore and develop the Pixel Paradise project locally!
-```
+
 
 ### Key Points:
 - **Prerequisites**: Lists the required software.
