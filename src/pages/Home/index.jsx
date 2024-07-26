@@ -94,7 +94,7 @@ const Home = ({ loginSuccess, setLoginSuccess }) => {
                   video-games.
                 </p>
                 <a href="#main-section">
-                  <button className="btn bg-light-blue-600 hover:bg-light-blue-700 text-dark-blue-50 ">
+                  <button className="btn bg-light-blue-600 hover:bg-light-blue-700 text-dark-blue-50">
                     <ArrowDownCircleIcon className="size-5" />
                     Check Popular Products
                   </button>
@@ -109,7 +109,6 @@ const Home = ({ loginSuccess, setLoginSuccess }) => {
         className="relative min-h-screen bg-dark-blue-700 p-10"
       >
         <div className="background">
-          <span></span>
           <span></span>
           <span></span>
           <span></span>
@@ -142,15 +141,15 @@ const Home = ({ loginSuccess, setLoginSuccess }) => {
               .map((product) => (
                 <div
                   key={product.id}
-                  className="card xs:w-80 md:w-96 bg-white shadow-xl"
+                  className="card w-auto xs:w-80 md:w-96 bg-white shadow-xl"
                 >
                   <figure className="p-1">
                     {loading ? (
-                      <div className="skeleton w-full h-96 bg-gray-200 animate-pulse"></div>
+                      <div className="skeleton min-w-72 h-96 bg-gray-200 animate-pulse"></div>
                     ) : (
                       <Link to={`/product/${product.id}`}>
                         <img
-                          className="border-0"
+                          className="border-0 w-full h-full object-cover"
                           src={product.imageUrl}
                           alt={product.name}
                         />
