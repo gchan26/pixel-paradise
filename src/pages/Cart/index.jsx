@@ -36,12 +36,12 @@ const Cart = () => {
             <h1 className="font-retro text-3xl text-center">
               Your cart is empty!{" "}
             </h1>
-            <img src={Block} alt="empty cart" className="w-80"/>
+            <img src={Block} alt="empty cart" className="w-80" />
             <h3 className="font-semibold p-4 text-center">
               Continue shopping to add items to your cart!
             </h3>
             <Link to="/products">
-              <button className="btn bg-light-blue-600 hover:bg-light-blue-700 text-white hover:text-light-blue-50 ">
+              <button className="btn bg-light-blue-600 hover:bg-light-blue-700 text-white hover:text-light-blue-50">
                 Let's a Go!
               </button>
             </Link>
@@ -69,11 +69,18 @@ const Cart = () => {
             </svg>
           </div>
           <div className="overflow-x-auto w-full flex justify-center">
-            <table className="table-auto max-w-7xl">
+            <table className="table-auto max-w-7xl border border-gray-600 rounded-lg">
+              <thead>
+                <tr className="bg-gray-700">
+                  <th className="border border-gray-600 px-4 py-2 text-white">Product</th>
+                  <th className="border border-gray-600 px-4 py-2 text-white">Price</th>
+                  <th className="border border-gray-600 px-4 py-2 text-white">Actions</th>
+                </tr>
+              </thead>
               <tbody>
                 {cartItems.map((item) => (
                   <tr key={item.id}>
-                    <td className="border px-4 py-2 text-center">
+                    <td className="border border-gray-600 px-4 py-2 text-center">
                       <Link
                         to={`/product/${item.id}`}
                         className="text-light-blue-300 font-semibold no-underline"
@@ -81,10 +88,10 @@ const Cart = () => {
                         {item.name}
                       </Link>
                     </td>
-                    <td className="border px-4 py-2 text-center font-bold">
+                    <td className="border border-gray-600 px-4 py-2 text-center font-bold">
                       ${Number(item.price * item.quantity).toFixed(2)}
                     </td>
-                    <td className="border px-4 py-2">
+                    <td className="border border-gray-600 px-4 py-2">
                       <div className="flex justify-center">
                         <button
                           onClick={() => decreaseItemQuantity(item.id)}
@@ -110,7 +117,7 @@ const Cart = () => {
                         </h1>
                         <button
                           onClick={() => increaseItemQuantity(item.id)}
-                          className="btn p-2 rounded-full  text-white mx-1"
+                          className="btn p-2 rounded-full text-white mx-1"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -130,7 +137,7 @@ const Cart = () => {
 
                         <button
                           onClick={() => removeItemFromCart(item.id)}
-                          className="btn p-2 rounded-full  text-red-500 mx-1"
+                          className="btn p-2 rounded-full text-red-500 mx-1"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
