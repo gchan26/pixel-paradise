@@ -142,7 +142,7 @@ const Home = ({ loginSuccess, setLoginSuccess }) => {
               .map((product) => (
                 <div
                   key={product.id}
-                  className="card w-80 md:w-96 bg-white shadow-xl"
+                  className="card xs:w-80 md:w-96 bg-white shadow-xl"
                 >
                   <figure className="p-1">
                     {loading ? (
