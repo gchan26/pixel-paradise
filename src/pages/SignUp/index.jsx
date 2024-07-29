@@ -36,7 +36,7 @@ const SignUp = () => {
   };
 
   return (
-    <section className="h-screen">
+    <section className="h-screen bg-dark-blue-500">
       <div className="m-auto flex justify-center items-center h-full rounded-lg">
         <div className="flex flex-row border-[#475360] border-4 rounded-lg">
           <div className="bg-[#121a23] p-8 md:p-12 flex flex-col justify-center rounded-l items-center gap-6">

@@ -231,7 +231,7 @@ const Home = ({ loginSuccess, setLoginSuccess }) => {
         </div>
         <div className="relative z-10 flex flex-end align-bottom h-full">
           <div className="w-full p-10 my-4 flex flex-col items-center align-bottom h-full">
-            <h1 className="text-2xl text-center mb-4">
+            <h1 className="text-2xl text-center mb-4 text-default-gray-50">
               Haven't found what you're looking for?
             </h1>
             <a href="/products">

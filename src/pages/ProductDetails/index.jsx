@@ -47,10 +47,10 @@ const ProductDetails = () => {
           <p className="text-gray-600">
             {product.category}, {product.company}
           </p>
-          <p>{product.description}</p>
-          <p className="text-3xl font-bold my-4">${Number(product.price).toFixed(2)}</p>
+          <p className="text-default-gray-50">{product.description}</p>
+          <p className="text-default-gray-50 text-3xl font-bold my-4">${Number(product.price).toFixed(2)}</p>
           <button
-            className="btn bg-light-blue-600 hover:bg-light-blue-700 min-w-52 w-full hover:text-white"
+            className="btn bg-light-blue-600 hover:bg-light-blue-700 min-w-52 w-full text-white border-black"
             onClick={handleAddToCart}
           >
             Add to Cart

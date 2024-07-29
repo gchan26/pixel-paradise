@@ -47,7 +47,7 @@ const Navbar = () => {
               className="h-5 w-5"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="currentColor"
+              stroke="#A5ADBB"
             >
               <path
                 strokeLinecap="round"
@@ -227,7 +227,7 @@ const Navbar = () => {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
-              fill="currentColor"
+              fill="#A5ADBB"
               className="w-4 h-4 opacity-70"
             >
               <path

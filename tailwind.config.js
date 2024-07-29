@@ -61,6 +61,9 @@ export default {
           100: "#81B5F1",
           50: "#C0D7F1",
         },
+        "default-gray": {
+          50: "#A5ADBB",
+        },
 
       },
     },
