@@ -369,7 +369,7 @@ const products = [
     imageUrl: "https://res.cloudinary.com/dd7bkl8rd/image/upload/v1722273858/guitar-hero-controller_kd6is9.png",
     category: "Accessory",
     company: "Microsoft",
-    popular: false,
+    popular: true,
     type: "Accessory",
     description: "A guitar-shaped controller used to play Guitar Hero on Xbox."
   },
@@ -688,7 +688,7 @@ const products = [
     imageUrl: "https://res.cloudinary.com/dd7bkl8rd/image/upload/v1722277697/Group_32_rboqsx.png",
     category: "Accessory",
     company: "Nintendo",
-    popular: false,
+    popular: true,
     type: "Poster",
     description: "A beautiful poster featuring elements from The Legend of Zelda series."
   }
