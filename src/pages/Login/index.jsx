@@ -48,7 +48,7 @@ const Login = ({ setLoginSuccess }) => {
   };
 
   return (
-    <section className="h-screen">
+    <section className="h-screen bg-dark-blue-500">
       <div className="m-auto flex justify-center items-center h-full rounded-lg">
         <div className="flex flex-row border-[#475360] border-4 rounded-lg">
           <div className="bg-[#121a23] p-8 md:p-12 flex flex-col justify-center rounded-l items-center gap-6">
@@ -107,14 +107,14 @@ const Login = ({ setLoginSuccess }) => {
                 />
               </label>
               <a href="/recover">
-                <span className="text-sm hover:text-blue-500 hover:underline block font-semibold">
+                <span className="text-sm text-default-gray-50 hover:text-blue-500 hover:underline block font-semibold">
                   Forgot your password?
                 </span>
               </a>
               <div className="form-control">
                 <label className="label cursor-pointer flex flex-row justify-start gap-2">
                   <input type="checkbox" defaultChecked className="checkbox" />
-                  <span className="label-text">Remember me</span>
+                  <span className="label-text text-default-gray-50">Remember me</span>
                 </label>
               </div>
               <button
@@ -124,7 +124,7 @@ const Login = ({ setLoginSuccess }) => {
               >
                 <span className="ml-2">Log in</span>
               </button>
-              <span className="text-sm block">
+              <span className="text-sm block text-default-gray-50">
                 Don't have an account?{" "}
                 <a href="/signup">
                   <span className="hover:text-blue-500 hover:underline font-semibold">
