@@ -84,6 +84,19 @@ export const CartProvider = ({ children }) => {
     });
   };
 
+  const increaseItemQuantity = (itemId) => {
+    setCartItems((prevItems) => {
+      const updatedItems = prevItems
+        .map((item) =>
+          item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item
+        )
+        .filter((item) => item.quantity > 0);
+
+      saveCart(updatedItems);
+      return updatedItems;
+    });
+  };
+
   const removeItemFromCart = (itemId) => {
     setCartItems((prevItems) => {
       const updatedItems = prevItems.filter((item) => item.id !== itemId);
@@ -108,6 +121,7 @@ export const CartProvider = ({ children }) => {
         cartItems,
         addItemToCart,
         decreaseItemQuantity,
+        increaseItemQuantity,
         removeItemFromCart,
         clearCart,
         cartTotal,
