@@ -1,7 +1,7 @@
-import { createContext, useContext, useState, useEffect } from 'react';
-import { firestore, auth } from '../services/firebase';
-import { doc, setDoc, getDoc } from 'firebase/firestore';
-import { onAuthStateChanged } from 'firebase/auth';
+import { createContext, useContext, useState, useEffect } from "react";
+import { firestore, auth } from "../services/firebase";
+import { doc, setDoc, getDoc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
 
 const CartContext = createContext();
 
@@ -27,26 +27,26 @@ export const CartProvider = ({ children }) => {
 
   const fetchCart = async (currentUser) => {
     try {
-      const cartRef = doc(firestore, 'carts', currentUser.uid);
+      const cartRef = doc(firestore, "carts", currentUser.uid);
       const cartSnap = await getDoc(cartRef);
       if (cartSnap.exists()) {
         setCartItems(cartSnap.data().items);
       }
     } catch (error) {
-      console.error('Error fetching cart:', error);
+      console.error("Error fetching cart:", error);
     }
-  }
+  };
 
   const saveCart = async (items) => {
     if (user) {
-      const cartRef = doc(firestore, 'carts', user.uid);
+      const cartRef = doc(firestore, "carts", user.uid);
       try {
         await setDoc(cartRef, { items });
       } catch (error) {
-        console.error('Error saving cart:', error);
+        console.error("Error saving cart:", error);
       }
     }
-  }
+  };
 
   const addItemToCart = (item) => {
     setCartItems((prevItems) => {

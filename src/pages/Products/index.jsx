@@ -17,19 +17,31 @@ const Products = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
+    const images = sortedProducts.map(product => product.imageUrl);
+    const loadImagePromises = images.map((image) => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = image;
+        img.onload = resolve;
+        img.onerror = reject;
+      });
+    });
 
-    return () => clearTimeout(timer);
-  }, []);
+    Promise.all(loadImagePromises)
+      .then(() => {
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error loading images", error);
+        setLoading(false);
+      });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [category, company, searchQuery]);
 
-  // Get page title based on search, category, and company
   const pageTitle = searchQuery
     ? `Results for "${searchQuery}"`
     : getPageTitle(company, category);
 
-  // Filter products based on search, category, and company
   const filteredProducts = products.filter((product) => {
     const productName = product.name.toLowerCase();
     const productCompany = product.company.toLowerCase();
@@ -64,6 +76,7 @@ const Products = () => {
         className="relative min-h-screen bg-dark-blue-700 p-10"
       >
         <div className="background">
+          <span></span>
           <span></span>
           <span></span>
           <span></span>
