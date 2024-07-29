@@ -102,7 +102,7 @@ const Cart = () => {
                         <div className="flex justify-center">
                           <button
                             onClick={() => decreaseItemQuantity(item.id)}
-                            className="btn p-2 rounded-full text-white mx-1 bg-[#14181D]"
+                            className="btn p-2 rounded-full text-white mx-1 bg-[#14181D] border-black"
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +124,7 @@ const Cart = () => {
                           </h1>
                           <button
                             onClick={() => increaseItemQuantity(item.id)}
-                            className="btn p-2 rounded-full text-white mx-1 bg-[#14181D]"
+                            className="btn p-2 rounded-full text-white mx-1 bg-[#14181D] border-black"
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -144,7 +144,7 @@ const Cart = () => {
 
                           <button
                             onClick={() => removeItemFromCart(item.id)}
-                            className="btn p-2 rounded-full text-red-500 mx-1 bg-[#14181D]"
+                            className="btn p-2 rounded-full text-red-500 mx-1 bg-[#14181D] border-black"
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
