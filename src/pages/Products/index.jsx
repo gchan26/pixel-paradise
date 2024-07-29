@@ -88,7 +88,10 @@ const Products = () => {
 
   return (
     <>
-      <section id="products-section" className="relative min-h-screen bg-dark-blue-700 p-10">
+      <section
+        id="products-section"
+        className="relative min-h-screen bg-dark-blue-700 p-10"
+      >
         <div className="background">
           <span></span>
           <span></span>
@@ -117,10 +120,12 @@ const Products = () => {
           ))}
         </div>
         <div className="relative z-10 flex justify-center w-full mt-8">
-          <div className="pagination mt-4 flex justify-center ">
-            <div className="btn-group">
+          <div className="pagination mt-4 flex justify-center">
+            <div className="btn-group flex-wrap gap-1">
               <button
-                className={`btn bg-dark-blue-500 ${currentPage === 1 ? "btn-disabled bg-dark-blue-400" : ""}`}
+                className={`btn bg-dark-blue-500 ${
+                  currentPage === 1 ? "btn-disabled bg-dark-blue-400" : ""
+                }`}
                 onClick={() => handlePageChange(currentPage - 1)}
               >
                 «
@@ -128,14 +133,23 @@ const Products = () => {
               {Array.from({ length: totalPages }, (_, index) => (
                 <button
                   key={index}
-                  className={`btn bg-light-blue-600 hover:bg-light-blue-700 ${currentPage === index + 1 ? "btn-active bg-light-blue-800" : ""}`}
+                  className={`btn bg-light-blue-600 hover:bg-light-blue-700 ${
+                    currentPage === index + 1
+                      ? "btn-active bg-light-blue-800"
+                      : ""
+                  }`}
                   onClick={() => handlePageChange(index + 1)}
                 >
                   {index + 1}
                 </button>
-              ))}
+              )).slice(
+                Math.max(currentPage - 3, 0),
+                Math.min(currentPage + 2, totalPages)
+              )}{" "}
               <button
-                className={`btn ${currentPage === totalPages ? "btn-disabled" : ""}`}
+                className={`btn ${
+                  currentPage === totalPages ? "btn-disabled" : ""
+                }`}
                 onClick={() => handlePageChange(currentPage + 1)}
               >
                 »
