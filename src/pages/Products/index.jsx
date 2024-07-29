@@ -1,4 +1,3 @@
-// React
 import { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 
@@ -18,28 +17,6 @@ const Products = () => {
   const [loading, setLoading] = useState(true);
   const productsPerPage = 8;
 
-  useEffect(() => {
-    const images = sortedProducts.map((product) => product.imageUrl);
-    const loadImagePromises = images.map((image) => {
-      return new Promise((resolve, reject) => {
-        const img = new Image();
-        img.src = image;
-        img.onload = resolve;
-        img.onerror = reject;
-      });
-    });
-
-    Promise.all(loadImagePromises)
-      .then(() => {
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error loading images", error);
-        setLoading(false);
-      });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [category, company, searchQuery, currentPage]);
-
   const handlePageChange = (page) => {
     setLoading(true);
     setCurrentPage(page);
@@ -49,6 +26,7 @@ const Products = () => {
     ? `Results for "${searchQuery}"`
     : getPageTitle(company, category);
 
+  // Filter products based on search, category, and company
   const filteredProducts = products.filter((product) => {
     const productName = product.name.toLowerCase();
     const productCompany = product.company.toLowerCase();
@@ -86,6 +64,26 @@ const Products = () => {
   const totalProducts = sortedProducts.length;
   const totalPages = Math.ceil(totalProducts / productsPerPage);
 
+  useEffect(() => {
+    const loadImages = currentProducts.map((product) => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = product.imageUrl;
+        img.onload = resolve;
+        img.onerror = reject;
+      });
+    });
+
+    Promise.all(loadImages)
+      .then(() => {
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error loading images", error);
+        setLoading(false);
+      });
+  }, [currentProducts]);
+
   return (
     <>
       <section
@@ -93,7 +91,6 @@ const Products = () => {
         className="relative min-h-screen bg-dark-blue-700 p-10"
       >
         <div className="background">
-          <span></span>
           <span></span>
           <span></span>
           <span></span>
@@ -145,7 +142,7 @@ const Products = () => {
               )).slice(
                 Math.max(currentPage - 3, 0),
                 Math.min(currentPage + 2, totalPages)
-              )}{" "}
+              )}
               <button
                 className={`btn ${
                   currentPage === totalPages ? "btn-disabled" : ""
