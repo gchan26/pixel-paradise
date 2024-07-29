@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import { Link, useNavigate } from 'react-router-dom';
-import { useCart } from '../contexts/CartContext';
-import { useAuth } from '../contexts/AuthContext';
+import { Link, useNavigate } from "react-router-dom";
+import { useCart } from "../contexts/CartContext";
+import { useAuth } from "../contexts/AuthContext";
 
 const ProductCard = ({ product, loading }) => {
   const { addItemToCart } = useCart();
@@ -12,7 +12,7 @@ const ProductCard = ({ product, loading }) => {
     if (currentUser) {
       addItemToCart(product);
     } else {
-      navigate('/login');
+      navigate("/login");
     }
   };
 
@@ -23,7 +23,11 @@ const ProductCard = ({ product, loading }) => {
           <div className="skeleton w-full h-96 bg-gray-200 animate-pulse"></div>
         ) : (
           <Link to={`/product/${product.id}`}>
-            <img className="border-0" src={product.imageUrl} alt={product.name} />
+            <img
+              className="border-0"
+              src={product.imageUrl}
+              alt={product.name}
+            />
           </Link>
         )}
       </figure>
@@ -41,7 +45,9 @@ const ProductCard = ({ product, loading }) => {
             </h2>
             <p>{product.category}</p>
             <div className="card-actions justify-between items-center">
-              <span className="text-xl font-bold">${Number(product.price).toFixed(2)}</span>
+              <span className="text-xl font-bold">
+                ${Number(product.price).toFixed(2)}
+              </span>
               <button onClick={handleAddToCart} className="btn btn-primary">
                 Add to Cart
               </button>

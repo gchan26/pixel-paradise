@@ -33,16 +33,32 @@ const Home = ({ loginSuccess, setLoginSuccess }) => {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, [currentIndex]);
-
   const popularProducts = products.filter((product) => product.popular);
   const productsPerPage = 3;
+
+  useEffect(() => {
+    const images = popularProducts
+      .slice(currentIndex, currentIndex + productsPerPage)
+      .map((product) => product.imageUrl);
+
+    const loadImagePromises = images.map((image) => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = image;
+        img.onload = resolve;
+        img.onerror = reject;
+      });
+    });
+
+    Promise.all(loadImagePromises)
+      .then(() => {
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error loading images", error);
+        setLoading(false);
+      });
+  }, [currentIndex, popularProducts]);
 
   const handlePrevClick = () => {
     setLoading(true);
@@ -70,6 +86,11 @@ const Home = ({ loginSuccess, setLoginSuccess }) => {
       navigate("/login");
     }
   };
+
+  const productsToDisplay = popularProducts.slice(
+    currentIndex,
+    currentIndex + productsPerPage
+  );
 
   return (
     <>
@@ -115,6 +136,7 @@ const Home = ({ loginSuccess, setLoginSuccess }) => {
           <span></span>
           <span></span>
           <span></span>
+          <span></span>``
           <span></span>
           <span></span>
           <span></span>
@@ -136,57 +158,55 @@ const Home = ({ loginSuccess, setLoginSuccess }) => {
             <ArrowLeftIcon className="h-6 w-6" />
           </button>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 overflow-hidden">
-            {popularProducts
-              .slice(currentIndex, currentIndex + 3)
-              .map((product) => (
-                <div
-                  key={product.id}
-                  className="card w-auto xs:w-80 md:w-96 bg-white shadow-xl"
-                >
-                  <figure className="p-1">
-                    {loading ? (
-                      <div className="skeleton min-w-72 h-96 bg-gray-200 animate-pulse"></div>
-                    ) : (
-                      <Link to={`/product/${product.id}`}>
-                        <img
-                          className="border-0 w-full h-full object-cover"
-                          src={product.imageUrl}
-                          alt={product.name}
-                        />
-                      </Link>
-                    )}
-                  </figure>
-                  <div className="card-body">
-                    {loading ? (
-                      <>
-                        <div className="skeleton w-full h-5 bg-gray-200 animate-pulse mb-2"></div>
-                        <div className="skeleton w-1/4 h-4 bg-gray-200 animate-pulse"></div>
-                        <div className="skeleton w-1/6 h-4 bg-gray-200 animate-pulse flex self-end"></div>
-                      </>
-                    ) : (
-                      <>
-                        <h2 className="card-title text-dark-blue-400">
-                          <Link to={`/product/${product.id}`}>
-                            {product.name}
-                          </Link>
-                        </h2>
-                        <p>{product.category}</p>
-                        <div className="card-actions justify-between items-center">
-                          <span className="text-xl font-bold">
-                            ${Number(product.price).toFixed(2)}
-                          </span>
-                          <button
-                            onClick={() => handleAddToCart(product)}
-                            className="btn btn-primary"
-                          >
-                            Add to Cart
-                          </button>
-                        </div>
-                      </>
-                    )}
-                  </div>
+            {productsToDisplay.map((product) => (
+              <div
+                key={product.id}
+                className="card w-auto xs:w-80 md:w-96 bg-white shadow-xl"
+              >
+                <figure className="p-1">
+                  {loading ? (
+                    <div className="skeleton min-w-72 h-96 bg-gray-200 animate-pulse"></div>
+                  ) : (
+                    <Link to={`/product/${product.id}`}>
+                      <img
+                        className="border-0 w-full h-full object-cover"
+                        src={product.imageUrl}
+                        alt={product.name}
+                      />
+                    </Link>
+                  )}
+                </figure>
+                <div className="card-body">
+                  {loading ? (
+                    <>
+                      <div className="skeleton w-full h-5 bg-gray-200 animate-pulse mb-2"></div>
+                      <div className="skeleton w-1/4 h-4 bg-gray-200 animate-pulse"></div>
+                      <div className="skeleton w-1/6 h-4 bg-gray-200 animate-pulse flex self-end"></div>
+                    </>
+                  ) : (
+                    <>
+                      <h2 className="card-title text-dark-blue-400">
+                        <Link to={`/product/${product.id}`}>
+                          {product.name}
+                        </Link>
+                      </h2>
+                      <p>{product.category}</p>
+                      <div className="card-actions justify-between items-center">
+                        <span className="text-xl font-bold">
+                          ${Number(product.price).toFixed(2)}
+                        </span>
+                        <button
+                          onClick={() => handleAddToCart(product)}
+                          className="btn btn-primary"
+                        >
+                          Add to Cart
+                        </button>
+                      </div>
+                    </>
+                  )}
                 </div>
-              ))}
+              </div>
+            ))}
           </div>
           <button
             className="hidden md:block absolute right-0 mr-2 bg-light-blue-600 hover:bg-light-blue-700 text-dark-blue-50 rounded-full p-2"
