@@ -118,7 +118,11 @@ const Products = () => {
           <>
             <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 justify-center mx-auto xl:mx-40">
               {currentProducts.map((product) => (
-                <ProductCard key={product.id} product={product} loading={loading} />
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  loading={loading}
+                />
               ))}
             </div>
             <div className="relative z-10 flex justify-center w-full mt-8">

@@ -24,8 +24,8 @@ export default {
       0: "0 0 auto",
     },
     extend: {
-      fontFamily:{
-        retro: ['"Press Start 2P"', 'sans-serif'],
+      fontFamily: {
+        retro: ['"Press Start 2P"', "sans-serif"],
       },
 
       screens: {
@@ -64,13 +64,12 @@ export default {
         "default-gray": {
           50: "#A5ADBB",
         },
-
       },
     },
   },
 
   plugins: [
     // eslint-disable-next-line no-undef
-    require('daisyui'),
+    require("daisyui"),
   ],
-}
+};

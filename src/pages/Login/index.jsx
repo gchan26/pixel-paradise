@@ -114,7 +114,9 @@ const Login = ({ setLoginSuccess }) => {
               <div className="form-control">
                 <label className="label cursor-pointer flex flex-row justify-start gap-2">
                   <input type="checkbox" defaultChecked className="checkbox" />
-                  <span className="label-text text-default-gray-50">Remember me</span>
+                  <span className="label-text text-default-gray-50">
+                    Remember me
+                  </span>
                 </label>
               </div>
               <button
