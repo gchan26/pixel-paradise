@@ -1,3 +1,4 @@
+// React
 import { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 
@@ -7,6 +8,9 @@ import products from "../../data/products";
 // Components
 import ProductCard from "../../components/ProductCard";
 import { getPageTitle } from "../../components/Utils";
+
+// Empty
+import NoResults from "../../components/NoResults";
 
 const Products = () => {
   const { category, company } = useParams();
@@ -26,7 +30,6 @@ const Products = () => {
     ? `Results for "${searchQuery}"`
     : getPageTitle(company, category);
 
-  // Filter products based on search, category, and company
   const filteredProducts = products.filter((product) => {
     const productName = product.name.toLowerCase();
     const productCompany = product.company.toLowerCase();
@@ -111,49 +114,57 @@ const Products = () => {
             {pageTitle}
           </h1>
         </div>
-        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 justify-center mx-auto xl:mx-40">
-          {currentProducts.map((product) => (
-            <ProductCard key={product.id} product={product} loading={loading} />
-          ))}
-        </div>
-        <div className="relative z-10 flex justify-center w-full mt-8">
-          <div className="pagination mt-4 flex justify-center">
-            <div className="btn-group flex-wrap gap-1">
-              <button
-                className={`btn bg-dark-blue-500 ${
-                  currentPage === 1 ? "btn-disabled bg-dark-blue-400" : ""
-                }`}
-                onClick={() => handlePageChange(currentPage - 1)}
-              >
-                «
-              </button>
-              {Array.from({ length: totalPages }, (_, index) => (
-                <button
-                  key={index}
-                  className={`btn bg-light-blue-600 hover:bg-light-blue-700 ${
-                    currentPage === index + 1
-                      ? "btn-active bg-light-blue-800"
-                      : ""
-                  }`}
-                  onClick={() => handlePageChange(index + 1)}
-                >
-                  {index + 1}
-                </button>
-              )).slice(
-                Math.max(currentPage - 3, 0),
-                Math.min(currentPage + 2, totalPages)
-              )}
-              <button
-                className={`btn ${
-                  currentPage === totalPages ? "btn-disabled" : ""
-                }`}
-                onClick={() => handlePageChange(currentPage + 1)}
-              >
-                »
-              </button>
+        {currentProducts.length > 0 ? (
+          <>
+            <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 justify-center mx-auto xl:mx-40">
+              {currentProducts.map((product) => (
+                <ProductCard key={product.id} product={product} loading={loading} />
+              ))}
             </div>
+            <div className="relative z-10 flex justify-center w-full mt-8">
+              <div className="pagination mt-4 flex justify-center">
+                <div className="btn-group flex-wrap gap-1">
+                  <button
+                    className={`btn bg-dark-blue-500 ${
+                      currentPage === 1 ? "btn-disabled bg-dark-blue-400" : ""
+                    }`}
+                    onClick={() => handlePageChange(currentPage - 1)}
+                  >
+                    «
+                  </button>
+                  {Array.from({ length: totalPages }, (_, index) => (
+                    <button
+                      key={index}
+                      className={`btn bg-light-blue-600 hover:bg-light-blue-700 ${
+                        currentPage === index + 1
+                          ? "btn-active bg-light-blue-800"
+                          : ""
+                      }`}
+                      onClick={() => handlePageChange(index + 1)}
+                    >
+                      {index + 1}
+                    </button>
+                  )).slice(
+                    Math.max(currentPage - 3, 0),
+                    Math.min(currentPage + 2, totalPages)
+                  )}
+                  <button
+                    className={`btn ${
+                      currentPage === totalPages ? "btn-disabled" : ""
+                    }`}
+                    onClick={() => handlePageChange(currentPage + 1)}
+                  >
+                    »
+                  </button>
+                </div>
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className="relative z-10 flex justify-center items-center min-h-[50vh]">
+            <NoResults />
           </div>
-        </div>
+        )}
       </section>
     </>
   );
