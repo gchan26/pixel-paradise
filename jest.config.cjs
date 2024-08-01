@@ -3,11 +3,12 @@ module.exports = {
     transform: {
       '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
     },
-    testEnvironment: 'jsdom',
+    testEnvironment: 'jest-environment-jsdom',
     testMatch: ['**/__tests__/**/*.+(js|jsx|ts|tsx)', '**/?(*.)+(spec|test).+(js|jsx|ts|tsx)'],
-    collectCoverage: true,
+    collectCoverage: false,
     moduleNameMapper: {
       '^@/(.*)$': '<rootDir>/src/$1',
     },
+    setupFilesAfterEnv: ['./setupTests.js'],
   };
   
