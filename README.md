@@ -82,9 +82,3 @@ To run the Pixel Paradise project on your local machine, follow these steps:
 - If you encounter issues with dependencies or other configurations, check the `package.json` and ensure all required packages are installed.
 
 Now you're all set to explore and develop the Pixel Paradise project locally!
-
-
-### Key Points:
-- **Prerequisites**: Lists the required software.
-- **Steps**: Provides detailed commands to clone the repo, install dependencies, and run the development server.
-- **Notes**: Any additional configurations or tips for users to watch out for are included here.
