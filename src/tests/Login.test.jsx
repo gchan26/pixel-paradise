@@ -3,7 +3,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Login from '../../src/pages/Login';
+import Login from '../pages/Login';
 
 // Mock Auth context and useNavigate
 jest.mock('../../src/contexts/AuthContext', () => ({
