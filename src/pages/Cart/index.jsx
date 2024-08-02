@@ -242,9 +242,11 @@ const Cart = () => {
               Total: ${cartTotal.toFixed(2)}
             </h2>
             <div className="flex justify-center">
-              <button className="btn bg-green-500 hover:bg-green-600 text-white mt-2 max-w-40">
-                Checkout
-              </button>
+              <a href="/checkout">
+                <button className="btn bg-green-500 hover:bg-green-600 text-white mt-2 max-w-40">
+                  Checkout
+                </button>
+              </a>
             </div>
           </div>
         </>
