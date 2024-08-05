@@ -26,7 +26,7 @@ const AboutUs = () => {
               you're a seasoned gamer looking to relive your favorite childhood
               adventures or a new enthusiast eager to discover iconic titles,
               Pixel Paradise offers an immersive experience that bridges
-              generations. We pride ourselves on offering not only a wide
+              generations. You just found an Easter Egg, click <span className="hover:underline"><a href="/easter-egg">here!</a></span> We pride ourselves on offering not only a wide
               selection of pristine, fully-functional games and systems but also
               exceptional customer service with knowledgeable staff who share
               your love for retro gaming. Step back in time with us and
