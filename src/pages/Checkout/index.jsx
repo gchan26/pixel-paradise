@@ -10,8 +10,8 @@ const Checkout = () => {
       } = useCart();
 
     return (
-      <div className="min-h-screen bg-gray-100 p-4">
-        <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6">
+      <div className="min-h-screen bg-dark-blue-500 p-4">
+        <div className="max-w-4xl mx-auto bg-[#121a23] rounded-lg shadow-lg p-6">
           <h2 className="text-2xl font-bold mb-6">Checkout</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="md:col-span-2">
@@ -62,7 +62,7 @@ const Checkout = () => {
   
             <div>
               <h3 className="text-lg font-medium mb-4">Summary</h3>
-              <div className="bg-blue-50 rounded-lg p-4 shadow-sm">
+              <div className="bg-dark-blue-500 rounded-lg p-4 shadow-sm">
                 <div className="flex justify-between mb-2">
                   <span>Item(s) Total</span>
                   <span>${cartTotal}</span>
