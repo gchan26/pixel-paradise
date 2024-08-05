@@ -19,6 +19,8 @@ import Products from "../src/pages/Products";
 import ProductDetails from "../src/pages/ProductDetails";
 import AboutUs from "../src/pages/AboutUs";
 import Cart from "../src/pages/Cart";
+import Checkout from "../src/pages/Checkout";
+import EasterEgg from "../src/pages/EasterEgg";
 
 import { AuthProvider } from "./contexts/AuthContext";
 import { CartProvider } from "./contexts/CartContext";
@@ -54,6 +56,8 @@ function App() {
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/my-cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/easter-egg" element={<EasterEgg />} />
           </Routes>
           <Toast />
           <Footer />
