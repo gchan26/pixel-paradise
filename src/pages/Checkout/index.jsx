@@ -1,15 +1,41 @@
 // React
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import React, { useState } from "react";
 import { useCart } from "../../contexts/CartContext";
 
 const Checkout = () => {
+  const [cardNumber, setCardNumber] = useState("");
+  const [cvc, setCvc] = useState("");
+  const [expiry, setExpiry] = useState("");
   const { cartTotal } = useCart();
 
   const handlePlaceOrderAlert = () => {
     alert(
       "Thank you for checking out my retro video game store project! This website is part of my developer portfolio and not an actual store (You can check my other projects here: https://gchan26.github.io/). Your interest and time are greatly appreciated!"
     );
+  };
+
+  const handleCardNumberChange = (e) => {
+    const value = e.target.value.replace(/\D/g, "").slice(0, 16);
+    setCardNumber(value);
+  };
+
+  const handleCvcChange = (e) => {
+    const value = e.target.value.replace(/\D/g, "").slice(0, 3);
+    setCvc(value);
+  };
+
+  const handleExpiryChange = (e) => {
+    const value = e.target.value.replace(/\D/g, "").slice(0, 4);
+    let formattedValue = "";
+
+    if (value.length >= 3) {
+      formattedValue = `${value.slice(0, 2)}/${value.slice(2)}`;
+    } else if (value.length >= 1) {
+      formattedValue = value;
+    }
+
+    setExpiry(formattedValue);
   };
 
   return (
@@ -82,6 +108,9 @@ const Checkout = () => {
                 </label>
                 <input
                   type="text"
+                  placeholder="1234 5678 9101 1121"
+                  value={cardNumber}
+                  onChange={handleCardNumberChange}
                   className="input input-bordered w-full"
                   required
                 />
@@ -93,6 +122,9 @@ const Checkout = () => {
                   </label>
                   <input
                     type="text"
+                    placeholder="MM/YY"
+                    value={expiry}
+                    onChange={handleExpiryChange}
                     className="input input-bordered w-full"
                     required
                   />
@@ -103,6 +135,9 @@ const Checkout = () => {
                   </label>
                   <input
                     type="text"
+                    placeholder="123"
+                    value={cvc}
+                    onChange={handleCvcChange}
                     className="input input-bordered w-full"
                     required
                   />
@@ -126,7 +161,10 @@ const Checkout = () => {
                 <span>Total</span>
                 <span>${cartTotal + 4.99}</span>
               </div>
-              <button onClick={handlePlaceOrderAlert} className="btn btn-primary w-full mt-4">
+              <button
+                onClick={handlePlaceOrderAlert}
+                className="btn btn-primary w-full mt-4"
+              >
                 Place Order
               </button>
             </div>
