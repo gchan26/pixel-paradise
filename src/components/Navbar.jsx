@@ -58,7 +58,7 @@ const Navbar = () => {
         ...prevState,
         [menu]: false,
       }));
-    }, 50);
+    }, 150);
   };
 
   return (
