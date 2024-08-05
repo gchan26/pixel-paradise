@@ -3,7 +3,11 @@
 import React, { useState } from "react";
 import { useCart } from "../../contexts/CartContext";
 
+// Data
+import { usStates } from "../../data/usStates";
+
 const Checkout = () => {
+  const [zipCode, setZipcode] = useState("");
   const [cardNumber, setCardNumber] = useState("");
   const [cvc, setCvc] = useState("");
   const [expiry, setExpiry] = useState("");
@@ -13,6 +17,11 @@ const Checkout = () => {
     alert(
       "Thank you for checking out my retro video game store project! This website is part of my developer portfolio and not an actual store (You can check my other projects here: https://gchan26.github.io/). Your interest and time are greatly appreciated!"
     );
+  };
+
+  const handleZipChange = (e) => {
+    const value = e.target.value.replace(/\D/g, "").slice(0, 5);
+    setZipcode(value);
   };
 
   const handleCardNumberChange = (e) => {
@@ -53,6 +62,7 @@ const Checkout = () => {
                 <input
                   type="text"
                   className="input input-bordered w-full"
+                  placeholder="Leon S. Kennedy"
                   required
                 />
               </div>
@@ -63,6 +73,7 @@ const Checkout = () => {
                 <input
                   type="text"
                   className="input input-bordered w-full"
+                  placeholder="2004 Grove Street Blvd"
                   required
                 />
               </div>
@@ -73,6 +84,7 @@ const Checkout = () => {
                 <input
                   type="text"
                   className="input input-bordered w-full"
+                  placeholder="Racoon City"
                   required
                 />
               </div>
@@ -81,12 +93,39 @@ const Checkout = () => {
                   <label className="label">
                     <span className="label-text">State</span>
                   </label>
-                  <input
-                    type="text"
-                    className="input input-bordered w-full"
-                    required
-                  />
+                  <div className="relative w-full">
+                    <select
+                      className="input input-bordered w-full appearance-none pr-10"
+                      required
+                    >
+                      <option value="" disabled selected>
+                        Hyrule
+                      </option>
+                      {usStates.map((state) => (
+                        <option key={state.value} value={state.value}>
+                          {state.label}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        className="size-6 w-4 h-4"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                        />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
+
                 <div>
                   <label className="label">
                     <span className="label-text">Zip Code</span>
@@ -94,6 +133,9 @@ const Checkout = () => {
                   <input
                     type="text"
                     className="input input-bordered w-full"
+                    onChange={handleZipChange}
+                    value={zipCode}
+                    placeholder="76543"
                     required
                   />
                 </div>
