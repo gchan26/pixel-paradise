@@ -1,5 +1,5 @@
 // React
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
 // Context
@@ -17,6 +17,11 @@ const Navbar = () => {
   const { currentUser, logout } = useAuth();
   const { cartItems, cartTotal } = useCart();
   const [searchTerm, setSearchTerm] = useState("");
+  const [isDropdownOpen, setIsDropdownOpen] = useState({
+    games: false,
+    consoles: false,
+    others: false,
+  });
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -35,6 +40,25 @@ const Navbar = () => {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     navigate(`/products?search=${searchTerm}`);
+  };
+
+  const dropdownTimeout = useRef({});
+
+  const handleMouseEnter = (menu) => {
+    clearTimeout(dropdownTimeout.current[menu]);
+    setIsDropdownOpen((prevState) => ({
+      ...prevState,
+      [menu]: true,
+    }));
+  };
+
+  const handleMouseLeave = (menu) => {
+    dropdownTimeout.current[menu] = setTimeout(() => {
+      setIsDropdownOpen((prevState) => ({
+        ...prevState,
+        [menu]: false,
+      }));
+    }, 50);
   };
 
   return (
@@ -143,8 +167,11 @@ const Navbar = () => {
           <li>
             <NavLink to="/products">All Products</NavLink>
           </li>
-          <li>
-            <details>
+          <li
+            onMouseEnter={() => handleMouseEnter("games")}
+            onMouseLeave={() => handleMouseLeave("games")}
+          >
+            <details open={isDropdownOpen.games}>
               <summary>Games</summary>
               <ul className="p-2 absolute z-50 bg-base-100">
                 <li>
@@ -168,8 +195,11 @@ const Navbar = () => {
               </ul>
             </details>
           </li>
-          <li>
-            <details>
+          <li
+            onMouseEnter={() => handleMouseEnter("consoles")}
+            onMouseLeave={() => handleMouseLeave("consoles")}
+          >
+            <details open={isDropdownOpen.consoles}>
               <summary>Consoles</summary>
               <ul className="p-2 absolute z-50 bg-base-100">
                 <li>
@@ -193,8 +223,11 @@ const Navbar = () => {
               </ul>
             </details>
           </li>
-          <li>
-            <details>
+          <li
+            onMouseEnter={() => handleMouseEnter("others")}
+            onMouseLeave={() => handleMouseLeave("others")}
+          >
+            <details open={isDropdownOpen.others}>
               <summary>Others</summary>
               <ul className="p-2 absolute z-50 bg-base-100">
                 <li>
