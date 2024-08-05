@@ -136,7 +136,7 @@ const Home = ({ loginSuccess, setLoginSuccess }) => {
           <span></span>
           <span></span>
           <span></span>
-          <span></span>``
+          <span></span>
           <span></span>
           <span></span>
           <span></span>
