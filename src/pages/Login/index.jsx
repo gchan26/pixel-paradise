@@ -21,6 +21,9 @@ const Login = ({ setLoginSuccess }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("handleSubmit called");
+    console.log("Email:", emailRef.current.value);
+    console.log("Password:", passwordRef.current.value);
     try {
       setError("");
       setLoading(true);
@@ -63,11 +66,12 @@ const Login = ({ setLoginSuccess }) => {
               Welcome back!
             </h1>
 
-            {error && <div className="alert alert-error">{error}</div>}
+            {error && <div data-testid="error-message" className="alert alert-error">{error}</div>}
 
             <form
               onSubmit={handleSubmit}
               className="flex flex-col gap-4 w-full max-w-xs"
+              data-testid="login-form"
             >
               <label className="input input-bordered flex items-center gap-2">
                 <svg
@@ -85,6 +89,7 @@ const Login = ({ setLoginSuccess }) => {
                   className="grow"
                   placeholder="Email"
                   required
+                  data-testid="email-input"
                 />
               </label>
               <label className="input input-bordered flex items-center gap-2">
@@ -106,6 +111,7 @@ const Login = ({ setLoginSuccess }) => {
                   className="grow"
                   placeholder="Password"
                   required
+                  data-testid="password-input"
                 />
               </label>
               <a href="/recover">
@@ -125,6 +131,7 @@ const Login = ({ setLoginSuccess }) => {
                 type="submit"
                 disabled={loading}
                 className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-light-blue-500 hover:bg-light-blue-600 text-white flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
+                data-testid="submit-button"
               >
                 <span className="ml-2">Log in</span>
               </button>
@@ -142,6 +149,7 @@ const Login = ({ setLoginSuccess }) => {
               onClick={handleGoogleSignIn}
               disabled={loading}
               className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-200 hover:bg-indigo-300 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
+              data-testid="google-button"
             >
               <div className="bg-white p-2 rounded-full">
                 <img src={Google} alt="Google" className="w-5 h-full" />
