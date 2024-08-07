@@ -72,7 +72,11 @@ const Login = ({ setLoginSuccess }) => {
               Welcome back!
             </h1>
 
-            {error && <div data-testid="error-message" className="alert alert-error">{error}</div>}
+            {error && (
+              <div data-testid="error-message" className="alert alert-error">
+                {error}
+              </div>
+            )}
 
             <form
               onSubmit={handleSubmit}
