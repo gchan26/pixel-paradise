@@ -1,5 +1,6 @@
 // React
-import { useState, useEffect } from "react";
+// eslint-disable-next-line no-unused-vars
+import React, { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 
 // Data

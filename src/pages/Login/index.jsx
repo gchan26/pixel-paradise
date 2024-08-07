@@ -1,5 +1,8 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
-import { useRef, useState } from "react";
+// eslint-disable-next-line no-unused-vars
+import React, { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
@@ -8,21 +11,21 @@ import CRT from "../../assets/crt.jpeg";
 import smallLogo from "../../assets/logos/smallLogo.svg";
 import Google from "../../assets/logos/Google.png";
 
-// eslint-disable-next-line react/prop-types
 const Login = ({ setLoginSuccess }) => {
-  const emailRef = useRef();
-  const passwordRef = useRef();
   const { login, loginWithGoogle } = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       setError("");
       setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
+      await login(email, password);
       setLoginSuccess(true);
       setTimeout(() => setLoginSuccess(false), 3000);
       navigate("/");
@@ -47,6 +50,14 @@ const Login = ({ setLoginSuccess }) => {
     setLoading(false);
   };
 
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
   return (
     <section className="h-screen bg-dark-blue-500">
       <div className="m-auto flex justify-center items-center h-full rounded-lg">
@@ -61,11 +72,16 @@ const Login = ({ setLoginSuccess }) => {
               Welcome back!
             </h1>
 
-            {error && <div className="alert alert-error">{error}</div>}
+            {error && (
+              <div data-testid="error-message" className="alert alert-error">
+                {error}
+              </div>
+            )}
 
             <form
               onSubmit={handleSubmit}
               className="flex flex-col gap-4 w-full max-w-xs"
+              data-testid="login-form"
             >
               <label className="input input-bordered flex items-center gap-2">
                 <svg
@@ -79,10 +95,12 @@ const Login = ({ setLoginSuccess }) => {
                 </svg>
                 <input
                   type="email"
-                  ref={emailRef}
+                  value={email}
+                  onChange={handleEmailChange}
                   className="grow"
                   placeholder="Email"
                   required
+                  data-testid="email-input"
                 />
               </label>
               <label className="input input-bordered flex items-center gap-2">
@@ -100,10 +118,12 @@ const Login = ({ setLoginSuccess }) => {
                 </svg>
                 <input
                   type="password"
-                  ref={passwordRef}
+                  value={password}
+                  onChange={handlePasswordChange}
                   className="grow"
                   placeholder="Password"
                   required
+                  data-testid="password-input"
                 />
               </label>
               <a href="/recover">
@@ -113,7 +133,7 @@ const Login = ({ setLoginSuccess }) => {
               </a>
               <div className="form-control">
                 <label className="label cursor-pointer flex flex-row justify-start gap-2">
-                  <input type="checkbox" defaultChecked className="checkbox" />
+                  <input type="checkbox" className="checkbox" defaultChecked />
                   <span className="label-text text-default-gray-50">
                     Remember me
                   </span>
@@ -123,11 +143,12 @@ const Login = ({ setLoginSuccess }) => {
                 type="submit"
                 disabled={loading}
                 className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-light-blue-500 hover:bg-light-blue-600 text-white flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
+                data-testid="submit-button"
               >
                 <span className="ml-2">Log in</span>
               </button>
               <span className="text-sm block text-default-gray-50">
-                Don't have an account?{" "}
+                Don't have an account?
                 <a href="/signup">
                   <span className="hover:text-blue-500 hover:underline font-semibold">
                     Create Account
@@ -135,11 +156,12 @@ const Login = ({ setLoginSuccess }) => {
                 </a>
               </span>
             </form>
-            <div className="divider"></div>
+            <div className="divider" />
             <button
               onClick={handleGoogleSignIn}
               disabled={loading}
               className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-200 hover:bg-indigo-300 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
+              data-testid="google-button"
             >
               <div className="bg-white p-2 rounded-full">
                 <img src={Google} alt="Google" className="w-5 h-full" />
