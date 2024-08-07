@@ -27,16 +27,16 @@ describe('Login component', () => {
     mockLogin = jest.fn();
     mockLoginWithGoogle = jest.fn();
     mockNavigate = jest.fn();
-    
+
     const useAuthMock = jest.requireMock('../contexts/AuthContext').useAuth;
     useAuthMock.mockReturnValue({
       login: mockLogin,
       loginWithGoogle: mockLoginWithGoogle,
     });
-    
+
     const useNavigateMock = jest.requireMock('react-router-dom').useNavigate;
     useNavigateMock.mockReturnValue(mockNavigate);
-    
+
     jest.clearAllMocks(); // Clear mocks before each test
   });
 
@@ -48,6 +48,53 @@ describe('Login component', () => {
 
     await waitFor(() => {
       expect(mockLoginWithGoogle).toHaveBeenCalled();
+    });
+  });
+
+  it('should call login function with correct credentials on submit', async () => {
+    render(<Login setLoginSuccess={jest.fn()} />);
+
+    const emailInput = screen.getByTestId('email-input');
+    const passwordInput = screen.getByTestId('password-input');
+    const submitButton = screen.getByTestId('submit-button');
+
+    userEvent.click(emailInput);
+    await userEvent.type(emailInput, 'test@mail.com');
+
+
+    userEvent.click(passwordInput);
+    await userEvent.type(passwordInput, '123123');
+
+
+    await waitFor(() => {
+      expect(emailInput.value).toBe('test@mail.com');
+      expect(passwordInput.value).toBe('123123');
+    });
+
+    userEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(mockLogin).toHaveBeenCalledWith('test@mail.com', '123123');
+    });
+  });
+
+  it('should show error message on failed login', async () => {
+    mockLogin.mockRejectedValue(new Error('Failed to log in'));
+
+    render(<Login setLoginSuccess={jest.fn()} />);
+
+    const emailInput = screen.getByTestId('email-input');
+    const passwordInput = screen.getByTestId('password-input');
+    const submitButton = screen.getByTestId('submit-button');
+
+    userEvent.click(emailInput);
+    await userEvent.type(emailInput, 'test@mail.com');
+    userEvent.click(passwordInput);
+    await userEvent.type(passwordInput, '123123');
+    userEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('error-message')).toBeInTheDocument();
     });
   });
 });

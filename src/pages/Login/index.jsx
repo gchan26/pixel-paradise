@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 // eslint-disable-next-line no-unused-vars
-import React from "react";
-import { useRef, useState } from "react";
+import React, { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
@@ -10,24 +11,21 @@ import CRT from "../../assets/crt.jpeg";
 import smallLogo from "../../assets/logos/smallLogo.svg";
 import Google from "../../assets/logos/Google.png";
 
-// eslint-disable-next-line react/prop-types
 const Login = ({ setLoginSuccess }) => {
-  const emailRef = useRef();
-  const passwordRef = useRef();
   const { login, loginWithGoogle } = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("handleSubmit called");
-    console.log("Email:", emailRef.current.value);
-    console.log("Password:", passwordRef.current.value);
+
     try {
       setError("");
       setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
+      await login(email, password);
       setLoginSuccess(true);
       setTimeout(() => setLoginSuccess(false), 3000);
       navigate("/");
@@ -50,6 +48,14 @@ const Login = ({ setLoginSuccess }) => {
       console.log(error);
     }
     setLoading(false);
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
   };
 
   return (
@@ -85,7 +91,8 @@ const Login = ({ setLoginSuccess }) => {
                 </svg>
                 <input
                   type="email"
-                  ref={emailRef}
+                  value={email}
+                  onChange={handleEmailChange}
                   className="grow"
                   placeholder="Email"
                   required
@@ -107,7 +114,8 @@ const Login = ({ setLoginSuccess }) => {
                 </svg>
                 <input
                   type="password"
-                  ref={passwordRef}
+                  value={password}
+                  onChange={handlePasswordChange}
                   className="grow"
                   placeholder="Password"
                   required
@@ -121,7 +129,7 @@ const Login = ({ setLoginSuccess }) => {
               </a>
               <div className="form-control">
                 <label className="label cursor-pointer flex flex-row justify-start gap-2">
-                  <input type="checkbox" defaultChecked className="checkbox" />
+                  <input type="checkbox" className="checkbox" defaultChecked />
                   <span className="label-text text-default-gray-50">
                     Remember me
                   </span>
@@ -136,7 +144,7 @@ const Login = ({ setLoginSuccess }) => {
                 <span className="ml-2">Log in</span>
               </button>
               <span className="text-sm block text-default-gray-50">
-                Don't have an account?{" "}
+                Don't have an account?
                 <a href="/signup">
                   <span className="hover:text-blue-500 hover:underline font-semibold">
                     Create Account
@@ -144,7 +152,7 @@ const Login = ({ setLoginSuccess }) => {
                 </a>
               </span>
             </form>
-            <div className="divider"></div>
+            <div className="divider" />
             <button
               onClick={handleGoogleSignIn}
               disabled={loading}
